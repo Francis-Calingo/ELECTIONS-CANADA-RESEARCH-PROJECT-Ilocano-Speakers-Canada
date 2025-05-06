@@ -13,14 +13,15 @@ Welcome to the sample GitHub ReadME! Use this template as an outline for your da
 
 
 # Project Background
-Backround about the company, including the industry, active years, business model, and key business metrics. Explain this from the POV of a data analyst who is working at the company.
+
+Ilocanos number 
 
 Insights and recommendations are provided on the following key areas:
 
-- **Category 1:** 
-- **Category 2:** 
-- **Category 3:** 
-- **Category 4:** 
+- **Descriptive Statistics** 
+- **Time-Series Analysis** 
+- **Statistical Modelling** 
+- **Geospatial Analysis** 
 
 The SQL queries used to inspect and clean the data for this analysis can be found here [link].
 
@@ -145,7 +146,7 @@ Based on the insights and findings above, we would recommend the [stakeholder te
 
 Throughout the analysis, multiple assumptions were made to manage challenges with the data. These assumptions and caveats are noted below:
 
-* Assumption 1 (ex: missing country records were for customers based in the US, and were re-coded to be US citizens)
+* Because data was not completely available for the newest electoral boundaries (i.e., 2023 represenation order), the last iteration of the boundaries (i.e., 2013 representation order) had to be used for calculations such as per-capita calculations.
   
 * Assumption 1 (ex: data for December 2021 was missing - this was imputed using a combination of historical trends and December 2020 data)
   

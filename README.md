@@ -16,6 +16,10 @@ Welcome to the sample GitHub ReadME! Use this template as an outline for your da
 
 Ilocanos number 
 
+<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Figure0.1.jpg"/>
+
+For more details on that undertaking, [please click here for that repo.](https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Filipino-Canadian-Demographic-Report/)
+
 Insights and recommendations are provided on the following key areas:
 
 - **Descriptive Statistics** 

@@ -1,7 +1,5 @@
 # ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada
 
-Welcome to the sample GitHub ReadME! Use this template as an outline for your data analytics projects. Include one ReadME per repository, with each repository storing one project. Remember, it's better to have quality over quantity - having 2 stellar business-relevant projects stands out much more than 3+ mediocre projects. Feel free to make a copy of this or fork this repository and make it your own. Happy portfolio-ing :) 
-
 # Table of Contents
 * [Project Background](#project-background)
 * [Data Structure and Initial Checks](#data-structure-and-initial-checks)
@@ -11,6 +9,7 @@ Welcome to the sample GitHub ReadME! Use this template as an outline for your da
 * [Assumptions and Caveats](#assumptions-and-caveats)
 * [Credits and Acknowledgements](#credits-and-acknowledgements)
 
+---
 
 # Project Background
 

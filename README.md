@@ -63,7 +63,7 @@ cd ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada
 
 ### Overview of Findings
 
-Explain the overarching findings, trends, and themes in 2-3 sentences here. This section should address the question: "If a stakeholder were to take away 3 main insights from your project, what are the most important things they should know?" You can put yourself in the shoes of a specific stakeholder - for example, a marketing manager or finance director - to think creatively about this section.
+An interesting finding was that Ilocanos were more concentrated in Montreal (specifically the Mount Royal riding) than they are in Winnipeg.
 
 [Visualization, including a graph of overall trends or snapshot of a dashboard]
 
@@ -72,7 +72,7 @@ Explain the overarching findings, trends, and themes in 2-3 sentences here. This
 ---
 
 # Insights Deep Dive
-### Category 1:
+### Descriptive Statistics:
 
 * **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
@@ -85,7 +85,7 @@ Explain the overarching findings, trends, and themes in 2-3 sentences here. This
 [Visualization specific to category 1]
 
 
-### Category 2:
+### Time-Series Analysis:
 
 * **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
@@ -98,7 +98,7 @@ Explain the overarching findings, trends, and themes in 2-3 sentences here. This
 [Visualization specific to category 2]
 
 
-### Category 3:
+### Statistical Modelling:
 
 * **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
@@ -111,7 +111,7 @@ Explain the overarching findings, trends, and themes in 2-3 sentences here. This
 [Visualization specific to category 3]
 
 
-### Category 4:
+### Geospatial Analysis:
 
 * **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   

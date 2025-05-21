@@ -62,25 +62,26 @@ tabPanel("Top 10 Tables",
          )
 )
 
-# Define server logic
 server <- function(input, output, session) {
-  
   output$top10table <- renderDT({
-    # Combine selected language + metric to get column name
-    lang <- input$language
-    metric <- input$metric
-    colname <- paste0(lang, metric)  # e.g., IlocanoRate
+    # Map the dropdown choices to column names in your CSV
+    column_map <- list(
+      "Raw Number" = "Col1",
+      "Per-Capita" = "Col2",
+      "Ilocano-Tagalog Ratio" = "Col3"
+    )
     
-    # Filter and arrange top 10 regions
+    selected_column <- column_map[[input$tableChoice]]
+    
+    # Filter TagalogCount > 1000 and select top 10 rows (assuming already sorted)
     top10 <- language_data %>%
-      select(Region, !!sym(colname)) %>%
-      arrange(desc(!!sym(colname))) %>%
-      slice(1:10)
+      filter(TagalogCount > 1000) %>%
+      select(Region, !!sym(selected_column)) %>%
+      slice_head(n = 10)
     
-    # Render the table
     datatable(top10,
               rownames = FALSE,
-              colnames = c("Region", paste(lang, metric)),
+              colnames = c("Region", gsub("Ilocano", "Ilocano ", selected_column)),
               options = list(pageLength = 10, dom = 't'))
   })
 }
@@ -91,17 +92,3 @@ shinyApp(ui = ui, server = server)
 ## Panel 1
 
 ## Panel 2
-tabPanel("Dual-Axis Plots",
-         sidebarLayout(
-           sidebarPanel(
-             selectInput("language2", "Select a language:",
-                         choices = c("Ilocano", "Tagalog", "Cebuano")),
-             helpText("Shows both rate and count for the selected language by region.")
-           ),
-           mainPanel(
-             plotlyOutput("dualAxisPlot")
-           )
-         )
-)
-
-

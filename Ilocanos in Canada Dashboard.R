@@ -20,9 +20,60 @@ library(ggplot2)
 library(plotly)
 
 panel1 <- readr::read_csv("")
-panel2 <- readr::read_csv("")
+panel2 <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos by Province&Territory, 2006-2021.csv")
+
+# creating a data frame
+panel2.data <- data.frame(
+  year = c("2021", "2021", 
+           "2016", "2016", 
+           "2011","2011",
+           "2006","2006"), 
+  language = c("Ilocano", "Tagalog", 
+               "Ilocano", "Tagalog", 
+               "Ilocano","Tagalog",
+               "Ilocano","Tagalog"), 
+  raw_number = c(33520, 461150, 
+               26345, 431380, 
+               17915,327445,
+               13450,235615), 
+  stringsAsFactors = FALSE
+)
+# print the data frame
+print(panel2.data)
+
+# Step 2: Pivot to wide format
+wide_data <- panel2.data %>%
+  tidyr::pivot_wider(names_from = language, values_from = raw_number) %>%
+  arrange(year)
+
+# Step 3: Calculate growth rates
+wide_data <- wide_data %>%
+  mutate(
+    Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
+    Tagalog_growth = c(NA, diff(Tagalog) / lag(Tagalog)[-1] * 100)
+  )
+
+# Step 4: Plotly chart
+plot_ly(wide_data, x = ~year) %>%
+  add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = 'blue'), yaxis = "y1") %>%
+  add_lines(y = ~Tagalog, name = "Tagalog Count", line = list(color = 'red'), yaxis = "y1") %>%
+  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = 'lightblue'), yaxis = "y2") %>%
+  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = 'pink'), yaxis = "y2") %>%
+  layout(
+    title = "Ilocano and Tagalog Language Trends in Canada",
+    xaxis = list(title = "Year"),
+    yaxis = list(title = "Raw Count", side = "left"),
+    yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right"),
+    barmode = "group",
+    legend = list(x = 0.1, y = 1.1, orientation = 'h')
+  )
+
+panel2
+
 panel3 <- readr::read_csv("")
 panel4 <- readr::read_csv("")
+
+############
 
 # Define UI
 ui <- navbarPage("Ilocano Speakers in Canada",

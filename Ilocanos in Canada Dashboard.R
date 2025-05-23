@@ -1,3 +1,70 @@
+
+install.packages(c("DT", "dplyr", "readr"))
+install.packages(c("ggplot2", "plotly"))
+
+library(DT)
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(plotly)
+
+
+Growth_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada 2006-2021.csv")
+CMA_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, CMAs.csv")
+City_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Cities.csv")
+Province_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Provinces.csv")
+Riding_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Ridings.csv")
+
+### PANEL 1: PER-CAPITA DATA
+
+# Plot 1: Ridings Table
+
+Riding_Table <- Riding_Data[order(-Riding_Data$"Ilocano per 100K"), 
+                            c("Riding (2023 Representation Order)", "Ilocano per 100K")][1:10, ]
+Riding_Table
+
+# Plot 2: CMA Table
+
+CMA_Table <- CMA_Data[order(-CMA_Data$"Ilocano per 100K"), 
+                            c("CMA", "Ilocano per 100K")][1:10, ]
+CMA_Table
+
+# Plot 3: Choropleth Map of Provinces and Territories
+
+### PANEL 2: TAGALOG AND ILOCANO COMPARISONS
+
+# Plot 1: Distribution by Province, Donut Chart
+
+Distribution_Data <- Province_Data[c("Province/Territory","Population", 
+                                     "% Total Ilocano Pop","% Tagalog Pop")]
+
+Distribution_Data
+
+# We can make the data more meaningful by grouping them:
+
+Distribution_Data$Region <- c("Atlantic Canada","Atlantic Canada", 
+                                                 "Atlantic Canada","Atlantic Canada",
+                                                 "Quebec","Ontario",
+                                                 "Manitoba","Saskatchewan",
+                                                 "Alberta","BC",
+                                                 "Territories","Territories",
+                                                 "Territories")
+
+Distribution_Data
+
+
+Distribution_Data_sum <- Distribution_Data %>%
+  group_by(Region) %>%
+  summarise(
+    total_Ilo = sum("% Total Ilocano Pop", na.rm = TRUE),
+    total_Tag = sum("% Tagalog Pop", na.rm = TRUE)
+  )
+
+Distribution_Data_sum
+
+
+#########################################################
+
 install.packages("shiny")
 install.packages(c("DT", "dplyr", "readr"))
 install.packages(c("leaflet", "sf", "tmap"))  # geospatial tools, rgdal retired

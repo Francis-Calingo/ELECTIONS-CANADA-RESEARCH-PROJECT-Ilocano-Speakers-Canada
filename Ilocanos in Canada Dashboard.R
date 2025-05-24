@@ -71,19 +71,80 @@ Distribution_Data_sum
 
 # Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
-Riding_Table_Ratio <- Riding_Data[order(-Riding_Data$"Ratio, Ilocano-Tagalog"), 
-                            c("Riding (2023 Representation Order)", "Ratio, Ilocano-Tagalog")][1:10, ]
+Riding_Table_Ratio <- Riding_Data[
+  Riding_Data$"Sum (Tagalog + Ilocano)" >= 1000, 
+  ][order(-.$"Ratio, Ilocano-Tagalog"), 
+    c("Riding (2023 Representation Order)", "Ratio, Ilocano-Tagalog")][1:10, ]
 Riding_Table_Ratio
 
 Sum (Tagalog + Ilocano)
 
 # Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
-CMA_Table_Ratio <- CMA_Data[order(-CMA_Data$"Ratio, Ilocano-TagalogK"), 
-                            c("CMA", "Ratio, Ilocano-Tagalog")][1:10, ]
+CMA_Table_Ratio <- CMA_Data[
+  CMA_Data$"Sum (Tagalog + Ilocano)" >= 1000, 
+  ][order(-.$"Ratio, Ilocano-Tagalog"), 
+    c("CMA", "Ratio, Ilocano-Tagalog")][1:10, ]
 CMA_Table_Ratio
 
-Sum (Tagalog + Ilocano)
+
+### PANEL 3: GROWTH RATES, 2006-2021
+
+# Plot 1: Choropleth Map by Province
+
+# Plots 2-18: Dual Axis Plot for National, Provincial, and City-Level Growth
+
+library(plotly)
+
+plot_ly(Growth_Data, x = ~year) %>%
+  # Bars first (they'll be in the back)
+  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", 
+           marker = list(color = '#91bad6'), yaxis = "y2") %>%
+  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", 
+           marker = list(color = '#f4b6b6'), yaxis = "y2") %>%
+  
+  # Lines after (they'll show on top)
+  add_lines(y = ~Ilocano, name = "Ilocano Count", 
+            line = list(color = '#1f77b4', width = 3), yaxis = "y1") %>%
+  add_lines(y = ~Tagalog, name = "Tagalog Count", 
+            line = list(color = '#d62728', width = 3), yaxis = "y1") %>%
+  
+  layout(
+    title = "Ilocano and Tagalog Language Trends in Canada (2006–2021)",
+    xaxis = list(title = "Year", type = "category"),
+    yaxis = list(title = "Raw Count (Speakers)", side = "left", showgrid = FALSE),
+    yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right", showgrid = FALSE),
+    barmode = "group",
+    legend = list(orientation = 'h', x = 0.1, y = 1.15),
+    margin = list(t = 80)
+  )
+
+### PANEL 4: RIDING-LEVEL REGRESSION ANALYSIS: ILOCANO VS. OTHER LANGUAGE COMMUNITIES
+
+# Plot 1: Versus Tagalog
+
+lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
+
+# Plot 2: Versus Cebuano
+
+lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Cebuano per 100K`, data = Riding_Data)
+
+# Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic
+
+lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Mandarin per 100K`, data = Riding_Data)
+
+lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Punjabi per 100K`, data = Riding_Data)
+
+lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Spanish per 100K`, data = Riding_Data)
+
+lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Spanish per 100K`, data = Riding_Data)
+
+lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Arabic per 100K`, data = Riding_Data)
+
+
+
+
+
 
 #########################################################
 

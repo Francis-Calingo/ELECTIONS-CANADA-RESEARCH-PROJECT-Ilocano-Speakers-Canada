@@ -17,17 +17,17 @@ Riding_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, 
 
 ### PANEL 1: PER-CAPITA DATA
 
-# Plot 1: Ridings Table
+# Plot 1: Ridings Table (Top 10)
 
-Riding_Table <- Riding_Data[order(-Riding_Data$"Ilocano per 100K"), 
+Riding_Table_100K <- Riding_Data[order(-Riding_Data$"Ilocano per 100K"), 
                             c("Riding (2023 Representation Order)", "Ilocano per 100K")][1:10, ]
-Riding_Table
+Riding_Table_100K
 
-# Plot 2: CMA Table
+# Plot 2: CMA Table (Top 10)
 
-CMA_Table <- CMA_Data[order(-CMA_Data$"Ilocano per 100K"), 
+CMA_Table_100K <- CMA_Data[order(-CMA_Data$"Ilocano per 100K"), 
                             c("CMA", "Ilocano per 100K")][1:10, ]
-CMA_Table
+CMA_Table_100K
 
 # Plot 3: Choropleth Map of Provinces and Territories
 
@@ -62,6 +62,28 @@ Distribution_Data_sum <- Distribution_Data %>%
 
 Distribution_Data_sum
 
+
+#########################################################
+
+
+# Plot 2: Choropleth Map, Tagalog-Ilocano Ratio
+
+
+# Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
+
+Riding_Table_Ratio <- Riding_Data[order(-Riding_Data$"Ratio, Ilocano-Tagalog"), 
+                            c("Riding (2023 Representation Order)", "Ratio, Ilocano-Tagalog")][1:10, ]
+Riding_Table_Ratio
+
+Sum (Tagalog + Ilocano)
+
+# Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
+
+CMA_Table_Ratio <- CMA_Data[order(-CMA_Data$"Ratio, Ilocano-TagalogK"), 
+                            c("CMA", "Ratio, Ilocano-Tagalog")][1:10, ]
+CMA_Table_Ratio
+
+Sum (Tagalog + Ilocano)
 
 #########################################################
 

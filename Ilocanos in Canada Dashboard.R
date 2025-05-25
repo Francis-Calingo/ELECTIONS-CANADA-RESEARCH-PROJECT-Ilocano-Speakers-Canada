@@ -185,23 +185,36 @@ Map3
 
 ## Plots 2-18: Dual Axis Plot for National, Provincial, and City-Level Growth
 
-plot_ly(Growth_Data, x = ~year) %>%
-  # Bars first (they'll be in the back)
-  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", 
-           marker = list(color = '#91bad6'), yaxis = "y2") %>%
-  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", 
-           marker = list(color = '#f4b6b6'), yaxis = "y2") %>%
-  
-  # Lines after (they'll show on top)
-  add_lines(y = ~Ilocano, name = "Ilocano Count", 
-            line = list(color = '#1f77b4', width = 3), yaxis = "y1") %>%
-  add_lines(y = ~Tagalog, name = "Tagalog Count", 
-            line = list(color = '#d62728', width = 3), yaxis = "y1") %>%
-  
+Growth_Data$Year <- c("2021", "2021",
+                       "2016", "2016",
+                       "2011", "2011",
+                       "2006", "2006", "N/A")
+
+Growth_Data_TimeSeries <- Growth_Data[-nrow(Growth_Data), ]
+
+
+# Step 2: Pivot to wide format
+wide_data_Canada <- Growth_Data_TimeSeries[, 1:3] %>%
+  tidyr::pivot_wider(names_from = Language, values_from = "Canada") %>%
+  arrange(Year)
+
+# Step 3: Calculate growth rates
+wide_data_Canada <- wide_data_Canada %>%
+  mutate(
+    Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
+    Tagalog_growth = c(NA, diff(Tagalog) / lag(Tagalog)[-1] * 100)
+  )
+
+
+plot_ly(wide_data_Canada, x = ~Year) %>%
+  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = '#91bad6'), yaxis = "y1") %>%
+  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = '#f4b6b6'), yaxis = "y1") %>%
+  add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = '#1f77b4', width = 3), yaxis = "y2") %>%
+  add_lines(y = ~Tagalog, name = "Tagalog Count", line = list(color = '#d62728', width = 3), yaxis = "y2") %>%
   layout(
-    title = "Ilocano and Tagalog Language Trends in Canada (2006–2021)",
+    title = "Ilocano and Tagalog Language Trends in Canada",
     xaxis = list(title = "Year", type = "category"),
-    yaxis = list(title = "Raw Count (Speakers)", side = "left", showgrid = FALSE),
+    yaxis = list(title = "Raw Count", side = "left", showgrid = FALSE),
     yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right", showgrid = FALSE),
     barmode = "group",
     legend = list(orientation = 'h', x = 0.1, y = 1.15),

@@ -1,4 +1,3 @@
-
 install.packages(c("DT", "dplyr", "readr"))
 install.packages(c("ggplot2", "plotly"))
 install.packages("sf")
@@ -19,52 +18,46 @@ City_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Ci
 Province_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Provinces.csv")
 Riding_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Ridings.csv")
 
-### PANEL 1: PER-CAPITA DATA
-
-# Plot 1: Ridings Table (Top 10)
-
-Riding_Table_100K <- Riding_Data[order(-Riding_Data$"Ilocano per 100K"), 
-                            c("Riding (2023 Representation Order)", "Ilocano per 100K")][1:10, ]
-Riding_Table_100K
-
-# Plot 2: CMA Table (Top 10)
-
-CMA_Table_100K <- CMA_Data[order(-CMA_Data$"Ilocano per 100K"), 
-                            c("CMA", "Ilocano per 100K")][1:10, ]
-CMA_Table_100K
-
-# Plot 3: Choropleth Map of Provinces and Territories
-
-############
-
 #Download shapefile of provincial and territorial boundaries
-my_sf <- read_sf("C:/Users/LB0009/Downloads/lfed000b21a_e")
+my_sf <- read_sf("C:/Users/francali/Downloads/lpr_000b21a_e.shp")
 
 head(my_sf)
 
-#Merge shapefile with csv file, joined through the names of the electoral districts
+### PANEL 1: PER-CAPITA DATA ###
+
+## Plot 1: Ridings Table (Top 10)
+
+Riding_Table_100K <- Riding_Data[order(-Riding_Data$"Ilocano per 100K"), 
+                                 c("Riding (2023 Representation Order)", "Ilocano per 100K")][1:10, ]
+Riding_Table_100K
+
+## Plot 2: CMA Table (Top 10)
+
+CMA_Table_100K <- CMA_Data[order(-CMA_Data$"Ilocano per 100K"), 
+                           c("CMA", "Ilocano per 100K")][1:10, ]
+CMA_Table_100K
+
+## Plot 3: Choropleth Map of Provinces and Territories
+
+#Merge shapefile with csv file, joined through the names of the provinces and territories
 my_sf_merged <- my_sf %>%
-  left_join(Province_Data, by = c("FEDENAME" = "Province/Territory"))
+  left_join(Province_Data, by = c("PRENAME" = "Province/Territory"))
 
 #Map, Ilocanos Per 100K
-my_sf_merged$FilipinoPercentClass <- 
-  cut(my_sf_merged$`% Filipinos`, breaks =c(-Inf,1,2.5,5,10,20,50,Inf),
-      labels=c('>0% but <1%%', '1-2.5%', '2.5-5%','5-10%', '10-20%', '20-50%', '>50%'))
+
 Map1 <- ggplot(my_sf_merged) +
-  geom_sf(aes(fill = FilipinoPercentClass), color='gray',data=my_sf_merged) +
+  geom_sf(aes(fill = `Ilocano per 100K`), color='gray',data=my_sf_merged) +
   geom_sf(fill='transparent', color='white', data=my_sf_merged) +
-  scale_fill_brewer(name='% Filipinos') +
-  labs(title='Proportion of Filipinos by Riding',
+  scale_fill_distiller(palette = "Blues", direction = 1, name = "Ilocanos per 100K") +
+  labs(title='Ilocano Speakers Per 100K (2021)',
        caption=c('Source: Statistics Canada')) +
   theme_gray() +
   theme(title=element_text(face='bold'), legend.position='bottom')
 Map1
 
-############
+### PANEL 2: TAGALOG AND ILOCANO COMPARISONS ###
 
-### PANEL 2: TAGALOG AND ILOCANO COMPARISONS
-
-# Plot 1: Distribution by Province, Donut Chart
+## Plot 1: Distribution by Province, Donut Chart
 
 Distribution_Data <- Province_Data[c("Province/Territory","Population", 
                                      "% Total Ilocano Pop","% Tagalog Pop")]
@@ -74,12 +67,12 @@ Distribution_Data
 # We can make the data more meaningful by grouping them:
 
 Distribution_Data$Region <- c("Atlantic Canada","Atlantic Canada", 
-                                                 "Atlantic Canada","Atlantic Canada",
-                                                 "Quebec","Ontario",
-                                                 "Manitoba","Saskatchewan",
-                                                 "Alberta","BC",
-                                                 "Territories","Territories",
-                                                 "Territories")
+                              "Atlantic Canada","Atlantic Canada",
+                              "Quebec","Ontario",
+                              "Manitoba","Saskatchewan",
+                              "Alberta","BC",
+                              "Territories","Territories",
+                              "Territories")
 
 Distribution_Data
 
@@ -94,38 +87,102 @@ Distribution_Data_sum <- Distribution_Data %>%
 Distribution_Data_sum
 
 
-#########################################################
-
-
 # Plot 2: Choropleth Map, Tagalog-Ilocano Ratio
+
+Map2 <- ggplot(my_sf_merged) +
+  geom_sf(aes(fill = `Ratio, Ilocano-Tagalog`), color='gray',data=my_sf_merged) +
+  geom_sf(fill='transparent', color='white', data=my_sf_merged) +
+  scale_fill_distiller(palette = "Blues", direction = 1, name = "Ratio, Ilocano Speakers to Tagalog Speakers") +
+  labs(title='Ratio Between Ilocano and Tagalog Speakers (2021)',
+       caption=c('Source: Statistics Canada')) +
+  theme_gray() +
+  theme(title=element_text(face='bold'), legend.position='bottom')
+Map2
 
 
 # Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
+Riding_Data$`Ratio, Ilocano-Tagalog` <- as.numeric(gsub(",", "", Riding_Data$`Ratio, Ilocano-Tagalog`))
+
 Riding_Table_Ratio <- Riding_Data[
-  Riding_Data$"Sum (Tagalog + Ilocano)" >= 1000, 
-  ][order(-.$"Ratio, Ilocano-Tagalog"), 
-    c("Riding (2023 Representation Order)", "Ratio, Ilocano-Tagalog")][1:10, ]
+  Riding_Data$`Sum (Tagalog + Ilocano)` >= 1000, 
+][order(-Riding_Data$`Ratio, Ilocano-Tagalog`), 
+  c("Riding (2023 Representation Order)", "Ratio, Ilocano-Tagalog")][1:10, ]
 Riding_Table_Ratio
 
-Sum (Tagalog + Ilocano)
+# Filter rows with at least 1000 people speaking Tagalog + Ilocano
+filtered1 <- Riding_Data[Riding_Data$`Sum (Tagalog + Ilocano)` >= 1000, ]
+
+# Order by Ratio (descending) and select top 10
+Riding_Table_Ratio <- filtered1[
+  order(-filtered1$`Ratio, Ilocano-Tagalog`), 
+  c("Riding (2023 Representation Order)", "Ratio, Ilocano-Tagalog")
+][1:10, ]
+
+# View result
+Riding_Table_Ratio
 
 # Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
 CMA_Table_Ratio <- CMA_Data[
   CMA_Data$"Sum (Tagalog + Ilocano)" >= 1000, 
-  ][order(-.$"Ratio, Ilocano-Tagalog"), 
-    c("CMA", "Ratio, Ilocano-Tagalog")][1:10, ]
+][order(-CMA_Data$"Ratio, Ilocano-Tagalog"), 
+  c("CMA", "Ratio, Ilocano-Tagalog")][1:10, ]
 CMA_Table_Ratio
 
+#########################################################
 
-### PANEL 3: GROWTH RATES, 2006-2021
+### PANEL 3: GROWTH RATES, 2006-2021 ###
 
-# Plot 1: Choropleth Map by Province
+## Plot 1: Choropleth Map by Province
 
-# Plots 2-18: Dual Axis Plot for National, Provincial, and City-Level Growth
+num_cols <- sapply(Growth_Data, is.numeric)
+growth_row_num <- ((Growth_Data[1, num_cols] - Growth_Data[7, num_cols])/Growth_Data[7, num_cols])*100
 
-library(plotly)
+growth_row <- Growth_Data[1, ]
+growth_row[] <- NA
+
+growth_row[num_cols] <- growth_row_num
+
+Growth_Data <- rbind(Growth_Data, growth_row)
+
+rownames(Growth_Data)[nrow(Growth_Data)] <- "Ilocano Growth Rate, 2006-2021"
+
+
+Growth_Table <- as.data.frame(t(Growth_Data))
+
+Growth_Table_New <- Growth_Table %>%
+  slice(4:(n() - 10)) %>%       # drop first 3 and last 10 rows
+  select(-(1:8)) %>%            # drop columns 1-8
+
+Growth_Table_New$`Province/Territory` <- c("Newfoundland and Labrador","Prince Edward Island", 
+                                                                       "Nova Scotia","New Brunswick",
+                                                                       "Quebec","Ontario",
+                                                                       "Manitoba","Saskatchewan",
+                                                                       "Alberta","British Columbia",
+                                                                       "Yukon","Northwest Territories",
+                                                                       "Nunavut")
+
+
+Growth_Table_New$`Ilocano Growth Rate, 2006-2021` <- as.numeric(Growth_Table_New$`Ilocano Growth Rate, 2006-2021`)
+Growth_Table_New[Growth_Table_New == Inf] <- NA
+
+#Merge shapefile with csv file, joined through the names of the provinces and territories
+my_sf_merged_2 <- my_sf %>%
+  left_join(Growth_Table_New, by = c("PRENAME" = "Province/Territory"))
+
+
+Map3 <- ggplot(my_sf_merged_2) +
+  geom_sf(aes(fill = `Ilocano Growth Rate, 2006-2021`), color='gray',data=my_sf_merged_2) +
+  geom_sf(fill='transparent', color='white', data=my_sf_merged_2) +
+  scale_fill_distiller(palette = "Blues", direction = 1, name = "Growth Rate of Ilocano Population, 2006-2021") +
+  labs(title='Growth Rate of Ilocano Speakers in Canada, 2006-2021',
+       caption=c('Source: Statistics Canada')) +
+  theme_gray() +
+  theme(title=element_text(face='bold'), legend.position='bottom')
+Map3
+
+## Plots 2-18: Dual Axis Plot for National, Provincial, and City-Level Growth
 
 plot_ly(Growth_Data, x = ~year) %>%
   # Bars first (they'll be in the back)

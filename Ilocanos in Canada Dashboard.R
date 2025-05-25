@@ -1,12 +1,16 @@
 
 install.packages(c("DT", "dplyr", "readr"))
 install.packages(c("ggplot2", "plotly"))
+install.packages("sf")
+
 
 library(DT)
 library(dplyr)
 library(readr)
 library(ggplot2)
 library(plotly)
+library(sf)
+
 
 
 Growth_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada 2006-2021.csv")
@@ -30,6 +34,33 @@ CMA_Table_100K <- CMA_Data[order(-CMA_Data$"Ilocano per 100K"),
 CMA_Table_100K
 
 # Plot 3: Choropleth Map of Provinces and Territories
+
+############
+
+#Download shapefile of provincial and territorial boundaries
+my_sf <- read_sf("C:/Users/LB0009/Downloads/lfed000b21a_e")
+
+head(my_sf)
+
+#Merge shapefile with csv file, joined through the names of the electoral districts
+my_sf_merged <- my_sf %>%
+  left_join(Province_Data, by = c("FEDENAME" = "Province/Territory"))
+
+#Map, Ilocanos Per 100K
+my_sf_merged$FilipinoPercentClass <- 
+  cut(my_sf_merged$`% Filipinos`, breaks =c(-Inf,1,2.5,5,10,20,50,Inf),
+      labels=c('>0% but <1%%', '1-2.5%', '2.5-5%','5-10%', '10-20%', '20-50%', '>50%'))
+Map1 <- ggplot(my_sf_merged) +
+  geom_sf(aes(fill = FilipinoPercentClass), color='gray',data=my_sf_merged) +
+  geom_sf(fill='transparent', color='white', data=my_sf_merged) +
+  scale_fill_brewer(name='% Filipinos') +
+  labs(title='Proportion of Filipinos by Riding',
+       caption=c('Source: Statistics Canada')) +
+  theme_gray() +
+  theme(title=element_text(face='bold'), legend.position='bottom')
+Map1
+
+############
 
 ### PANEL 2: TAGALOG AND ILOCANO COMPARISONS
 

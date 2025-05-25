@@ -175,7 +175,8 @@ my_sf_merged_2 <- my_sf %>%
 Map3 <- ggplot(my_sf_merged_2) +
   geom_sf(aes(fill = `Ilocano Growth Rate, 2006-2021`), color='gray',data=my_sf_merged_2) +
   geom_sf(fill='transparent', color='white', data=my_sf_merged_2) +
-  scale_fill_distiller(palette = "Blues", direction = 1, name = "Growth Rate of Ilocano Population, 2006-2021") +
+  scale_fill_distiller(palette = "Blues", direction = 1, name = "Growth Rate of Ilocano Population, 2006-2021",
+na.value = "lightgray")+
   labs(title='Growth Rate of Ilocano Speakers in Canada, 2006-2021',
        caption=c('Source: Statistics Canada')) +
   theme_gray() +

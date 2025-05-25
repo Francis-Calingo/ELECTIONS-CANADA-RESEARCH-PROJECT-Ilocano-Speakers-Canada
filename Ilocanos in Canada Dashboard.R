@@ -227,6 +227,8 @@ plot_ly(wide_data_Canada, x = ~Year) %>%
 
 lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
 
+# https://plotly.com/r/ml-regression/
+
 # Plot 2: Versus Cebuano
 
 lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Cebuano per 100K`, data = Riding_Data)

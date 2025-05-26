@@ -150,7 +150,7 @@ Riding_Table_Ratio <- filtered1[
 # View result
 Riding_Table_Ratio
 
-# Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
+## Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
 CMA_Table_Ratio <- CMA_Data[
   CMA_Data$"Sum (Tagalog + Ilocano)" >= 1000, 
@@ -251,17 +251,17 @@ plot_ly(wide_data_Canada, x = ~Year) %>%
 
 ### PANEL 4: RIDING-LEVEL REGRESSION ANALYSIS: ILOCANO VS. OTHER LANGUAGE COMMUNITIES
 
-# Plot 1: Versus Tagalog
+## Plot 1: Versus Tagalog
 
 lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
 
 # https://plotly.com/r/ml-regression/
 
-# Plot 2: Versus Cebuano
+## Plot 2: Versus Cebuano
 
 lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Cebuano per 100K`, data = Riding_Data)
 
-# Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic
+## Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic
 
 lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Mandarin per 100K`, data = Riding_Data)
 

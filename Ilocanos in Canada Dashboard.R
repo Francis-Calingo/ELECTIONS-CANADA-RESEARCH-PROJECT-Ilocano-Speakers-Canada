@@ -130,35 +130,44 @@ Map2
 
 ## Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
-Riding_Data$`Ratio, Ilocano-Tagalog` <- as.numeric(gsub(",", "", Riding_Data$`Ratio, Ilocano-Tagalog`))
+typeof(Riding_Data$`Ratio, Ilocano-Tagalog`)
 
-Riding_Table_Ratio <- Riding_Data[
-  Riding_Data$`Sum (Tagalog + Ilocano)` >= 1000, 
-][order(-Riding_Data$`Ratio, Ilocano-Tagalog`), 
-  c("Riding (2023 Representation Order)", "Ratio, Ilocano-Tagalog")][1:10, ]
+typeof(Riding_Data$`Sum (Tagalog + Ilocano)`)
+
+Riding_Data_filtered <- Riding_Data[, c("Riding (2023 Representation Order)", 
+                                         "Province/Territory", 
+                                         "Sum (Tagalog + Ilocano)", 
+                                         "Ratio, Ilocano-Tagalog")] %>%
+  filter(`Ratio, Ilocano-Tagalog` != "#DIV/0!")
+
+Riding_Data_filtered$`Ratio, Ilocano-Tagalog` <- as.numeric(gsub(",", "", Riding_Data_filtered$`Ratio, Ilocano-Tagalog`))
+
+Riding_Data_filtered <- Riding_Data_filtered %>%
+  filter(`Sum (Tagalog + Ilocano)` >= 1000)
+
+Riding_Table_Ratio <- Riding_Data_filtered[order(-Riding_Data_filtered$"Ratio, Ilocano-Tagalog"), 
+                              c("Riding (2023 Representation Order)", "Province/Territory", "Ratio, Ilocano-Tagalog")][1:10, ]
 Riding_Table_Ratio
 
-# Filter rows with at least 1000 people speaking Tagalog + Ilocano
-filtered1 <- Riding_Data[Riding_Data$`Sum (Tagalog + Ilocano)` >= 1000, ]
-
-# Order by Ratio (descending) and select top 10
-Riding_Table_Ratio <- filtered1[
-  order(-filtered1$`Ratio, Ilocano-Tagalog`), 
-  c("Riding (2023 Representation Order)", "Ratio, Ilocano-Tagalog")
-][1:10, ]
-
-# View result
-Riding_Table_Ratio
 
 ## Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
-CMA_Table_Ratio <- CMA_Data[
-  CMA_Data$"Sum (Tagalog + Ilocano)" >= 1000, 
-][order(-CMA_Data$"Ratio, Ilocano-Tagalog"), 
-  c("CMA", "Ratio, Ilocano-Tagalog")][1:10, ]
+typeof(CMA_Data$`Ratio, Ilocano-Tagalog`)
+
+typeof(CMA_Data$`Sum (Tagalog + Ilocano)`)
+
+CMA_Data_filtered <- CMA_Data[, c("CMA", 
+                                         "Provinces/Territories", 
+                                         "Sum (Tagalog + Ilocano)", 
+                                         "Ratio, Ilocano-Tagalog")]
+
+CMA_Data_filtered <- CMA_Data_filtered %>%
+  filter(`Sum (Tagalog + Ilocano)` >= 1000)
+
+CMA_Table_Ratio <- CMA_Data_filtered[order(-CMA_Data_filtered$"Ratio, Ilocano-Tagalog"), 
+                                            c("CMA", "Provinces/Territories", "Ratio, Ilocano-Tagalog")][1:10, ]
 CMA_Table_Ratio
 
-#########################################################
 
 ### PANEL 3: GROWTH RATES, 2006-2021 ###
 
@@ -210,6 +219,9 @@ na.value = "lightgray")+
   theme_gray() +
   theme(title=element_text(face='bold'), legend.position='bottom')
 Map3
+
+#########################################################
+
 
 ## Plots 2-18: Dual Axis Plot for National, Provincial, and City-Level Growth
 

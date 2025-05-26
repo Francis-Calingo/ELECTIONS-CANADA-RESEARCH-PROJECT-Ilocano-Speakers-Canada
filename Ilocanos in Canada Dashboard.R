@@ -64,7 +64,7 @@ Distribution_Data <- Province_Data[c("Province/Territory","Population",
 
 Distribution_Data
 
-# We can make the data more meaningful by grouping them:
+# Step 1 We can make the data more meaningful by grouping them:
 
 Distribution_Data$Region <- c("Atlantic Canada","Atlantic Canada", 
                               "Atlantic Canada","Atlantic Canada",
@@ -86,8 +86,36 @@ Distribution_Data_sum <- Distribution_Data %>%
 
 Distribution_Data_sum
 
+# Step 2: Pivot to long format
+Distribution_long <- Distribution_Data_sum %>%
+  pivot_longer(cols = c(total_Ilo, total_Tag), names_to = "Language", values_to = "Percentage")
 
-# Plot 2: Choropleth Map, Tagalog-Ilocano Ratio
+# Step 3: Assign inner and outer donuts
+
+Distribution_long <- Distribution_long %>%
+mutate(
+  ring = ifelse(Language == "total_Ilo", 1, 2)  # 1 = inner, 2 = outer
+)
+
+# Step 4: Create donut chart
+ggplot(Distribution_long, aes(x = ring, y = Percentage, fill = Region)) +
+  geom_col(color = "white", width = 1) +
+  coord_polar(theta = "y") +
+  xlim(0, 5) +  # Space for two rings
+  scale_fill_viridis_d(option = "D") + 
+  theme_void() +
+  theme(
+    legend.title = element_text(size = 10, face = "bold"),
+    legend.text = element_text(size = 9),
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 14)
+  ) +
+  labs(
+    title = "Ilocano (Inner Ring) vs Tagalog (Outer Ring) Population Share by Region",
+    fill = "Region"
+  )
+
+
+## Plot 2: Choropleth Map, Tagalog-Ilocano Ratio
 
 Map2 <- ggplot(my_sf_merged) +
   geom_sf(aes(fill = `Ratio, Ilocano-Tagalog`), color='gray',data=my_sf_merged) +
@@ -100,7 +128,7 @@ Map2 <- ggplot(my_sf_merged) +
 Map2
 
 
-# Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
+## Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
 Riding_Data$`Ratio, Ilocano-Tagalog` <- as.numeric(gsub(",", "", Riding_Data$`Ratio, Ilocano-Tagalog`))
 

@@ -261,6 +261,8 @@ plot_ly(wide_data_Canada, x = ~Year) %>%
     margin = list(t = 80)
   )
 
+#########################################################
+
 ### PANEL 4: RIDING-LEVEL REGRESSION ANALYSIS: ILOCANO VS. OTHER LANGUAGE COMMUNITIES
 
 ## Plot 1: Versus Tagalog
@@ -271,7 +273,23 @@ lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
 
 ## Plot 2: Versus Cebuano
 
-lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Cebuano per 100K`, data = Riding_Data)
+model1 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
+
+LM1 <- ggplot(Riding_Data, aes(x = `Tagalog per 100K`, y = `Ilocano per 100K`)) +
+  geom_point(color = "#1f77b4", alpha = 0.7, size = 3) +  # scatter points
+  geom_smooth(method = "lm", se = TRUE, color = "#ff7f0e", linewidth = 1.5) +  # regression line
+  stat_poly_eq(
+    aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")),
+    formula = y ~ x, parse = TRUE, label.x = "left", label.y = "top"
+  ) +
+  labs(
+    title = "Linear Regression, Ilocanos vs. Tagalog per Capita",
+    x = "Tagalog Speakers per 100K",
+    y = "Ilocano Speakers per 100K"
+  ) +
+  theme_minimal(base_size = 14)
+
+LM1
 
 ## Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic
 

@@ -1,6 +1,8 @@
 install.packages(c("DT", "dplyr", "readr"))
 install.packages(c("ggplot2", "plotly"))
 install.packages("sf")
+install.packages("tidyr")
+install.packages("ggpmisc")
 
 
 library(DT)
@@ -9,6 +11,8 @@ library(readr)
 library(ggplot2)
 library(plotly)
 library(sf)
+library(tidyr)
+library(ggpmisc)
 
 
 
@@ -269,10 +273,6 @@ plot_ly(wide_data_Canada, x = ~Year) %>%
 
 lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
 
-# https://plotly.com/r/ml-regression/
-
-## Plot 2: Versus Cebuano
-
 model1 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
 
 LM1 <- ggplot(Riding_Data, aes(x = `Tagalog per 100K`, y = `Ilocano per 100K`)) +
@@ -291,9 +291,59 @@ LM1 <- ggplot(Riding_Data, aes(x = `Tagalog per 100K`, y = `Ilocano per 100K`)) 
 
 LM1
 
+## Plot 2: Versus Cebuano
+
+# Partial regression plot for CebuanoRate, controlling for TagalogRate
+
+model2 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Cebuano per 100K`, data = Riding_Data)
+
+resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+resid_x <- resid(lm(`Cebuano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+
+partial_df <- data.frame(
+  Ilocano_resid = resid_y,
+  Cebuano_resid = resid_x
+)
+
+LM2 <-  ggplot(partial_df, aes(x = Cebuano_resid, y = Ilocano_resid)) +
+  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  labs(
+    title = "Partial Regression Plot for CebuanoRate",
+    x = "CebuanoRate Residuals (controlling for TagalogRate)",
+    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+  ) +
+  theme_minimal(base_size = 14)
+
+LM2
+
+
 ## Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic
 
-lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Mandarin per 100K`, data = Riding_Data)
+# Partial regression plot for Mandarin Rate, controlling for TagalogRate
+
+model3 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Mandarin per 100K`, data = Riding_Data)
+
+
+resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+resid_x <- resid(lm(`Mandarin per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+
+partial_df <- data.frame(
+  Ilocano_resid = resid_y,
+  Mandarin_resid = resid_x
+)
+
+LM3 <-  ggplot(partial_df, aes(x = Mandarin_resid, y = Ilocano_resid)) +
+  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  labs(
+    title = "Partial Regression Plot for CebuanoRate",
+    x = "MandarinRate Residuals (controlling for TagalogRate)",
+    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+  ) +
+  theme_minimal(base_size = 14)
+
+LM3
 
 lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Punjabi per 100K`, data = Riding_Data)
 

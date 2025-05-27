@@ -7,6 +7,7 @@ install.packages(c("ggplot2", "plotly"))
 install.packages("sf")
 install.packages("tidyr")
 install.packages("ggpmisc")
+install.packages(c("shiny", "shinydashboard"))
 
 
 library(DT)
@@ -17,6 +18,8 @@ library(plotly)
 library(sf)
 library(tidyr)
 library(ggpmisc)
+library(shiny)
+library(shinydashboard)
 
 ############################################################################################################################
 ############################################################################################################################

@@ -1,3 +1,7 @@
+##########################
+## INSTALL DEPENDENCIES ##
+##########################
+
 install.packages(c("DT", "dplyr", "readr"))
 install.packages(c("ggplot2", "plotly"))
 install.packages("sf")
@@ -14,18 +18,39 @@ library(sf)
 library(tidyr)
 library(ggpmisc)
 
+############################################################################################################################
+############################################################################################################################
 
+###############################
+## IMPORT CSVs AND SHAPEFILE ##
+###############################
 
-Growth_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada 2006-2021.csv")
+# Growth of Tagalog-speaking and Ilocano-speaking populations in Canada (2006, 2011, 2016, 2021 Census), 
+# nationally, provincially, territorially, and 10 most-populated cities in 2021.
+Growth_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada 2006-2021.csv") 
+
+# Data by Census Metropolitan Areas (CMAs), 2021 Census
 CMA_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, CMAs.csv")
+
+# Data from Canada's 10 Largest Cities, 2021 Census
 City_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Cities.csv")
+
+# Data from Canada's 10 Provinces and 3 Territories, 2021 Census
 Province_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Provinces.csv")
+
+# Data from Canada's 343 federal-level electoral boundaries (ridings, 2023 representation order), 2021 Census
 Riding_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Ridings.csv")
 
-#Download shapefile of provincial and territorial boundaries
+#Download shapefile of provincial and territorial boundaries from Statistics Canada
 my_sf <- read_sf("C:/Users/francali/Downloads/lpr_000b21a_e.shp")
-
 head(my_sf)
+
+############################################################################################################################
+############################################################################################################################
+
+##################################
+## SKELETON SET-UP OF DASHBOARD ##
+##################################
 
 ### PANEL 1: PER-CAPITA DATA ###
 
@@ -41,13 +66,13 @@ CMA_Table_100K <- CMA_Data[order(-CMA_Data$"Ilocano per 100K"),
                            c("CMA", "Ilocano per 100K")][1:10, ]
 CMA_Table_100K
 
-## Plot 3: Choropleth Map of Provinces and Territories
+## Plot 3: Choropleth Map of Provinces and Territories (Ilocanos per 100K)
 
-#Merge shapefile with csv file, joined through the names of the provinces and territories
+#Step 1: Merge shapefile with provincial csv file, joined through the names of the provinces and territories
 my_sf_merged <- my_sf %>%
   left_join(Province_Data, by = c("PRENAME" = "Province/Territory"))
 
-#Map, Ilocanos Per 100K
+#Step 2: Map, Ilocanos Per 100K
 
 Map1 <- ggplot(my_sf_merged) +
   geom_sf(aes(fill = `Ilocano per 100K`), color='gray',data=my_sf_merged) +
@@ -59,6 +84,9 @@ Map1 <- ggplot(my_sf_merged) +
   theme(title=element_text(face='bold'), legend.position='bottom')
 Map1
 
+############################################################################################################################
+
+
 ### PANEL 2: TAGALOG AND ILOCANO COMPARISONS ###
 
 ## Plot 1: Distribution by Province, Donut Chart
@@ -68,7 +96,7 @@ Distribution_Data <- Province_Data[c("Province/Territory","Population",
 
 Distribution_Data
 
-# Step 1 We can make the data more meaningful by grouping them:
+#Step 1: We can make the data more meaningful by grouping them, then sum by group:
 
 Distribution_Data$Region <- c("Atlantic Canada","Atlantic Canada", 
                               "Atlantic Canada","Atlantic Canada",
@@ -90,18 +118,18 @@ Distribution_Data_sum <- Distribution_Data %>%
 
 Distribution_Data_sum
 
-# Step 2: Pivot to long format
+#Step 2: Pivot to long format to make the creation of donut chart less verbose
 Distribution_long <- Distribution_Data_sum %>%
   pivot_longer(cols = c(total_Ilo, total_Tag), names_to = "Language", values_to = "Percentage")
 
-# Step 3: Assign inner and outer donuts
+#Step 3: Assign inner and outer donuts (inner donut=Ilocano, outer donut=Tagalog)
 
 Distribution_long <- Distribution_long %>%
 mutate(
   ring = ifelse(Language == "total_Ilo", 1, 2)  # 1 = inner, 2 = outer
 )
 
-# Step 4: Create donut chart
+#Step 4: Create donut chart
 ggplot(Distribution_long, aes(x = ring, y = Percentage, fill = Region)) +
   geom_col(color = "white", width = 1) +
   coord_polar(theta = "y") +
@@ -134,27 +162,36 @@ Map2
 
 ## Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
+#Step 1: Check "Ratio, Ilocano-Tagalog" and "Sum (Tagalog + Ilocano)" to see if they are of numeric type
 typeof(Riding_Data$`Ratio, Ilocano-Tagalog`)
 
 typeof(Riding_Data$`Sum (Tagalog + Ilocano)`)
 
+#Step 2: Filter for columns of interest and remove "#DIV/0!" from "Ratio, Ilocano-Tagalog", as they 
+#represent null values from Excel
 Riding_Data_filtered <- Riding_Data[, c("Riding (2023 Representation Order)", 
                                          "Province/Territory", 
                                          "Sum (Tagalog + Ilocano)", 
                                          "Ratio, Ilocano-Tagalog")] %>%
   filter(`Ratio, Ilocano-Tagalog` != "#DIV/0!")
 
+#Step 3: Convert "Ratio, Ilocano-Tagalog" column to numeric type
 Riding_Data_filtered$`Ratio, Ilocano-Tagalog` <- as.numeric(gsub(",", "", Riding_Data_filtered$`Ratio, Ilocano-Tagalog`))
 
+#Step 4: Filter for "Sum (Tagalog + Ilocano)" >= 1000
 Riding_Data_filtered <- Riding_Data_filtered %>%
   filter(`Sum (Tagalog + Ilocano)` >= 1000)
 
+#Step 5: Order Ratio column in Descending order, then filter for first 10 rows
 Riding_Table_Ratio <- Riding_Data_filtered[order(-Riding_Data_filtered$"Ratio, Ilocano-Tagalog"), 
                               c("Riding (2023 Representation Order)", "Province/Territory", "Ratio, Ilocano-Tagalog")][1:10, ]
 Riding_Table_Ratio
 
 
 ## Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
+
+#Similar process as bove. Fortunately, from the CMA csv, "Ratio, Ilocano-Tagalog" and "Sum (Tagalog + Ilocano)" are
+#already both of numeric type.
 
 typeof(CMA_Data$`Ratio, Ilocano-Tagalog`)
 
@@ -172,11 +209,13 @@ CMA_Table_Ratio <- CMA_Data_filtered[order(-CMA_Data_filtered$"Ratio, Ilocano-Ta
                                             c("CMA", "Provinces/Territories", "Ratio, Ilocano-Tagalog")][1:10, ]
 CMA_Table_Ratio
 
+############################################################################################################################
 
 ### PANEL 3: GROWTH RATES, 2006-2021 ###
 
 ## Plot 1: Choropleth Map by Province
 
+#Step 1: Filter for rows where Language = Ilocano and Year=2006 and 2021
 num_cols <- sapply(Growth_Data, is.numeric)
 growth_row_num <- ((Growth_Data[1, num_cols] - Growth_Data[7, num_cols])/Growth_Data[7, num_cols])*100
 
@@ -265,16 +304,16 @@ plot_ly(wide_data_Canada, x = ~Year) %>%
     margin = list(t = 80)
   )
 
-#########################################################
+############################################################################################################################
 
 ### PANEL 4: RIDING-LEVEL REGRESSION ANALYSIS: ILOCANO VS. OTHER LANGUAGE COMMUNITIES
 
 ## Plot 1: Versus Tagalog
 
-lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
-
+# model1 is not necessary for the visualization, but is helpful for future statistical analyses.
 model1 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
 
+#Visualization
 LM1 <- ggplot(Riding_Data, aes(x = `Tagalog per 100K`, y = `Ilocano per 100K`)) +
   geom_point(color = "#1f77b4", alpha = 0.7, size = 3) +  # scatter points
   geom_smooth(method = "lm", se = TRUE, color = "#ff7f0e", linewidth = 1.5) +  # regression line
@@ -292,6 +331,12 @@ LM1 <- ggplot(Riding_Data, aes(x = `Tagalog per 100K`, y = `Ilocano per 100K`)) 
 LM1
 
 ## Plot 2: Versus Cebuano
+
+#Cebuano is the third most-spoken Philippine-based language in Canada
+#This residual plot will visualize any potential interactions between ridings with higher
+#per-capita populations of Ilocano and Cebuano speakers.
+#Since Tagalog is a dominant language amongst the Filipino community, it has been added in this
+#model to control for its potentially disproportionate effects on the relationships.
 
 # Partial regression plot for CebuanoRate, controlling for TagalogRate
 
@@ -320,6 +365,12 @@ LM2
 
 ## Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic
 
+# The 5 aforementioned languages are the most spoken non-official languages (i.e., not English nor French)
+#in Canada based on mother tongue.
+# Similar to the previous plot, these residual plots will visualize any potential interactions between ridings with higher
+#per-capita populations of Ilocano speakers and speakers of each of the 5 languages.
+#Just like with the previous plot, TagalogRate has been added to each model for the exact same reason.
+
 # Partial regression plot for Mandarin Rate, controlling for TagalogRate
 
 model3 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Mandarin per 100K`, data = Riding_Data)
@@ -347,16 +398,114 @@ LM3
 
 lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Punjabi per 100K`, data = Riding_Data)
 
-lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Spanish per 100K`, data = Riding_Data)
+# Partial regression plot for Punjabi Rate, controlling for TagalogRate
 
-lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Spanish per 100K`, data = Riding_Data)
-
-lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Arabic per 100K`, data = Riding_Data)
+model4 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Punjabi per 100K`, data = Riding_Data)
 
 
+resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+resid_x <- resid(lm(`Punjabi per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+
+partial_df <- data.frame(
+  Ilocano_resid = resid_y,
+  Punjabi_resid = resid_x
+)
+
+LM4 <-  ggplot(partial_df, aes(x = Punjabi_resid, y = Ilocano_resid)) +
+  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  labs(
+    title = "Partial Regression Plot for CebuanoRate",
+    x = "PunjabiRate Residuals (controlling for TagalogRate)",
+    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+  ) +
+  theme_minimal(base_size = 14)
+
+LM4
+
+# Partial regression plot for Cantonese Rate, controlling for TagalogRate
+
+model5 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Cantonese per 100K`, data = Riding_Data)
+
+
+resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+resid_x <- resid(lm(`Cantonese per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+
+partial_df <- data.frame(
+  Ilocano_resid = resid_y,
+  Cantonese_resid = resid_x
+)
+
+LM5 <-  ggplot(partial_df, aes(x = Cantonese_resid, y = Ilocano_resid)) +
+  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  labs(
+    title = "Partial Regression Plot for CebuanoRate",
+    x = "CantoneseRate Residuals (controlling for TagalogRate)",
+    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+  ) +
+  theme_minimal(base_size = 14)
+
+LM5
+
+# Partial regression plot for Spanish Rate, controlling for TagalogRate
+
+model6 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Spanish per 100K`, data = Riding_Data)
+
+
+resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+resid_x <- resid(lm(`Spanish per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+
+partial_df <- data.frame(
+  Ilocano_resid = resid_y,
+  Spanish_resid = resid_x
+)
+
+LM6 <-  ggplot(partial_df, aes(x = Spanish_resid, y = Ilocano_resid)) +
+  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  labs(
+    title = "Partial Regression Plot for CebuanoRate",
+    x = "SpanishRate Residuals (controlling for TagalogRate)",
+    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+  ) +
+  theme_minimal(base_size = 14)
+
+LM6
+
+# Partial regression plot for Arabic Rate, controlling for TagalogRate
+
+model7 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Arabic per 100K`, data = Riding_Data)
+
+
+resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+resid_x <- resid(lm(`Arabic per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
+
+partial_df <- data.frame(
+  Ilocano_resid = resid_y,
+  Arabic_resid = resid_x
+)
+
+LM7 <-  ggplot(partial_df, aes(x = Arabic_resid, y = Ilocano_resid)) +
+  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  labs(
+    title = "Partial Regression Plot for CebuanoRate",
+    x = "ArabicRate Residuals (controlling for TagalogRate)",
+    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+  ) +
+  theme_minimal(base_size = 14)
+
+LM7
 
 
 
+############################################################################################################################
+############################################################################################################################
+
+#################################
+## SHINY DASHBOARD DEPLOYMENT ##
+#################################
 
 #########################################################
 

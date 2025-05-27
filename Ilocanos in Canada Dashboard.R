@@ -1060,6 +1060,78 @@ LM7
 ## SHINY DASHBOARD DEPLOYMENT ##
 #################################
 
+### PANEL 1 SET-UP (ILOCANOS PER-CAPITA) ###
+
+plot_list1 <- list("Top 10 Ridings" = Riding_Table_100K, "Top 10 CMAs" = CMA_Table_100K, "Choropleth Map-Ilocanos Per 100K" = Map1)
+plot_list2 <- list("Ilocano vs. Tagalog Distribution" = Donut_Plot , "Choropleth Map-Ilocano-Tagalog Ratio" = Map2, 
+                   "Top 10 Ridings, Ilocano-Tagalog Ratio (>=1000 Tagalog & Ilocanos)" = Riding_Table_Ratio,
+                   "Top 10 CMAs, Ilocano-Tagalog Ratio (>=1000 Tagalog & Ilocanos)" = CMA_Table_Ratio)
+plot_list3 <- list("Choropleth Map-Ilocano Growth Rate, 2006-2021" = Map3, "Tagalog and Ilocano Growth Trend-Canada" = Growth_Canada,
+                   "Tagalog and Ilocano Growth Trend-Ontario" = Growth_ON,"Tagalog and Ilocano Growth Trend-Quebec" = Growth_QC,
+                   "Tagalog and Ilocano Growth Trend-British Columbia" = Growth_BC,"Tagalog and Ilocano Growth Trend-Alberta" = Growth_AB,
+                   "Tagalog and Ilocano Growth Trend-Manitoba" = Growth_MB,"Tagalog and Ilocano Growth Trend-Saskatchewan" = Growth_SK,
+                   "Tagalog and Ilocano Growth Trend-Toronto" = Growth_Toronto,"Tagalog and Ilocano Growth Trend-Montreal" = Growth_Montreal,
+                   "Tagalog and Ilocano Growth Trend-Calgary" = Growth_Calgary,"Tagalog and Ilocano Growth Trend-Ottawa" = Growth_Ottawa,
+                   "Tagalog and Ilocano Growth Trend-Edmonton" = Growth_Edmonton,"Tagalog and Ilocano Growth Trend-Winnipeg" = Growth_Winnipeg,
+                   "Tagalog and Ilocano Growth Trend-Mississauga" = Growth_Mississauga,"Tagalog and Ilocano Growth Trend-Vancouver" = Growth_Vancouver,
+                   "Tagalog and Ilocano Growth Trend-Brampton" = Growth_Brampton,"Tagalog and Ilocano Growth Trend-Hamilton" = Growth_Hamilton)
+plot_list4 <- list("Regression Model-Ilocano vs. Tagalog" = LM1, "Regression Model-Ilocano vs. Cebuano" = LM2,
+                   "Regression Model-Ilocano vs. Mandarin" = LM3, "Regression Model-Ilocano vs. Punjabi" = LM4,
+                   "Regression Model-Ilocano vs. Cantonese" = LM5, "Regression Model-Ilocano vs. Spanish" = LM6,
+                   "Regression Model-Ilocano vs. Arabic" = LM7)
+
+# UI
+ui <- dashboardPage(
+  dashboardHeader(title = "4-Panel Dashboard"),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem("Panel 1", tabName = "Per-Capita Visualizations"),
+      menuItem("Panel 2", tabName = "Tagalog vs. Ilocano Comparisons"),
+      menuItem("Panel 3", tabName = "Growth Visualizations"),
+      menuItem("Panel 4", tabName = "Linear Regression Comparison to Other Language Communities") # stops here
+    )
+  ),
+  dashboardBody(
+    tabItems(
+      tabItem(tabName = "panel1",
+              fluidRow(
+                box(
+                  title = "Select a Plot",
+                  width = 12,
+                  selectInput("plot_choice", "Choose Plot:", choices = names(plot_list)),
+                  uiOutput("plot_ui")
+                )
+              )
+      ),
+      # Repeat tabItem blocks for panel2, panel3, panel4...
+    )
+  )
+)
+
+# Server
+server <- function(input, output, session) {
+  output$plot_ui <- renderUI({
+    selected_plot <- plot_list[[input$plot_choice]]
+    
+    if (inherits(selected_plot, "ggplot")) {
+      plotOutput("chosen_plot")
+    } else {
+      plotlyOutput("chosen_plot")
+    }
+  })
+  
+  output$chosen_plot <- renderPlot({
+    selected_plot <- plot_list[[input$plot_choice]]
+    if (inherits(selected_plot, "ggplot")) selected_plot
+  })
+  
+  output$chosen_plot <- renderPlotly({
+    selected_plot <- plot_list[[input$plot_choice]]
+    if (inherits(selected_plot, "plotly")) selected_plot
+  })
+}
+
+
 #########################################################
 
 install.packages("shiny")

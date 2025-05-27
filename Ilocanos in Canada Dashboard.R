@@ -268,6 +268,11 @@ Map3
 
 ## Plots 2-18: Dual Axis Plot for National, Provincial, and City-Level Growth
 
+#Setup:
+#Line plots: Two lines representing raw number of Ilocano and Tagalog Speakers (2006, 2011, 2016, 2021 Censuses)
+#Bar plots: Two bars for 2011, 2016, and 2021, representing 5-year growth rate for the Ilocano and Tagalog population.
+
+# National-level
 Growth_Data$Year <- c("2021", "2021",
                        "2016", "2016",
                        "2011", "2011",

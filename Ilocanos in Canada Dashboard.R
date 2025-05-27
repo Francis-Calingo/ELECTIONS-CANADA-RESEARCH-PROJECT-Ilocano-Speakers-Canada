@@ -222,35 +222,39 @@ CMA_Table_Ratio
 num_cols <- sapply(Growth_Data, is.numeric)
 growth_row_num <- ((Growth_Data[1, num_cols] - Growth_Data[7, num_cols])/Growth_Data[7, num_cols])*100
 
+#Step 2: Create new row filled with N/A values
 growth_row <- Growth_Data[1, ]
 growth_row[] <- NA
 
+#Step 3: fill new row with num_cols values. num_cols is a logical variable which determines if a columns is numeric or not,
+# which will make growth rate calculations much easier.
 growth_row[num_cols] <- growth_row_num
 
 Growth_Data <- rbind(Growth_Data, growth_row)
 
 rownames(Growth_Data)[nrow(Growth_Data)] <- "Ilocano Growth Rate, 2006-2021"
 
-
+#Step 4: Create new transposed table. The idea is to create a column of province/territory names to go with
+#a griwth rate column in order to facilitate data merging with the shapefile.
 Growth_Table <- as.data.frame(t(Growth_Data))
 
 Growth_Table_New <- Growth_Table %>%
   slice(4:(n() - 10)) %>%       # drop first 3 and last 10 rows
-  select(-(1:8)) %>%            # drop columns 1-8
-
+  select(-(1:8))           # drop columns 1-8
+  
 Growth_Table_New$`Province/Territory` <- c("Newfoundland and Labrador","Prince Edward Island", 
-                                                                       "Nova Scotia","New Brunswick",
-                                                                       "Quebec","Ontario",
-                                                                       "Manitoba","Saskatchewan",
-                                                                       "Alberta","British Columbia",
-                                                                       "Yukon","Northwest Territories",
-                                                                       "Nunavut")
+                                             "Nova Scotia","New Brunswick",
+                                             "Quebec","Ontario",
+                                             "Manitoba","Saskatchewan",
+                                             "Alberta","British Columbia",
+                                             "Yukon","Northwest Territories",
+                                             "Nunavut")
 
 
 Growth_Table_New$`Ilocano Growth Rate, 2006-2021` <- as.numeric(Growth_Table_New$`Ilocano Growth Rate, 2006-2021`)
 Growth_Table_New[Growth_Table_New == Inf] <- NA
 
-#Merge shapefile with csv file, joined through the names of the provinces and territories
+#Step 5: Merge shapefile with csv file, joined through the names of the provinces and territories
 my_sf_merged_2 <- my_sf %>%
   left_join(Growth_Table_New, by = c("PRENAME" = "Province/Territory"))
 

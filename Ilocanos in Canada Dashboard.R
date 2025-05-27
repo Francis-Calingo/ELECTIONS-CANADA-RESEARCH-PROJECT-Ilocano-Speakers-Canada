@@ -273,6 +273,8 @@ Map3
 #Bar plots: Two bars for 2011, 2016, and 2021, representing 5-year growth rate for the Ilocano and Tagalog population.
 
 # National-level
+
+#Step 1: Adjust year column
 Growth_Data$Year <- c("2021", "2021",
                        "2016", "2016",
                        "2011", "2011",
@@ -281,12 +283,12 @@ Growth_Data$Year <- c("2021", "2021",
 Growth_Data_TimeSeries <- Growth_Data[-nrow(Growth_Data), ]
 
 
-# Step 2: Pivot to wide format
+#Step 2: Pivot to wide format
 wide_data_Canada <- Growth_Data_TimeSeries[, 1:3] %>%
   tidyr::pivot_wider(names_from = Language, values_from = "Canada") %>%
   arrange(Year)
 
-# Step 3: Calculate growth rates
+#Step 3: Calculate growth rates
 wide_data_Canada <- wide_data_Canada %>%
   mutate(
     Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
@@ -294,7 +296,8 @@ wide_data_Canada <- wide_data_Canada %>%
   )
 
 
-plot_ly(wide_data_Canada, x = ~Year) %>%
+#Step 4: Plot dual axis chart
+Growth_Canada <- plot_ly(wide_data_Canada, x = ~Year) %>%
   add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = '#91bad6'), yaxis = "y1") %>%
   add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = '#f4b6b6'), yaxis = "y1") %>%
   add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = '#1f77b4', width = 3), yaxis = "y2") %>%
@@ -308,6 +311,10 @@ plot_ly(wide_data_Canada, x = ~Year) %>%
     legend = list(orientation = 'h', x = 0.1, y = 1.15),
     margin = list(t = 80)
   )
+
+#Repeat for 6 most-populated provinces and 10 most-populated cities
+
+
 
 ############################################################################################################################
 

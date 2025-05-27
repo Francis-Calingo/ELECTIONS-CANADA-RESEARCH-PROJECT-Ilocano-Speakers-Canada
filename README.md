@@ -21,10 +21,10 @@ For more details on that undertaking, [please click here for that repo.](https:/
 
 Insights and recommendations are provided on the following key areas:
 
-- **Descriptive Statistics** 
-- **Time-Series Analysis** 
-- **Statistical Modelling** 
-- **Geospatial Analysis** 
+- **Per-Capita Analysis** 
+- **Categorical Data Analysis (Tagalog vs. Ilocano)** 
+- **Time-Series Growth Analysis** 
+- **Linear Regression Modelling (Ilocano vs. Other Language Communities)** 
 
 The SQL queries used to inspect and clean the data for this analysis can be found here [link].
 
@@ -72,7 +72,7 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 ---
 
 # Insights Deep Dive
-### Descriptive Statistics:
+### Per-Capita Analysis:
 
 * **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
@@ -85,7 +85,7 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 [Visualization specific to category 1]
 
 
-### Time-Series Analysis:
+### Categorical Data Analysis (Tagalog vs. Ilocano):
 
 * **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
@@ -98,7 +98,7 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 [Visualization specific to category 2]
 
 
-### Statistical Modelling:
+### Time-Series Growth Analysis:
 
 * **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
@@ -111,7 +111,7 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 [Visualization specific to category 3]
 
 
-### Geospatial Analysis:
+### Linear Regression Modelling (Ilocano vs. Other Language Communities):
 
 * **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   

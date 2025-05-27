@@ -356,6 +356,174 @@ Growth_ON <- plot_ly(wide_data_ON, x = ~Year) %>%
   )
 
 Growth_ON
+
+# QUEBEC
+
+
+#Pivot to wide format
+wide_data_QC <- Growth_Data_TimeSeries[, c(1, 2, 8)] %>%
+  tidyr::pivot_wider(names_from = Language, values_from = "Quebec") %>%
+  arrange(Year)
+
+#Calculate growth rates
+wide_data_QC <- wide_data_QC %>%
+  mutate(
+    Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
+    Tagalog_growth = c(NA, diff(Tagalog) / lag(Tagalog)[-1] * 100)
+  )
+
+
+#Plot dual axis chart
+Growth_QC <- plot_ly(wide_data_QC, x = ~Year) %>%
+  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = '#91bad6'), yaxis = "y1") %>%
+  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = '#f4b6b6'), yaxis = "y1") %>%
+  add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = '#1f77b4', width = 3), yaxis = "y2") %>%
+  add_lines(y = ~Tagalog, name = "Tagalog Count", line = list(color = '#d62728', width = 3), yaxis = "y2") %>%
+  layout(
+    title = "Ilocano and Tagalog Language Trends in Quebec",
+    xaxis = list(title = "Year", type = "category"),
+    yaxis = list(title = "Raw Count", side = "left", showgrid = FALSE),
+    yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right", showgrid = FALSE),
+    barmode = "group",
+    legend = list(orientation = 'h', x = 0.1, y = 1.15),
+    margin = list(t = 80)
+  )
+
+Growth_QC
+
+
+# BRITISH COLUMBIA
+
+#Pivot to wide format
+wide_data_BC <- Growth_Data_TimeSeries[, c(1, 2, 13)] %>%
+  tidyr::pivot_wider(names_from = Language, values_from = "British Columbia") %>%
+  arrange(Year)
+
+#Calculate growth rates
+wide_data_BC <- wide_data_BC %>%
+  mutate(
+    Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
+    Tagalog_growth = c(NA, diff(Tagalog) / lag(Tagalog)[-1] * 100)
+  )
+
+
+#Plot dual axis chart
+Growth_BC <- plot_ly(wide_data_BC, x = ~Year) %>%
+  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = '#91bad6'), yaxis = "y1") %>%
+  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = '#f4b6b6'), yaxis = "y1") %>%
+  add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = '#1f77b4', width = 3), yaxis = "y2") %>%
+  add_lines(y = ~Tagalog, name = "Tagalog Count", line = list(color = '#d62728', width = 3), yaxis = "y2") %>%
+  layout(
+    title = "Ilocano and Tagalog Language Trends in British Columbia",
+    xaxis = list(title = "Year", type = "category"),
+    yaxis = list(title = "Raw Count", side = "left", showgrid = FALSE),
+    yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right", showgrid = FALSE),
+    barmode = "group",
+    legend = list(orientation = 'h', x = 0.1, y = 1.15),
+    margin = list(t = 80)
+  )
+
+Growth_BC
+
+# ALBERTA
+
+#Pivot to wide format
+wide_data_AB <- Growth_Data_TimeSeries[, c(1, 2, 12)] %>%
+  tidyr::pivot_wider(names_from = Language, values_from = "Alberta") %>%
+  arrange(Year)
+
+#Calculate growth rates
+wide_data_AB <- wide_data_AB %>%
+  mutate(
+    Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
+    Tagalog_growth = c(NA, diff(Tagalog) / lag(Tagalog)[-1] * 100)
+  )
+
+
+#Plot dual axis chart
+Growth_AB <- plot_ly(wide_data_AB, x = ~Year) %>%
+  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = '#91bad6'), yaxis = "y1") %>%
+  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = '#f4b6b6'), yaxis = "y1") %>%
+  add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = '#1f77b4', width = 3), yaxis = "y2") %>%
+  add_lines(y = ~Tagalog, name = "Tagalog Count", line = list(color = '#d62728', width = 3), yaxis = "y2") %>%
+  layout(
+    title = "Ilocano and Tagalog Language Trends in Alberta",
+    xaxis = list(title = "Year", type = "category"),
+    yaxis = list(title = "Raw Count", side = "left", showgrid = FALSE),
+    yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right", showgrid = FALSE),
+    barmode = "group",
+    legend = list(orientation = 'h', x = 0.1, y = 1.15),
+    margin = list(t = 80)
+  )
+
+Growth_AB
+
+# MANITOBA
+
+#Pivot to wide format
+wide_data_MB <- Growth_Data_TimeSeries[, c(1, 2, 10)] %>%
+  tidyr::pivot_wider(names_from = Language, values_from = "Manitoba") %>%
+  arrange(Year)
+
+#Calculate growth rates
+wide_data_MB <- wide_data_MB %>%
+  mutate(
+    Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
+    Tagalog_growth = c(NA, diff(Tagalog) / lag(Tagalog)[-1] * 100)
+  )
+
+
+#Plot dual axis chart
+Growth_MB <- plot_ly(wide_data_MB, x = ~Year) %>%
+  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = '#91bad6'), yaxis = "y1") %>%
+  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = '#f4b6b6'), yaxis = "y1") %>%
+  add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = '#1f77b4', width = 3), yaxis = "y2") %>%
+  add_lines(y = ~Tagalog, name = "Tagalog Count", line = list(color = '#d62728', width = 3), yaxis = "y2") %>%
+  layout(
+    title = "Ilocano and Tagalog Language Trends in Manitoba",
+    xaxis = list(title = "Year", type = "category"),
+    yaxis = list(title = "Raw Count", side = "left", showgrid = FALSE),
+    yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right", showgrid = FALSE),
+    barmode = "group",
+    legend = list(orientation = 'h', x = 0.1, y = 1.15),
+    margin = list(t = 80)
+  )
+
+Growth_MB
+
+# SASKATCHEWAN
+
+#Pivot to wide format
+wide_data_SK <- Growth_Data_TimeSeries[, c(1, 2, 11)] %>%
+  tidyr::pivot_wider(names_from = Language, values_from = "Saskatchewan") %>%
+  arrange(Year)
+
+#Calculate growth rates
+wide_data_SK <- wide_data_SK %>%
+  mutate(
+    Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
+    Tagalog_growth = c(NA, diff(Tagalog) / lag(Tagalog)[-1] * 100)
+  )
+
+
+#Plot dual axis chart
+Growth_SK <- plot_ly(wide_data_SK, x = ~Year) %>%
+  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = '#91bad6'), yaxis = "y1") %>%
+  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = '#f4b6b6'), yaxis = "y1") %>%
+  add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = '#1f77b4', width = 3), yaxis = "y2") %>%
+  add_lines(y = ~Tagalog, name = "Tagalog Count", line = list(color = '#d62728', width = 3), yaxis = "y2") %>%
+  layout(
+    title = "Ilocano and Tagalog Language Trends in Saskatchewan",
+    xaxis = list(title = "Year", type = "category"),
+    yaxis = list(title = "Raw Count", side = "left", showgrid = FALSE),
+    yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right", showgrid = FALSE),
+    barmode = "group",
+    legend = list(orientation = 'h', x = 0.1, y = 1.15),
+    margin = list(t = 80)
+  )
+
+Growth_SK
+
 ############################################################################################################################
 
 ### PANEL 4: RIDING-LEVEL REGRESSION ANALYSIS: ILOCANO VS. OTHER LANGUAGE COMMUNITIES

@@ -279,13 +279,13 @@ Map3
 #Line plots: Two lines representing raw number of Ilocano and Tagalog Speakers (2006, 2011, 2016, 2021 Censuses)
 #Bar plots: Two bars for 2011, 2016, and 2021, representing 5-year growth rate for the Ilocano and Tagalog population.
 
-# National-level
+# CANADA
 
 #Step 1: Adjust year column
 Growth_Data$Year <- c("2021", "2021",
-                       "2016", "2016",
-                       "2011", "2011",
-                       "2006", "2006", "N/A")
+                      "2016", "2016",
+                      "2011", "2011",
+                      "2006", "2006", "N/A")
 
 Growth_Data_TimeSeries <- Growth_Data[-nrow(Growth_Data), ]
 
@@ -319,10 +319,43 @@ Growth_Canada <- plot_ly(wide_data_Canada, x = ~Year) %>%
     margin = list(t = 80)
   )
 
+Growth_Canada
+
 #Repeat for 6 most-populated provinces and 10 most-populated cities
 
+# ONTARIO
 
 
+#Pivot to wide format
+wide_data_ON <- Growth_Data_TimeSeries[, c(1, 2, 9)] %>%
+  tidyr::pivot_wider(names_from = Language, values_from = "Ontario") %>%
+  arrange(Year)
+
+#Calculate growth rates
+wide_data_ON <- wide_data_ON %>%
+  mutate(
+    Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
+    Tagalog_growth = c(NA, diff(Tagalog) / lag(Tagalog)[-1] * 100)
+  )
+
+
+#Plot dual axis chart
+Growth_ON <- plot_ly(wide_data_ON, x = ~Year) %>%
+  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = '#91bad6'), yaxis = "y1") %>%
+  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = '#f4b6b6'), yaxis = "y1") %>%
+  add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = '#1f77b4', width = 3), yaxis = "y2") %>%
+  add_lines(y = ~Tagalog, name = "Tagalog Count", line = list(color = '#d62728', width = 3), yaxis = "y2") %>%
+  layout(
+    title = "Ilocano and Tagalog Language Trends in Ontario",
+    xaxis = list(title = "Year", type = "category"),
+    yaxis = list(title = "Raw Count", side = "left", showgrid = FALSE),
+    yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right", showgrid = FALSE),
+    barmode = "group",
+    legend = list(orientation = 'h', x = 0.1, y = 1.15),
+    margin = list(t = 80)
+  )
+
+Growth_ON
 ############################################################################################################################
 
 ### PANEL 4: RIDING-LEVEL REGRESSION ANALYSIS: ILOCANO VS. OTHER LANGUAGE COMMUNITIES

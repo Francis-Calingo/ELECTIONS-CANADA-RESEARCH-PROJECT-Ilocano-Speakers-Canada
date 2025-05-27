@@ -109,12 +109,13 @@ Distribution_Data$Region <- c("Atlantic Canada","Atlantic Canada",
 Distribution_Data
 
 
-Distribution_Data_sum <- Distribution_Data %>%
+Distribution_Data_sum <- Distribution_Data[, 2:5] %>%
   group_by(Region) %>%
   summarise(
-    total_Ilo = sum("% Total Ilocano Pop", na.rm = TRUE),
-    total_Tag = sum("% Tagalog Pop", na.rm = TRUE)
+    total_Ilo = sum(`% Total Ilocano Pop`, na.rm = TRUE),
+    total_Tag = sum(`% Tagalog Pop`, na.rm = TRUE)
   )
+
 
 Distribution_Data_sum
 
@@ -125,12 +126,12 @@ Distribution_long <- Distribution_Data_sum %>%
 #Step 3: Assign inner and outer donuts (inner donut=Ilocano, outer donut=Tagalog)
 
 Distribution_long <- Distribution_long %>%
-mutate(
-  ring = ifelse(Language == "total_Ilo", 1, 2)  # 1 = inner, 2 = outer
-)
+  mutate(
+    ring = ifelse(Language == "total_Ilo", 1, 2)  # 1 = inner, 2 = outer
+  )
 
 #Step 4: Create donut chart
-ggplot(Distribution_long, aes(x = ring, y = Percentage, fill = Region)) +
+Donut_Plot <- ggplot(Distribution_long, aes(x = ring, y = Percentage, fill = Region)) +
   geom_col(color = "white", width = 1) +
   coord_polar(theta = "y") +
   xlim(0, 5) +  # Space for two rings
@@ -145,6 +146,8 @@ ggplot(Distribution_long, aes(x = ring, y = Percentage, fill = Region)) +
     title = "Ilocano (Inner Ring) vs Tagalog (Outer Ring) Population Share by Region",
     fill = "Region"
   )
+
+Donut_Plot 
 
 
 ## Plot 2: Choropleth Map, Tagalog-Ilocano Ratio

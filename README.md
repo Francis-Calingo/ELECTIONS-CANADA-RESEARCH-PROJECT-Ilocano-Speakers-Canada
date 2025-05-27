@@ -46,6 +46,17 @@ The companies main database structure as seen below consists of four tables: tab
 - **Table 4:**
 - **Table 5:**
 
+https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canada/main/CSVs%20for%20Time-Series%20Analysis/Non-Permanent%20Migration.csv
+
+| Data Content  | Number of Entries (Records x Field) | Number of Records  | Number of Fields | Download File Link |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Ilocano Speakers in Canada, 13 Provinces and Territories, 10 Largest Cities (2006-2021 Censuses)  | **208**  | 8  | 26 | [Download]()  |
+| Ilocano and Tagalog Speakers, Census Metropolitan Areas (CMAs), 2021  | **369**  | 41  | 9  | [Download]() |
+| Ilocano and Tagalog Speakers, 10 Most Populated Cities (and Most Populated Provincial and Territorial Cities), 2021 | **136**  |  17 | 8 | [Download]() |
+| Ilocano and Tagalog Speakers, 13 Provinces and Territories, 2021  | **130**  | 13 | 10  | [Download]() |
+| Riding Data (2023 Representation Order), Ilocano, Tagalog, Other Languages  | **7546**  | 343 | 22  | [Download]()  |
+| **TOTAL** | **8389**  | 422  | 75  | N/A  |
+
 [Entity Relationship Diagram here]
 
 If you'd like to fork or run this locally:

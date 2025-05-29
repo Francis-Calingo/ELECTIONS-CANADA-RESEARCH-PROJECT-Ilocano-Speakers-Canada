@@ -63,11 +63,66 @@ Riding_Table_100K <- Riding_Data[order(-Riding_Data$"Ilocano per 100K"),
                                  c("Riding (2023 Representation Order)", "Ilocano per 100K")][1:10, ]
 Riding_Table_100K
 
+# Convert to a plotly dataframe
+
+Riding_Table_100K[] <- lapply(Riding_Table_100K, function(col) {
+  if (is.character(col)) {
+    Encoding(col) <- "UTF-8"
+    iconv(col, from = "", to = "UTF-8", sub = "")
+  } else {
+    col
+  }
+})
+
+Riding_100K <- plot_ly(
+  type = "table",
+  header = list(
+    values = names(Riding_Table_100K),
+    align = "left",
+    fill = list(color = "lightgrey"),
+    font = list(weight = "bold")
+  ),
+  cells = list(
+    values = t(as.matrix(Riding_Table_100K)),
+    align = "left"
+  )
+)
+
+Riding_100K
+
 ## Plot 2: CMA Table (Top 10)
 
 CMA_Table_100K <- CMA_Data[order(-CMA_Data$"Ilocano per 100K"), 
                            c("CMA", "Ilocano per 100K")][1:10, ]
 CMA_Table_100K
+
+# Convert to a plotly dataframe
+
+CMA_Table_100K[] <- lapply(CMA_Table_100K, function(col) {
+  if (is.character(col)) {
+    Encoding(col) <- "UTF-8"
+    iconv(col, from = "", to = "UTF-8", sub = "")
+  } else {
+    col
+  }
+})
+
+CMA_100K <- plot_ly(
+  type = "table",
+  header = list(
+    values = names(CMA_Table_100K),
+    align = "left",
+    fill = list(color = "lightgrey"),
+    font = list(weight = "bold")
+  ),
+  cells = list(
+    values = t(as.matrix(CMA_Table_100K)),
+    align = "left"
+  )
+)
+
+
+CMA_100K
 
 ## Plot 3: Choropleth Map of Provinces and Territories (Ilocanos per 100K)
 
@@ -193,6 +248,33 @@ Riding_Table_Ratio <- Riding_Data_filtered[order(-Riding_Data_filtered$"Ratio, I
                               c("Riding (2023 Representation Order)", "Province/Territory", "Ratio, Ilocano-Tagalog")][1:10, ]
 Riding_Table_Ratio
 
+# Convert to a plotly dataframe
+
+Riding_Table_Ratio[] <- lapply(Riding_Table_Ratio, function(col) {
+  if (is.character(col)) {
+    Encoding(col) <- "UTF-8"
+    iconv(col, from = "", to = "UTF-8", sub = "")
+  } else {
+    col
+  }
+})
+
+Riding_Ratio <- plot_ly(
+  type = "table",
+  header = list(
+    values = names(Riding_Table_Ratio),
+    align = "left",
+    fill = list(color = "lightgrey"),
+    font = list(weight = "bold")
+  ),
+  cells = list(
+    values = t(as.matrix(Riding_Table_Ratio)),
+    align = "left"
+  )
+)
+
+Riding_Ratio
+
 
 ## Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
@@ -214,6 +296,34 @@ CMA_Data_filtered <- CMA_Data_filtered %>%
 CMA_Table_Ratio <- CMA_Data_filtered[order(-CMA_Data_filtered$"Ratio, Ilocano-Tagalog"), 
                                             c("CMA", "Provinces/Territories", "Ratio, Ilocano-Tagalog")][1:10, ]
 CMA_Table_Ratio
+
+# Convert to a plotly dataframe
+
+CMA_Table_Ratio[] <- lapply(CMA_Table_Ratio, function(col) {
+  if (is.character(col)) {
+    Encoding(col) <- "UTF-8"
+    iconv(col, from = "", to = "UTF-8", sub = "")
+  } else {
+    col
+  }
+})
+
+CMA_Ratio <- plot_ly(
+  type = "table",
+  header = list(
+    values = names(CMA_Table_Ratio),
+    align = "left",
+    fill = list(color = "lightgrey"),
+    font = list(weight = "bold")
+  ),
+  cells = list(
+    values = t(as.matrix(CMA_Table_Ratio)),
+    align = "left"
+  )
+)
+
+
+CMA_Ratio
 
 ############################################################################################################################
 

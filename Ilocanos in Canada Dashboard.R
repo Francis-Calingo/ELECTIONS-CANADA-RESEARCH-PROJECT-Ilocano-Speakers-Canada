@@ -1170,10 +1170,10 @@ LM7
 
 ### PANEL 1 SET-UP (ILOCANOS PER-CAPITA) ###
 
-plot_list1 <- list("Top 10 Ridings" = Riding_Table_100K, "Top 10 CMAs" = CMA_Table_100K, "Choropleth Map-Ilocanos Per 100K" = Map1)
+plot_list1 <- list("Top 10 Ridings" = Riding_100K, "Top 10 CMAs" = CMA_100K, "Choropleth Map-Ilocanos Per 100K" = Map1)
 plot_list2 <- list("Ilocano vs. Tagalog Distribution" = Donut_Plot , "Choropleth Map-Ilocano-Tagalog Ratio" = Map2, 
-                   "Top 10 Ridings, Ilocano-Tagalog Ratio (>=1000 Tagalog & Ilocanos)" = Riding_Table_Ratio,
-                   "Top 10 CMAs, Ilocano-Tagalog Ratio (>=1000 Tagalog & Ilocanos)" = CMA_Table_Ratio)
+                   "Top 10 Ridings, Ilocano-Tagalog Ratio (>=1000 Tagalog & Ilocanos)" = Riding_Ratio,
+                   "Top 10 CMAs, Ilocano-Tagalog Ratio (>=1000 Tagalog & Ilocanos)" = CMA_Ratio)
 plot_list3 <- list("Choropleth Map-Ilocano Growth Rate, 2006-2021" = Map3, "Tagalog and Ilocano Growth Trend-Canada" = Growth_Canada,
                    "Tagalog and Ilocano Growth Trend-Ontario" = Growth_ON,"Tagalog and Ilocano Growth Trend-Quebec" = Growth_QC,
                    "Tagalog and Ilocano Growth Trend-British Columbia" = Growth_BC,"Tagalog and Ilocano Growth Trend-Alberta" = Growth_AB,

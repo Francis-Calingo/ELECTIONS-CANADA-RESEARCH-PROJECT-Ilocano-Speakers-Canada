@@ -949,8 +949,6 @@ LM3 <-  ggplot(partial_df, aes(x = Mandarin_resid, y = Ilocano_resid)) +
 
 LM3
 
-lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Punjabi per 100K`, data = Riding_Data)
-
 # Partial regression plot for Punjabi Rate, controlling for TagalogRate
 
 model4 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Punjabi per 100K`, data = Riding_Data)

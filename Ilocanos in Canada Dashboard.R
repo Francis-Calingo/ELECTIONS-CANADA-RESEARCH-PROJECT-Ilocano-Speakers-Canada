@@ -207,6 +207,8 @@ Donut_Plot <- ggplot(Distribution_long, aes(x = ring, y = Percentage, fill = Reg
 
 Donut_Plot 
 
+Donut_Plot <- ggplotly(Donut_Plot)
+Donut_Plot
 
 ## Plot 2: Choropleth Map, Tagalog-Ilocano Ratio
 

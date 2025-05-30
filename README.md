@@ -13,11 +13,11 @@
 
 # Project Background
 
-Ilocanos number 
+Ilocanos constitute the third-largest ethnolinguistic group in the Philippines (source: 2020 Census of Population and Housing, Philippines), but the second-largest Philippine-based language community in Canada (behind Tagalog). As per the 2021 Canadian Census, an estimated 33,520 people identified Ilocano as their mother tongue, while 461,150 people identified Tagalog as their mother tongue. Cebuano was the third-largest Philippine-based language community in Canada (18,945). From a [previous project](https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Filipino-Canadian-Demographic-Report/) that I did, also for Elections Canada, it was determined that Ilocano was the most-spoken secondary Philippine-based language (i.e., not Tagalog) in the majority of the then-338 federal ridings of Canada (since redistributed to 343 ridings in 2023):
 
 <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Figure0.1.jpg"/>
 
-For more details on that undertaking, [please click here for that repo.](https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Filipino-Canadian-Demographic-Report/)
+Ascertaining settlement patterns with regards to the Ilocano-speaking community will be very useful for Elections Canada in helping better understand the community itself and how their demographics play a role in their interactions with Canadian democracy. The fact that Ilocano is not a very commonly used language in digital environment, alongside the fact that Tagalog and English are the predominantly used languages int the Filipino Canadian community makes ascertaining settlement patterns and drawing actionable insights from that more difficult that the demographic research project executed for the general Filipino Canadian community. Therefore, unique methods will be employed to account for those considerations.
 
 Insights and recommendations are provided on the following key areas:
 
@@ -25,6 +25,8 @@ Insights and recommendations are provided on the following key areas:
 - **Categorical Data Analysis (Tagalog vs. Ilocano)** 
 - **Time-Series Growth Analysis** 
 - **Linear Regression Modelling (Ilocano vs. Other Language Communities)** 
+
+**FINAL DELIVERABLE:** A dashboard visualization of the demographics of Ilocanos in Canada using R Shiny.
 
 The SQL queries used to inspect and clean the data for this analysis can be found here [link].
 
@@ -69,7 +71,7 @@ cd ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada
 
 ### Overview of Findings
 
-An interesting finding was that Ilocanos were more concentrated in Montreal (specifically the Mount Royal riding) than they are in Winnipeg.
+An interesting finding was that Ilocanos were more concentrated in Montreal (specifically the Mount Royal riding) than they are in Winnipeg, the city with the highest per-capita Filipino population in Canada. It was also observed that the Ilocano-speaking communities in most major cities were growing at a much faster rate that the Tagalog-speaking communities (although it is unlikely that they will overtake Tagalog speaker in terms of raw numbers). Alberta, Saskatchewan, and the Northwest Territories have the potential to be an important hub for the Ilocano community in Canada (due to a high growth rate in Saskatchewan's case, and a high per-capita Ilocano population in Alberta and the Northwest Territories' case).
 
 [Visualization, including a graph of overall trends or snapshot of a dashboard]
 
@@ -80,11 +82,11 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 # Insights Deep Dive
 ### Per-Capita Analysis:
 
-* **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Riding.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **CMA.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 3.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Choropleth Map.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
 * **Main insight 4.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
@@ -93,39 +95,39 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 
 ### Categorical Data Analysis (Tagalog vs. Ilocano):
 
-* **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Donut plot proportion.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Choropleth map ratio.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 3.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Riding ratio.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 4.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **CMA ratio.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
 [Visualization specific to category 2]
 
 
 ### Time-Series Growth Analysis:
 
-* **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Generally outpacing.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Specific cities.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 3.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Specific cities.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 4.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Saskatchewan, NWT, Nova Scotia.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
 [Visualization specific to category 3]
 
 
 ### Linear Regression Modelling (Ilocano vs. Other Language Communities):
 
-* **Main insight 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Tagalog.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Cebuano.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 3.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Other languages 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Main insight 4.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Other languages 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
 [Visualization specific to category 4]
 

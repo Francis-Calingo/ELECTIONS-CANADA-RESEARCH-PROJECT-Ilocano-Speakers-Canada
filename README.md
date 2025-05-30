@@ -84,11 +84,10 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 
 * **The 10 ridings with the highest per-capita Ilocano population were unsurprisingly all from major cities (Toronto, Montreal, Calgary, Winnipeg, Vancouver) with a few interesting insights.** North York ridings (ridings from Toronto's northern suburb) represented a plurality on the list (York Centre, Eglinton--Lawrence, Humber River--Black Creek). Interestingly, Mount Royal (a Montreal-area riding) had the second-highest per-capita Ilocano population in all of Canada despite the fact that Greater Montreal has a comparitively lower Filipino population that most other major metropolitan areas in the country. Conversely, Winnipeg North only had the 9th-highest per-capita Ilocano population despite having the highest per-capita Filipino population in Canada, suggesting that Ilocanos are either less likely to settle there or less likely to identify "Ilocano" as their mother tongue.
   
-* **Smaller Census Metropolitan Areas (CMAs) are better represented in the list of the 10 CMAs with the highest per-capita Ilocano population, with Red Deer taking the top spot at 352.029 per 100,000 people.** Other smaller CMAs on the list include Regina, Saskatoon, and Winnipeg. The fact that Montreal nor Winnipeg
+* **Smaller Census Metropolitan Areas (CMAs) are better represented in the list of the 10 CMAs with the highest per-capita Ilocano population, with Red Deer taking the top spot at 352.029 per 100,000 people.** Other smaller CMAs on the list include Regina, Saskatoon, and Victoria. The fact that Montreal nor Winnipeg did not appear on the list suggests that the relatively high Ilocano concentration that we saw from the Mount Royal riding does not extend to the whole Montreal area, while the relatively low concentration of Ilocanos in the Winnipeg North riding in comparions to the general Filipino Canadian population appears to be a shared trait for the Winnipeg area.
   
-* **Choropleth Map.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Alberta (174.540 per 100,000), the Northwest Territories (), and British Columbia () lead the country in Ilocanos per-capita.** _____ reflecting ____.
   
-* **Main insight 4.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
 [Visualization specific to category 1]
 

@@ -86,7 +86,7 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
   
 * **Smaller Census Metropolitan Areas (CMAs) are better represented in the list of the 10 CMAs with the highest per-capita Ilocano population, with Red Deer taking the top spot at 352.029 per 100,000 people.** Other smaller CMAs on the list include Regina, Saskatoon, and Victoria. The fact that Montreal nor Winnipeg did not appear on the list suggests that the relatively high Ilocano concentration that we saw from the Mount Royal riding does not extend to the whole Montreal area, while the relatively low concentration of Ilocanos in the Winnipeg North riding in comparions to the general Filipino Canadian population appears to be a shared trait for the Winnipeg area.
   
-* **Alberta (174.540 per 100,000), the Northwest Territories (), and British Columbia () lead the country in Ilocanos per-capita.** _____ reflecting ____.
+* **Alberta (174.540 per 100,000), the Northwest Territories (158.266 per 100,000), and British Columbia (126.478) lead the country in Ilocanos per-capita.** Manitoba ranked 5th (112.878 per 100,000) while Quebec ranked 9th (24.995 per 100,000) reflecting the fact that Ilocanos are comparatively less concentrated in Manitoba like its capital Winnipeg (but still at a high level due to the higher proportions of Filipinos settling in Winnipeg and Manitoba) while they are even less concentrated in Quebec (suggesting that Ilocanos in Quebec are only concentrated in a select few areas in the Montreal area).
   
 
 [Visualization specific to category 1]
@@ -94,9 +94,9 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 
 ### Categorical Data Analysis (Tagalog vs. Ilocano):
 
-* **Donut plot proportion.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **For the most part, the settlement distribution for both Canada's Tagalog-speaking community and the Ilocano-speaking community are near-identical, with a notable difference for Manitoba and Quebec.** Unsurprisingly, Ilocanos and Tagalog speakers in Ontario, the most populous province in Canada, make up the plurality of their respective groups. However, the proportion os Ilocanos living in Quebec in comparison to the national Ilocano-speaking population is much higher than the proportion of Tagalog-speakers living in Quebec in comparison to the national Tagalog-speaking population. The reverse is true for Manitoba.
   
-* **Choropleth map ratio.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Despite the Ilocano community in Quebec being comparatively low in population when measured against other provinces and territories, Quebec not only leads the country in terms of the ratio between Ilocano speakers and Tagalog speakers (0.120), but is the only province where the ratio exceed 0.100.** Knowing that the Filipino community in Quebec is both compartively low in comparison to other provinces and territories, and is highly concentrated in a few areas of the Montreal region, it can be argued that the Ilocano community in Quebec is therefore less heterogenous and less spread out than Ilocano communities in other places in Canada. Also of note is the fact that Manitoba only ranked 10th (0.030), corrobating an earlier hypothesis that Ilocanos are less likely to settle in that province or less likely to identify Ilocano as their mother tongue. 
   
 * **Riding ratio.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   

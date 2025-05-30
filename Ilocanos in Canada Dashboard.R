@@ -142,6 +142,9 @@ Map1 <- ggplot(my_sf_merged) +
   theme(title=element_text(face='bold'), legend.position='bottom')
 Map1
 
+Map1 <- ggplotly(Map1)
+Map1
+
 ############################################################################################################################
 
 
@@ -222,6 +225,8 @@ Map2 <- ggplot(my_sf_merged) +
   theme(title=element_text(face='bold'), legend.position='bottom')
 Map2
 
+Map2 <- ggplotly(Map2)
+Map2
 
 ## Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
@@ -383,6 +388,9 @@ na.value = "lightgray")+
        caption=c('Source: Statistics Canada')) +
   theme_gray() +
   theme(title=element_text(face='bold'), legend.position='bottom')
+Map3
+
+Map3 <- ggplotly(Map3)
 Map3
 
 #########################################################
@@ -995,6 +1003,9 @@ LM1 <- ggplot(Riding_Data, aes(x = `Tagalog per 100K`, y = `Ilocano per 100K`)) 
 
 LM1
 
+LM1 <- ggplotly(LM1)
+LM1
+
 ## Plot 2: Versus Cebuano
 
 #Cebuano is the third most-spoken Philippine-based language in Canada
@@ -1027,6 +1038,8 @@ LM2 <-  ggplot(partial_df, aes(x = Cebuano_resid, y = Ilocano_resid)) +
 
 LM2
 
+LM2 <- ggplotly(LM2)
+LM2
 
 ## Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic
 
@@ -1061,6 +1074,9 @@ LM3 <-  ggplot(partial_df, aes(x = Mandarin_resid, y = Ilocano_resid)) +
 
 LM3
 
+LM3 <- ggplotly(LM3)
+LM3
+
 # Partial regression plot for Punjabi Rate, controlling for TagalogRate
 
 model4 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Punjabi per 100K`, data = Riding_Data)
@@ -1084,6 +1100,9 @@ LM4 <-  ggplot(partial_df, aes(x = Punjabi_resid, y = Ilocano_resid)) +
   ) +
   theme_minimal(base_size = 14)
 
+LM4
+
+LM4 <- ggplotly(LM4)
 LM4
 
 # Partial regression plot for Cantonese Rate, controlling for TagalogRate
@@ -1111,6 +1130,9 @@ LM5 <-  ggplot(partial_df, aes(x = Cantonese_resid, y = Ilocano_resid)) +
 
 LM5
 
+LM5 <- ggplotly(LM5)
+LM5
+
 # Partial regression plot for Spanish Rate, controlling for TagalogRate
 
 model6 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Spanish per 100K`, data = Riding_Data)
@@ -1134,6 +1156,9 @@ LM6 <-  ggplot(partial_df, aes(x = Spanish_resid, y = Ilocano_resid)) +
   ) +
   theme_minimal(base_size = 14)
 
+LM6
+
+LM6 <- ggplotly(LM6)
 LM6
 
 # Partial regression plot for Arabic Rate, controlling for TagalogRate
@@ -1161,6 +1186,8 @@ LM7 <-  ggplot(partial_df, aes(x = Arabic_resid, y = Ilocano_resid)) +
 
 LM7
 
+LM7 <- ggplotly(LM7)
+LM7
 
 
 ############################################################################################################################

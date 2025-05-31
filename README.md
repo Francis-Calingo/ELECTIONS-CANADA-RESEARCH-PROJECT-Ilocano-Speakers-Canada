@@ -98,9 +98,9 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
   
 * **Despite the Ilocano community in Quebec being comparatively low in population when measured against other provinces and territories, Quebec not only leads the country in terms of the ratio between Ilocano speakers and Tagalog speakers (0.120), but is the only province where the ratio exceed 0.100.** Knowing that the Filipino community in Quebec is both compartively low in comparison to other provinces and territories, and is highly concentrated in a few areas of the Montreal region, it can be argued that the Ilocano community in Quebec is therefore less heterogenous and less spread out than Ilocano communities in other places in Canada. Also of note is the fact that Manitoba only ranked 10th (0.030), corrobating an earlier hypothesis that Ilocanos are less likely to settle in that province or less likely to identify Ilocano as their mother tongue. 
   
-* **Riding ratio.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **In terms of ridings (minimum combined Tagalog and Ilocano population 1000), .** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **CMA ratio.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **In terms of CMAs (minimum combined Tagalog and Ilocano population 1000) .** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
 [Visualization specific to category 2]
 

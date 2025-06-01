@@ -28,22 +28,24 @@ Insights and recommendations are provided on the following key areas:
 
 **FINAL DELIVERABLE:** A dashboard visualization of the demographics of Ilocanos in Canada using R Shiny.
 
-The SQL queries used to inspect and clean the data for this analysis can be found here [link].
-
-Targed SQL queries regarding various business questions can be found here [link].
-
-An interactive Tableau dashboard used to report and explore sales trends can be found here [link].
-
-[click me to download](https://github.com/Francis-Calingo/CATEGORICAL-SOCIOECONOMIC-DATA-ANALYSIS-OF-CANADIAN-REGIONS/raw/refs/heads/main/Census_Division_Stats_-_Sheet1.csv)
-
+The CSV files used for this project can be found in the next section. The following links are Statistics Canada sources where the data from the CSV files were extracted from:
 * <a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E">Census Profile, 2021 Census of Population</a> 
-* <a href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/index.cfm?Lang=E">Census Profile, 2016 Census of Population</a> 
+* <a href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/index.cfm?Lang=E">Census Profile, 2016 Census of Population</a>
+* <a href="https://www12.statcan.gc.ca/census-recensement/2011/dp-pd/prof/index.cfm?Lang=E">Census Profile, 2011 Census of Population</a>
+* <a href="https://www12.statcan.gc.ca/census-recensement/2006/dp-pd/index-eng.cfm">Census Profile, 2006 Census of Population</a>
 * <a href="https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?year=21">2021 Census – Boundary files</a> 
 
 The following is the R Script used for the quantitative analysis portion of the reporting: [Link to see script](https://raw.githubusercontent.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/main/Ilocanos%20in%20Canada%20Dashboard.R)
 * <b>IDEs Used:</b> RStudio
 * <b>R Version:</b> 4.4.1
 * <b>Libraries:</b> DT, dplyr, readr, ggplot2, plotly, sf, tidyr, ggpmisc, shiny, shinydashboard
+
+If you'd like to fork or run this locally:
+
+```bash
+git clone https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada.git
+cd ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada
+```
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 
@@ -64,13 +66,6 @@ https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canad
 | **TOTAL** | **8389**  | 422  | 75  | N/A  |
 
 [Entity Relationship Diagram here]
-
-If you'd like to fork or run this locally:
-
-```bash
-git clone https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada.git
-cd ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada
-```
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 

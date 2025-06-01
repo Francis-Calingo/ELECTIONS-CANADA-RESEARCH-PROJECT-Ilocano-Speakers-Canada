@@ -160,7 +160,7 @@ Throughout the analysis, multiple assumptions were made to manage challenges wit
   
 * While the "mother tongue" definition was used for this research, it is important to note that it is not the only type of census data regarding language use. Other categories such as "Knowledge of Languages" and "Language Spoken Most Often at Home" emphasize the complex nature of language use, and it would therefore be useful to have follow-up research comparing how language communities fare in terms of data discrepancies between those categories.
   
-* Assumption 1 (ex: because 3% of the refund date column contained non-sensical dates, these were excluded from the analysis)
+* Specific granular data on Philippine-based languages were not available in the 2001 Census, therefore, it can be assumed that they are not available before the 2006 Census (hence why the time-series visualizations only start from 2006).
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 

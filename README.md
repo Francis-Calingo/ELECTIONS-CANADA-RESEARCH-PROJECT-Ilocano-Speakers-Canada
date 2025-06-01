@@ -36,6 +36,15 @@ An interactive Tableau dashboard used to report and explore sales trends can be 
 
 [click me to download](https://github.com/Francis-Calingo/CATEGORICAL-SOCIOECONOMIC-DATA-ANALYSIS-OF-CANADIAN-REGIONS/raw/refs/heads/main/Census_Division_Stats_-_Sheet1.csv)
 
+* <a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E">Census Profile, 2021 Census of Population</a> 
+* <a href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/index.cfm?Lang=E">Census Profile, 2016 Census of Population</a> 
+* <a href="https://www12.statcan.gc.ca/census-recensement/2021/geo/sip-pis/boundary-limites/index2021-eng.cfm?year=21">2021 Census – Boundary files</a> 
+
+The following is the R Script used for the quantitative analysis portion of the reporting: [Link to see script](https://raw.githubusercontent.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/main/Ilocanos%20in%20Canada%20Dashboard.R)
+* <b>IDEs Used:</b> RStudio
+* <b>R Version:</b> 4.4.1
+* <b>Libraries:</b> DT, dplyr, readr, ggplot2, plotly, sf, tidyr, ggpmisc, shiny, shinydashboard
+
 [<b>Back to Table of Contents</b>](#table-of-contents)
 
 ---

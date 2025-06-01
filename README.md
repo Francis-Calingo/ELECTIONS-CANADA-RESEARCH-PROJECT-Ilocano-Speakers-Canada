@@ -156,9 +156,9 @@ Based on the insights and findings above, we would recommend the [stakeholder te
 
 Throughout the analysis, multiple assumptions were made to manage challenges with the data. These assumptions and caveats are noted below:
 
-* Because data was not completely available for the newest electoral boundaries (i.e., 2023 represenation order), the last iteration of the boundaries (i.e., 2013 representation order) had to be used for calculations such as per-capita calculations.
+* Census population counts for the redistributed electoral ridings were not available on Statistics Canada's 2021 Census Profile, but they were acquired from the Electoral Boundaries Commission's website (https://redecoupage-redistribution-2022.ca/com/index_e.aspx).
   
-* Assumption 1 (ex: data for December 2021 was missing - this was imputed using a combination of historical trends and December 2020 data)
+* While the "mother tongue" definition was used for this research, it is important to note that it is not the only type of census data regarding language use. Other categories such as "Knowledge of Languages" and "Language Spoken Most Often at Home" emphasize the complex nature of language use, and it would therefore be useful to have follow-up research comparing how language communities fare in terms of data discrepancies between those categories.
   
 * Assumption 1 (ex: because 3% of the refund date column contained non-sensical dates, these were excluded from the analysis)
 

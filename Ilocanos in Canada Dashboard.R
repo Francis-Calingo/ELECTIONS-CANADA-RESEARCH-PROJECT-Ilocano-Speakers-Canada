@@ -21,6 +21,7 @@ library(ggpmisc)
 library(shiny)
 library(shinydashboard)
 
+
 ############################################################################################################################
 ############################################################################################################################
 
@@ -136,8 +137,7 @@ my_sf_merged <- my_sf %>%
 Map1 <- ggplot(my_sf_merged) +
   geom_sf(
     aes(
-      fill = `Ilocano per 100K`,
-      text = paste0("Province or Territory: ", PRENAME, "\nIlocanos per 100K: ", `Ilocano per 100K`)
+      fill = `Ilocano per 100K`
     ),
     color = "white"
   ) +
@@ -149,9 +149,6 @@ Map1 <- ggplot(my_sf_merged) +
   theme_gray() +
   theme(title = element_text(face = "bold"), legend.position = "bottom")
 
-Map1 <- ggplotly(Map1, tooltip = "text")
-
-Map1
 
 ############################################################################################################################
 
@@ -199,27 +196,61 @@ Distribution_long <- Distribution_long %>%
     ring = ifelse(Language == "total_Ilo", 1, 2)  # 1 = inner, 2 = outer
   )
 
-#Step 4: Create donut chart
-Donut_Plot <- ggplot(Distribution_long, aes(x = ring, y = Percentage, fill = Region)) +
-  geom_col(color = "white", width = 1) +
-  coord_polar(theta = "y") +
-  xlim(0, 5) +  # Space for two rings
-  scale_fill_viridis_d(option = "D") + 
-  theme_void() +
-  theme(
-    legend.title = element_text(size = 10, face = "bold"),
-    legend.text = element_text(size = 9),
-    plot.title = element_text(hjust = 0.5, face = "bold", size = 14)
-  ) +
-  labs(
-    title = "Ilocano (Inner Ring) vs Tagalog (Outer Ring) Population Share by Region",
-    fill = "Region"
-  )
+#Step 4: Separate data for Ilocano and Tagalog rings
+ilocano_data <- Distribution_Data_sum %>%
+  select(Region, Percentage = total_Ilo) %>%
+  mutate(Language = "Ilocano")
 
-Donut_Plot 
+tagalog_data <- Distribution_Data_sum %>%
+  select(Region, Percentage = total_Tag) %>%
+  mutate(Language = "Tagalog")
 
-Donut_Plot <- ggplotly(Donut_Plot)
+#Step 5: Plot outer ring (Tagalog)
+outer_ring <- plot_ly(tagalog_data,
+                      labels = ~Region,
+                      values = ~Percentage,
+                      type = 'pie',
+                      name = "Tagalog",
+                      hole = 0.5,
+                      sort = FALSE,
+                      direction = "clockwise",
+                      textinfo = "label+percent",
+                      marker = list(line = list(color = '#FFFFFF', width = 1))) %>%
+  layout(showlegend = TRUE)
+
+#Step 6: Plot inner ring (Ilocano)
+inner_ring <- plot_ly(ilocano_data,
+                      labels = ~Region,
+                      values = ~Percentage,
+                      type = 'pie',
+                      name = "Ilocano",
+                      hole = 0.3,
+                      sort = FALSE,
+                      direction = "clockwise",
+                      textinfo = "none",
+                      marker = list(line = list(color = '#FFFFFF', width = 1)),
+                      domain = list(x = c(0.25, 0.75), y = c(0.25, 0.75)))
+
+#Step 7: Combine both rings
+Donut_Plot <- subplot(outer_ring, inner_ring, nrows = 1) %>%
+  layout(title = list(text = "Ilocano (Inner Ring) vs Tagalog (Outer Ring) Population Share by Region",
+                      x = 0.5),
+         showlegend = TRUE)
+
 Donut_Plot
+
+#Step 8: Change layout
+Donut_Plot <- subplot(outer_ring, inner_ring, nrows = 1) %>%
+  layout(
+    title = list(
+      text = "Ilocano (Inner Ring) vs Tagalog (Outer Ring) Population Share by Region",
+      x = 0.5,
+      y = 0.95,
+      font = list(size = 18, family = "Arial", color = "black")
+    ),
+    margin = list(t = 150),  # Increase top margin
+    showlegend = TRUE
+  )
 
 ## Plot 2: Choropleth Map, Tagalog-Ilocano Ratio
 
@@ -227,7 +258,6 @@ Map2 <- ggplot(my_sf_merged) +
   geom_sf(
     aes(
       fill = `Ratio, Ilocano-Tagalog`,
-      text = paste0("Province or Territory: ", PRENAME, "\nRatio, Ilocano-Tagalog: ", `Ratio, Ilocano-Tagalog`)
     ),
     color = "white"
   ) +
@@ -238,10 +268,6 @@ Map2 <- ggplot(my_sf_merged) +
   ) +
   theme_gray() +
   theme(title = element_text(face = "bold"), legend.position = "bottom")
-
-Map2 <- ggplotly(Map2, tooltip = "text")
-
-Map2
 
 ## Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
 
@@ -397,8 +423,7 @@ my_sf_merged_2 <- my_sf %>%
 Map3 <- ggplot(my_sf_merged_2) +
   geom_sf(
     aes(
-      fill = `Ilocano Growth Rate, 2006-2021`,
-      text = paste0("Province or Territory: ", PRENAME, "\nRatio, Ilocano-Tagalog: ", `Ilocano Growth Rate, 2006-2021`)
+      fill = `Ilocano Growth Rate, 2006-2021`
     ),
     color = "white"
   ) +
@@ -409,10 +434,6 @@ Map3 <- ggplot(my_sf_merged_2) +
   ) +
   theme_gray() +
   theme(title = element_text(face = "bold"), legend.position = "bottom")
-
-Map3 <- ggplotly(Map3, tooltip = "text")
-
-Map3
 
 #########################################################
 
@@ -1235,6 +1256,7 @@ LM7 <- ggplot(partial_df, aes(
 
 LM7 <- ggplotly(LM7, tooltip = "text")
 
+
 ############################################################################################################################
 ############################################################################################################################
 
@@ -1262,262 +1284,126 @@ plot_list4 <- list("Regression Model-Ilocano vs. Tagalog" = LM1, "Regression Mod
                    "Regression Model-Ilocano vs. Cantonese" = LM5, "Regression Model-Ilocano vs. Spanish" = LM6,
                    "Regression Model-Ilocano vs. Arabic" = LM7)
 
-# === UI ===
+#=== UI ===
+
 ui <- dashboardPage(
   dashboardHeader(title = "Ilocanos in Canada Dashboard"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Per-Capita Visualizations", tabName = "panel1"),
-      menuItem("Tagalog Versus Ilocano Comparisons", tabName = "panel2"),
-      menuItem("Growth Visualizations", tabName = "panel3"),
-      menuItem("Linear Regression Comparison", tabName = "panel4")
+      menuItem("Panel 1", tabName = "PerCapita"),
+      menuItem("Panel 2", tabName = "IlocanoTagalog"),
+      menuItem("Panel 3", tabName = "Growth"),
+      menuItem("Panel 4", tabName = "Regression")
     )
   ),
   dashboardBody(
     tabItems(
-      tabItem(tabName = "panel1",
-        fluidRow(
-          box(
-            title = "Select a Plot",
-            width = 12,
-            selectInput("plot_choice1", "Choose Plot:", choices = names(plot_list1)),
-            plotOutput("ggplot_output1"),
-            plotlyOutput("plotly_output1")
-          )
-        )
+      tabItem(tabName = "PerCapita",
+              fluidRow(
+                box(
+                  title = "Select a Plot",
+                  width = 12,
+                  selectInput("plot_choice1", "Choose Plot:", choices = names(plot_list1)),
+                  uiOutput("plot_ui1")
+                )
+              )
       ),
-      tabItem(tabName = "panel2",
-        fluidRow(
-          box(
-            title = "Select a Plot",
-            width = 12,
-            selectInput("plot_choice2", "Choose Plot:", choices = names(plot_list2)),
-            plotOutput("ggplot_output2"),
-            plotlyOutput("plotly_output2")
-          )
-        )
+      tabItem(tabName = "IlocanoTagalog",
+              fluidRow(
+                box(
+                  title = "Select a Plot",
+                  width = 12,
+                  selectInput("plot_choice2", "Choose Plot:", choices = names(plot_list2)),
+                  uiOutput("plot_ui2")
+                )
+              )
       ),
-      tabItem(tabName = "panel3",
-        fluidRow(
-          box(
-            title = "Select a Plot",
-            width = 12,
-            selectInput("plot_choice3", "Choose Plot:", choices = names(plot_list3)),
-            plotOutput("ggplot_output3"),
-            plotlyOutput("plotly_output3")
-          )
-        )
+      tabItem(tabName = "Growth",
+              fluidRow(
+                box(
+                  title = "Select a Plot",
+                  width = 12,
+                  selectInput("plot_choice3", "Choose Plot:", choices = names(plot_list3)),
+                  uiOutput("plot_ui3")
+                )
+              )
       ),
-      tabItem(tabName = "panel4",
-        fluidRow(
-          box(
-            title = "Select a Plot",
-            width = 12,
-            selectInput("plot_choice4", "Choose Plot:", choices = names(plot_list4)),
-            plotOutput("ggplot_output4"),
-            plotlyOutput("plotly_output4")
-          )
-        )
+      tabItem(tabName = "Regression",
+              fluidRow(
+                box(
+                  title = "Select a Plot",
+                  width = 12,
+                  selectInput("plot_choice4", "Choose Plot:", choices = names(plot_list4)),
+                  uiOutput("plot_ui4")
+                )
+              )
       )
     )
   )
 )
 
-# === Server ===
+#=== Server ===
+
 server <- function(input, output, session) {
-  
-  observe({
+  # Panel 1
+  output$plot_ui1 <- renderUI({
+    selected_plot <- plot_list1[[input$plot_choice1]]
+    if (inherits(selected_plot, "ggplot")) plotOutput("chosen_plot1")
+    else plotlyOutput("chosen_plot1")
+  })
+  output$chosen_plot1 <- renderPlot({
     plot <- plot_list1[[input$plot_choice1]]
-    if (inherits(plot, "ggplot")) {
-      output$ggplot_output1 <- renderPlot({ plot })
-      output$plotly_output1 <- renderPlotly({ NULL })
-    } else {
-      output$plotly_output1 <- renderPlotly({ plot })
-      output$ggplot_output1 <- renderPlot({ NULL })
-    }
+    if (inherits(plot, "ggplot")) plot
+  })
+  output$chosen_plot1 <- renderPlotly({
+    plot <- plot_list1[[input$plot_choice1]]
+    if (inherits(plot, "plotly")) plot
   })
   
-  observe({
+  # Panel 2
+  output$plot_ui2 <- renderUI({
+    selected_plot <- plot_list2[[input$plot_choice2]]
+    if (inherits(selected_plot, "ggplot")) plotOutput("chosen_plot2")
+    else plotlyOutput("chosen_plot2")
+  })
+  output$chosen_plot2 <- renderPlot({
     plot <- plot_list2[[input$plot_choice2]]
-    if (inherits(plot, "ggplot")) {
-      output$ggplot_output2 <- renderPlot({ plot })
-      output$plotly_output2 <- renderPlotly({ NULL })
-    } else {
-      output$plotly_output2 <- renderPlotly({ plot })
-      output$ggplot_output2 <- renderPlot({ NULL })
-    }
+    if (inherits(plot, "ggplot")) plot
+  })
+  output$chosen_plot2 <- renderPlotly({
+    plot <- plot_list2[[input$plot_choice2]]
+    if (inherits(plot, "plotly")) plot
   })
   
-  observe({
+  # Panel 3
+  output$plot_ui3 <- renderUI({
+    selected_plot <- plot_list3[[input$plot_choice3]]
+    if (inherits(selected_plot, "ggplot")) plotOutput("chosen_plot3")
+    else plotlyOutput("chosen_plot3")
+  })
+  output$chosen_plot3 <- renderPlot({
     plot <- plot_list3[[input$plot_choice3]]
-    if (inherits(plot, "ggplot")) {
-      output$ggplot_output3 <- renderPlot({ plot })
-      output$plotly_output3 <- renderPlotly({ NULL })
-    } else {
-      output$plotly_output3 <- renderPlotly({ plot })
-      output$ggplot_output3 <- renderPlot({ NULL })
-    }
+    if (inherits(plot, "ggplot")) plot
+  })
+  output$chosen_plot3 <- renderPlotly({
+    plot <- plot_list3[[input$plot_choice3]]
+    if (inherits(plot, "plotly")) plot
   })
   
-  observe({
+  # Panel 4
+  output$plot_ui4 <- renderUI({
+    selected_plot <- plot_list4[[input$plot_choice4]]
+    if (inherits(selected_plot, "ggplot")) plotOutput("chosen_plot4")
+    else plotlyOutput("chosen_plot4")
+  })
+  output$chosen_plot4 <- renderPlot({
     plot <- plot_list4[[input$plot_choice4]]
-    if (inherits(plot, "ggplot")) {
-      output$ggplot_output4 <- renderPlot({ plot })
-      output$plotly_output4 <- renderPlotly({ NULL })
-    } else {
-      output$plotly_output4 <- renderPlotly({ plot })
-      output$ggplot_output4 <- renderPlot({ NULL })
-    }
+    if (inherits(plot, "ggplot")) plot
+  })
+  output$chosen_plot4 <- renderPlotly({
+    plot <- plot_list4[[input$plot_choice4]]
+    if (inherits(plot, "plotly")) plot
   })
 }
 
-# === Run App ===
-shinyApp(ui, server)
-
-#########################################################
-
-install.packages("shiny")
-install.packages(c("DT", "dplyr", "readr"))
-install.packages(c("leaflet", "sf", "tmap"))  # geospatial tools, rgdal retired
-install.packages(c("ggplot2", "plotly"))
-
-
-
-library(shiny)
-
-library(DT)
-library(dplyr)
-library(readr)
-
-library(leaflet)
-library(sf)
-library(tmap)
-# library(rgdal)
-
-library(ggplot2)
-library(plotly)
-
-panel1 <- readr::read_csv("")
-panel2 <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos by Province&Territory, 2006-2021.csv")
-
-# creating a data frame
-panel2.data <- data.frame(
-  year = c("2021", "2021", 
-           "2016", "2016", 
-           "2011","2011",
-           "2006","2006"), 
-  language = c("Ilocano", "Tagalog", 
-               "Ilocano", "Tagalog", 
-               "Ilocano","Tagalog",
-               "Ilocano","Tagalog"), 
-  raw_number = c(33520, 461150, 
-               26345, 431380, 
-               17915,327445,
-               13450,235615), 
-  stringsAsFactors = FALSE
-)
-# print the data frame
-print(panel2.data)
-
-# Step 2: Pivot to wide format
-wide_data <- panel2.data %>%
-  tidyr::pivot_wider(names_from = language, values_from = raw_number) %>%
-  arrange(year)
-
-# Step 3: Calculate growth rates
-wide_data <- wide_data %>%
-  mutate(
-    Ilocano_growth = c(NA, diff(Ilocano) / lag(Ilocano)[-1] * 100),
-    Tagalog_growth = c(NA, diff(Tagalog) / lag(Tagalog)[-1] * 100)
-  )
-
-# Step 4: Plotly chart
-plot_ly(wide_data, x = ~year) %>%
-  add_lines(y = ~Ilocano, name = "Ilocano Count", line = list(color = 'blue'), yaxis = "y1") %>%
-  add_lines(y = ~Tagalog, name = "Tagalog Count", line = list(color = 'red'), yaxis = "y1") %>%
-  add_bars(y = ~Ilocano_growth, name = "Ilocano Growth Rate", marker = list(color = 'lightblue'), yaxis = "y2") %>%
-  add_bars(y = ~Tagalog_growth, name = "Tagalog Growth Rate", marker = list(color = 'pink'), yaxis = "y2") %>%
-  layout(
-    title = "Ilocano and Tagalog Language Trends in Canada",
-    xaxis = list(title = "Year"),
-    yaxis = list(title = "Raw Count", side = "left"),
-    yaxis2 = list(title = "Growth Rate (%)", overlaying = "y", side = "right"),
-    barmode = "group",
-    legend = list(x = 0.1, y = 1.1, orientation = 'h')
-  )
-
-panel2
-
-panel3 <- readr::read_csv("")
-panel4 <- readr::read_csv("")
-
-############
-
-# Define UI
-ui <- navbarPage("Ilocano Speakers in Canada",
-                 
-                 # First Panel: Top 10 Tables
-                 tabPanel("Top 10 Tables",
-                          sidebarLayout(
-                            sidebarPanel(
-                              selectInput("language", "Select a language:",
-                                          choices = c("Ilocano", "Tagalog", "Cebuano")),
-                              selectInput("metric", "Select a metric:",
-                                          choices = c("Count", "Rate")),
-                              helpText("Displays the top 10 regions by selected language and metric.")
-                            ),
-                            mainPanel(
-                              DTOutput("top10table")
-                            )
-                          )
-                 )
-                 
-                 # You can add more tabPanels here later:
-                 # tabPanel("Choropleth Maps", ...)
-                 # tabPanel("Regression Analysis", ...)
-)
-
-# First Panel: Top 10 Tables (single dropdown version)
-tabPanel("Top 10 Tables",
-         sidebarLayout(
-           sidebarPanel(
-             selectInput("tableChoice", "Select a table to view:",
-                         choices = c("Raw Number", "Per-Capita", "Ilocano-Tagalog Ratio")),
-             helpText("Displays the top 10 regions for the selected language.")
-           ),
-           mainPanel(
-             DTOutput("top10table")
-           )
-         )
-)
-
-server <- function(input, output, session) {
-  output$top10table <- renderDT({
-    # Map the dropdown choices to column names in your CSV
-    column_map <- list(
-      "Raw Number" = "Col1",
-      "Per-Capita" = "Col2",
-      "Ilocano-Tagalog Ratio" = "Col3"
-    )
-    
-    selected_column <- column_map[[input$tableChoice]]
-    
-    # Filter TagalogCount > 1000 and select top 10 rows (assuming already sorted)
-    top10 <- language_data %>%
-      filter(TagalogCount > 1000) %>%
-      select(Region, !!sym(selected_column)) %>%
-      slice_head(n = 10)
-    
-    datatable(top10,
-              rownames = FALSE,
-              colnames = c("Region", gsub("Ilocano", "Ilocano ", selected_column)),
-              options = list(pageLength = 10, dom = 't'))
-  })
-}
-
-# Run the app
 shinyApp(ui = ui, server = server)
-
-## Panel 1
-
-## Panel 2

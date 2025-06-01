@@ -130,19 +130,27 @@ CMA_100K
 my_sf_merged <- my_sf %>%
   left_join(Province_Data, by = c("PRENAME" = "Province/Territory"))
 
+
 #Step 2: Map, Ilocanos Per 100K
 
 Map1 <- ggplot(my_sf_merged) +
-  geom_sf(aes(fill = `Ilocano per 100K`), color='gray',data=my_sf_merged) +
-  geom_sf(fill='transparent', color='white', data=my_sf_merged) +
+  geom_sf(
+    aes(
+      fill = `Ilocano per 100K`,
+      text = paste0("Province or Territory: ", PRENAME, "\nIlocanos per 100K: ", `Ilocano per 100K`)
+    ),
+    color = "white"
+  ) +
   scale_fill_distiller(palette = "Blues", direction = 1, name = "Ilocanos per 100K") +
-  labs(title='Ilocano Speakers Per 100K (2021)',
-       caption=c('Source: Statistics Canada')) +
+  labs(
+    title = "Ilocano Speakers Per 100K (2021)",
+    caption = "Source: Statistics Canada"
+  ) +
   theme_gray() +
-  theme(title=element_text(face='bold'), legend.position='bottom')
-Map1
+  theme(title = element_text(face = "bold"), legend.position = "bottom")
 
-Map1 <- ggplotly(Map1)
+Map1 <- ggplotly(Map1, tooltip = "text")
+
 Map1
 
 ############################################################################################################################
@@ -216,16 +224,23 @@ Donut_Plot
 ## Plot 2: Choropleth Map, Tagalog-Ilocano Ratio
 
 Map2 <- ggplot(my_sf_merged) +
-  geom_sf(aes(fill = `Ratio, Ilocano-Tagalog`), color='gray',data=my_sf_merged) +
-  geom_sf(fill='transparent', color='white', data=my_sf_merged) +
-  scale_fill_distiller(palette = "Blues", direction = 1, name = "Ratio, Ilocano Speakers to Tagalog Speakers") +
-  labs(title='Ratio Between Ilocano and Tagalog Speakers (2021)',
-       caption=c('Source: Statistics Canada')) +
+  geom_sf(
+    aes(
+      fill = `Ratio, Ilocano-Tagalog`,
+      text = paste0("Province or Territory: ", PRENAME, "\nRatio, Ilocano-Tagalog: ", `Ratio, Ilocano-Tagalog`)
+    ),
+    color = "white"
+  ) +
+  scale_fill_distiller(palette = "Blues", direction = 1, name = "Ratio, Ilocano-Tagalog") +
+  labs(
+    title = "Ratio, Ilocano Speakers-Tagalog Speakers",
+    caption = "Source: Statistics Canada"
+  ) +
   theme_gray() +
-  theme(title=element_text(face='bold'), legend.position='bottom')
-Map2
+  theme(title = element_text(face = "bold"), legend.position = "bottom")
 
-Map2 <- ggplotly(Map2)
+Map2 <- ggplotly(Map2, tooltip = "text")
+
 Map2
 
 ## Plot 3: Ridings Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
@@ -238,9 +253,9 @@ typeof(Riding_Data$`Sum (Tagalog + Ilocano)`)
 #Step 2: Filter for columns of interest and remove "#DIV/0!" from "Ratio, Ilocano-Tagalog", as they 
 #represent null values from Excel
 Riding_Data_filtered <- Riding_Data[, c("Riding (2023 Representation Order)", 
-                                         "Province/Territory", 
-                                         "Sum (Tagalog + Ilocano)", 
-                                         "Ratio, Ilocano-Tagalog")] %>%
+                                        "Province/Territory", 
+                                        "Sum (Tagalog + Ilocano)", 
+                                        "Ratio, Ilocano-Tagalog")] %>%
   filter(`Ratio, Ilocano-Tagalog` != "#DIV/0!")
 
 #Step 3: Convert "Ratio, Ilocano-Tagalog" column to numeric type
@@ -252,7 +267,7 @@ Riding_Data_filtered <- Riding_Data_filtered %>%
 
 #Step 5: Order Ratio column in Descending order, then filter for first 10 rows
 Riding_Table_Ratio <- Riding_Data_filtered[order(-Riding_Data_filtered$"Ratio, Ilocano-Tagalog"), 
-                              c("Riding (2023 Representation Order)", "Province/Territory", "Ratio, Ilocano-Tagalog")][1:10, ]
+                                           c("Riding (2023 Representation Order)", "Province/Territory", "Ratio, Ilocano-Tagalog")][1:10, ]
 Riding_Table_Ratio
 
 # Convert to a plotly dataframe
@@ -293,15 +308,15 @@ typeof(CMA_Data$`Ratio, Ilocano-Tagalog`)
 typeof(CMA_Data$`Sum (Tagalog + Ilocano)`)
 
 CMA_Data_filtered <- CMA_Data[, c("CMA", 
-                                         "Provinces/Territories", 
-                                         "Sum (Tagalog + Ilocano)", 
-                                         "Ratio, Ilocano-Tagalog")]
+                                  "Provinces/Territories", 
+                                  "Sum (Tagalog + Ilocano)", 
+                                  "Ratio, Ilocano-Tagalog")]
 
 CMA_Data_filtered <- CMA_Data_filtered %>%
   filter(`Sum (Tagalog + Ilocano)` >= 1000)
 
 CMA_Table_Ratio <- CMA_Data_filtered[order(-CMA_Data_filtered$"Ratio, Ilocano-Tagalog"), 
-                                            c("CMA", "Provinces/Territories", "Ratio, Ilocano-Tagalog")][1:10, ]
+                                     c("CMA", "Provinces/Territories", "Ratio, Ilocano-Tagalog")][1:10, ]
 CMA_Table_Ratio
 
 # Convert to a plotly dataframe
@@ -361,14 +376,14 @@ Growth_Table <- as.data.frame(t(Growth_Data))
 Growth_Table_New <- Growth_Table %>%
   slice(4:(n() - 10)) %>%       # drop first 3 and last 10 rows
   select(-(1:8))           # drop columns 1-8
-  
+
 Growth_Table_New$`Province/Territory` <- c("Newfoundland and Labrador","Prince Edward Island", 
-                                             "Nova Scotia","New Brunswick",
-                                             "Quebec","Ontario",
-                                             "Manitoba","Saskatchewan",
-                                             "Alberta","British Columbia",
-                                             "Yukon","Northwest Territories",
-                                             "Nunavut")
+                                           "Nova Scotia","New Brunswick",
+                                           "Quebec","Ontario",
+                                           "Manitoba","Saskatchewan",
+                                           "Alberta","British Columbia",
+                                           "Yukon","Northwest Territories",
+                                           "Nunavut")
 
 
 Growth_Table_New$`Ilocano Growth Rate, 2006-2021` <- as.numeric(Growth_Table_New$`Ilocano Growth Rate, 2006-2021`)
@@ -380,17 +395,23 @@ my_sf_merged_2 <- my_sf %>%
 
 
 Map3 <- ggplot(my_sf_merged_2) +
-  geom_sf(aes(fill = `Ilocano Growth Rate, 2006-2021`), color='gray',data=my_sf_merged_2) +
-  geom_sf(fill='transparent', color='white', data=my_sf_merged_2) +
-  scale_fill_distiller(palette = "Blues", direction = 1, name = "Growth Rate of Ilocano Population, 2006-2021",
-na.value = "lightgray")+
-  labs(title='Growth Rate of Ilocano Speakers in Canada, 2006-2021',
-       caption=c('Source: Statistics Canada')) +
+  geom_sf(
+    aes(
+      fill = `Ilocano Growth Rate, 2006-2021`,
+      text = paste0("Province or Territory: ", PRENAME, "\nRatio, Ilocano-Tagalog: ", `Ilocano Growth Rate, 2006-2021`)
+    ),
+    color = "white"
+  ) +
+  scale_fill_distiller(palette = "Blues", direction = 1, name = "Ilocano Growth Rate, 2006-2021") +
+  labs(
+    title = "Ilocano Growth Rate, 2006-2021",
+    caption = "Source: Statistics Canada"
+  ) +
   theme_gray() +
-  theme(title=element_text(face='bold'), legend.position='bottom')
-Map3
+  theme(title = element_text(face = "bold"), legend.position = "bottom")
 
-Map3 <- ggplotly(Map3)
+Map3 <- ggplotly(Map3, tooltip = "text")
+
 Map3
 
 #########################################################
@@ -988,8 +1009,10 @@ model1 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
 
 #Visualization
 LM1 <- ggplot(Riding_Data, aes(x = `Tagalog per 100K`, y = `Ilocano per 100K`)) +
-  geom_point(color = "#1f77b4", alpha = 0.7, size = 3) +  # scatter points
-  geom_smooth(method = "lm", se = TRUE, color = "#ff7f0e", linewidth = 1.5) +  # regression line
+  geom_point(aes(text = paste("Tagalog: ", `Tagalog per 100K`,
+                              "<br>Ilocano: ", `Ilocano per 100K`)),
+             color = "#1f77b4", alpha = 0.7, size = 3) +
+  geom_smooth(method = "lm", se = TRUE, color = "#ff7f0e", linewidth = 1.5) +
   stat_poly_eq(
     aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")),
     formula = y ~ x, parse = TRUE, label.x = "left", label.y = "top"
@@ -1001,10 +1024,7 @@ LM1 <- ggplot(Riding_Data, aes(x = `Tagalog per 100K`, y = `Ilocano per 100K`)) 
   ) +
   theme_minimal(base_size = 14)
 
-LM1
-
-LM1 <- ggplotly(LM1)
-LM1
+LM1 <- ggplotly(LM1, tooltip = "text")
 
 ## Plot 2: Versus Cebuano
 
@@ -1026,20 +1046,25 @@ partial_df <- data.frame(
   Cebuano_resid = resid_x
 )
 
-LM2 <-  ggplot(partial_df, aes(x = Cebuano_resid, y = Ilocano_resid)) +
+LM2 <- ggplot(partial_df, aes(
+  x = Cebuano_resid,
+  y = Ilocano_resid,
+  text = paste0(
+    "Cebuano resid: ", round(Cebuano_resid, 2), "\n",
+    "Ilocano resid: ", round(Ilocano_resid, 2)
+  )
+)) +
   geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
   geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
   labs(
-    title = "Partial Regression Plot for CebuanoRate",
-    x = "CebuanoRate Residuals (controlling for TagalogRate)",
-    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+    title = "Partial Regression Plot for Cebuano Rate",
+    x = "Cebuano Rate Residuals (controlling for Tagalog Rate)",
+    y = "Ilocano Rate Residuals (controlling for Tagalog Rate)"
   ) +
   theme_minimal(base_size = 14)
 
-LM2
+LM2 <- ggplotly(LM2, tooltip = "text")
 
-LM2 <- ggplotly(LM2)
-LM2
 
 ## Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic
 
@@ -1062,20 +1087,25 @@ partial_df <- data.frame(
   Mandarin_resid = resid_x
 )
 
-LM3 <-  ggplot(partial_df, aes(x = Mandarin_resid, y = Ilocano_resid)) +
+LM3 <- ggplot(partial_df, aes(
+  x = Mandarin_resid,
+  y = Ilocano_resid,
+  text = paste0(
+    "Mandarin resid: ", round(Mandarin_resid, 2), "\n",
+    "Ilocano resid: ", round(Ilocano_resid, 2)
+  )
+)) +
   geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
   geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
   labs(
-    title = "Partial Regression Plot for CebuanoRate",
-    x = "MandarinRate Residuals (controlling for TagalogRate)",
-    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+    title = "Partial Regression Plot for Mandarin Rate",
+    x = "Mandarin Rate Residuals (controlling for Tagalog Rate)",
+    y = "Ilocano Rate Residuals (controlling for Tagalog Rate)"
   ) +
   theme_minimal(base_size = 14)
 
-LM3
+LM3 <- ggplotly(LM3, tooltip = "text")
 
-LM3 <- ggplotly(LM3)
-LM3
 
 # Partial regression plot for Punjabi Rate, controlling for TagalogRate
 
@@ -1090,20 +1120,24 @@ partial_df <- data.frame(
   Punjabi_resid = resid_x
 )
 
-LM4 <-  ggplot(partial_df, aes(x = Punjabi_resid, y = Ilocano_resid)) +
+LM4 <- ggplot(partial_df, aes(
+  x = Punjabi_resid,
+  y = Ilocano_resid,
+  text = paste0(
+    "Punjabi resid: ", round(Punjabi_resid, 2), "\n",
+    "Ilocano resid: ", round(Ilocano_resid, 2)
+  )
+)) +
   geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
   geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
   labs(
-    title = "Partial Regression Plot for CebuanoRate",
-    x = "PunjabiRate Residuals (controlling for TagalogRate)",
-    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+    title = "Partial Regression Plot for Punjabi Rate",
+    x = "Punjabi Rate Residuals (controlling for Tagalog Rate)",
+    y = "Ilocano Rate Residuals (controlling for Tagalog Rate)"
   ) +
   theme_minimal(base_size = 14)
 
-LM4
-
-LM4 <- ggplotly(LM4)
-LM4
+LM4 <- ggplotly(LM4, tooltip = "text")
 
 # Partial regression plot for Cantonese Rate, controlling for TagalogRate
 
@@ -1118,20 +1152,24 @@ partial_df <- data.frame(
   Cantonese_resid = resid_x
 )
 
-LM5 <-  ggplot(partial_df, aes(x = Cantonese_resid, y = Ilocano_resid)) +
+LM5 <- ggplot(partial_df, aes(
+  x = Cantonese_resid,
+  y = Ilocano_resid,
+  text = paste0(
+    "Cantonese resid: ", round(Cantonese_resid, 2), "\n",
+    "Ilocano resid: ", round(Ilocano_resid, 2)
+  )
+)) +
   geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
   geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
   labs(
-    title = "Partial Regression Plot for CebuanoRate",
-    x = "CantoneseRate Residuals (controlling for TagalogRate)",
-    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+    title = "Partial Regression Plot for Cantonese Rate",
+    x = "Cantonese Rate Residuals (controlling for Tagalog Rate)",
+    y = "Ilocano Rate Residuals (controlling for Tagalog Rate)"
   ) +
   theme_minimal(base_size = 14)
 
-LM5
-
-LM5 <- ggplotly(LM5)
-LM5
+LM5 <- ggplotly(LM5, tooltip = "text")
 
 # Partial regression plot for Spanish Rate, controlling for TagalogRate
 
@@ -1146,20 +1184,24 @@ partial_df <- data.frame(
   Spanish_resid = resid_x
 )
 
-LM6 <-  ggplot(partial_df, aes(x = Spanish_resid, y = Ilocano_resid)) +
+LM6 <- ggplot(partial_df, aes(
+  x = Spanish_resid,
+  y = Ilocano_resid,
+  text = paste0(
+    "Spanish resid: ", round(Spanish_resid, 2), "\n",
+    "Ilocano resid: ", round(Ilocano_resid, 2)
+  )
+)) +
   geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
   geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
   labs(
-    title = "Partial Regression Plot for CebuanoRate",
-    x = "SpanishRate Residuals (controlling for TagalogRate)",
-    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+    title = "Partial Regression Plot for Spanish Rate",
+    x = "Spanish Rate Residuals (controlling for Tagalog Rate)",
+    y = "Ilocano Rate Residuals (controlling for Tagalog Rate)"
   ) +
   theme_minimal(base_size = 14)
 
-LM6
-
-LM6 <- ggplotly(LM6)
-LM6
+LM6 <- ggplotly(LM6, tooltip = "text")
 
 # Partial regression plot for Arabic Rate, controlling for TagalogRate
 
@@ -1174,21 +1216,24 @@ partial_df <- data.frame(
   Arabic_resid = resid_x
 )
 
-LM7 <-  ggplot(partial_df, aes(x = Arabic_resid, y = Ilocano_resid)) +
+LM7 <- ggplot(partial_df, aes(
+  x = Arabic_resid,
+  y = Ilocano_resid,
+  text = paste0(
+    "Arabic resid: ", round(Arabic_resid, 2), "\n",
+    "Ilocano resid: ", round(Ilocano_resid, 2)
+  )
+)) +
   geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
   geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
   labs(
-    title = "Partial Regression Plot for CebuanoRate",
-    x = "ArabicRate Residuals (controlling for TagalogRate)",
-    y = "IlocanoRate Residuals (controlling for TagalogRate)"
+    title = "Partial Regression Plot for Arabic Rate",
+    x = "Arabic Rate Residuals (controlling for Tagalog Rate)",
+    y = "Ilocano Rate Residuals (controlling for Tagalog Rate)"
   ) +
   theme_minimal(base_size = 14)
 
-LM7
-
-LM7 <- ggplotly(LM7)
-LM7
-
+LM7 <- ggplotly(LM7, tooltip = "text")
 
 ############################################################################################################################
 ############################################################################################################################

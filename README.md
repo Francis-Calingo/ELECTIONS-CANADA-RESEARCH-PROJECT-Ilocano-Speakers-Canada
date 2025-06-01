@@ -98,16 +98,16 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
   
 * **Despite the Ilocano community in Quebec being comparatively low in population when measured against other provinces and territories, Quebec not only leads the country in terms of the ratio between Ilocano speakers and Tagalog speakers (0.120), but is the only province where the ratio exceed 0.100.** Knowing that the Filipino community in Quebec is both compartively low in comparison to other provinces and territories, and is highly concentrated in a few areas of the Montreal region, it can be argued that the Ilocano community in Quebec is therefore less heterogenous and less spread out than Ilocano communities in other places in Canada. Also of note is the fact that Manitoba only ranked 10th (0.030), corrobating an earlier hypothesis that Ilocanos are less likely to settle in that province or less likely to identify Ilocano as their mother tongue. 
   
-* **In terms of ridings (minimum combined Tagalog and Ilocano population 1000), .** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **In terms of ridings (minimum combined Tagalog and Ilocano population 1000), Toronto ridings dominate the top 10, while 3 Montreal-area ridings made this list (the only riding from the list outside of Quebec and Ontario is North Vancouver—Capilano, which was actually second on the list).** The fact that three Montreal-area ridings were on the list while not a single riding from Winnipeg (nor from Manitoba in general) further corrobates the current conclusion that the Ilocano language has much more influence on the Filipino community in Montreal than in Winnipeg.
   
-* **In terms of CMAs (minimum combined Tagalog and Ilocano population 1000) .** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **In terms of CMAs (minimum combined Tagalog and Ilocano population 1000), Montreal takes the top spot, while the rest of the top 10 is a mix of larger CMAs (e.g., Toronto, Calgary, Vancouver) and smaller CMAs (e.g., Barrie, London, Red Deer).** Just like with the ridings table, the absence of Winnipeg and presence of Montreal further corrobates the current conclusion that the Ilocano language has much more influence on the Filipino community in Montreal than in Winnipeg. Furthermore, the appearance of smaller CMAs suggests hidden language community patterns within the Filipino community amongst those CMAs.
 
 [Visualization specific to category 2]
 
 
 ### Time-Series Growth Analysis:
 
-* **Generally outpacing.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **In general, the Ilocano language community is outpacing the Tagalog language community in terms of census-by-census growth, although  in terms of raw numbers, they are not expected to overtake the Tagalog language community any time soon.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
 * **Specific cities.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   

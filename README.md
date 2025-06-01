@@ -162,6 +162,8 @@ Throughout the analysis, multiple assumptions were made to manage challenges wit
   
 * Specific granular data on Philippine-based languages were not available in the 2001 Census, therefore, it can be assumed that they are not available before the 2006 Census (hence why the time-series visualizations only start from 2006).
 
+* Boundary files for the updated ridings are currently not available as of June 2025, hence why choropleth maps were of provincial and territorial levels only.
+
 [<b>Back to Table of Contents</b>](#table-of-contents)
 
 ---

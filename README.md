@@ -1,4 +1,4 @@
-# ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada
+# ELECTIONS CANADA RESEARCH PROJECT: Ilocano Language Community in Canada
 
 # Table of Contents
 * [Project Background](#project-background)

@@ -107,13 +107,13 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 
 ### Time-Series Growth Analysis:
 
-* **In general, the Ilocano language community is outpacing the Tagalog language community in terms of census-by-census growth, although  in terms of raw numbers, they are not expected to overtake the Tagalog language community any time soon.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **In general, the Ilocano language community is outpacing the Tagalog language community in terms of census-by-census growth, although  in terms of raw numbers, they are not expected to overtake the Tagalog language community any time soon.** 
   
 * **Specific cities.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
 * **Specific cities.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Saskatchewan, NWT, Nova Scotia.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Saskatchewan, Nova Scotia, and the Northwest Territories  currently lead the country in terms of the Ilocano population growth rate (2006-2021).** 
 
 [Visualization specific to category 3]
 

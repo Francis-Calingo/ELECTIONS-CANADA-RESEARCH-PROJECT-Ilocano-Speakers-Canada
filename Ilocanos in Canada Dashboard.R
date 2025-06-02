@@ -1059,21 +1059,19 @@ model2 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Cebuano per 100K`, data 
 resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
 resid_x <- resid(lm(`Cebuano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
 
-partial_df <- data.frame(
-  Ilocano_resid = resid_y,
-  Cebuano_resid = resid_x
-)
+partial_df <- data.frame(Ilocano_resid = resid_y, Cebuano_resid = resid_x)
 
 LM2 <- ggplot(partial_df, aes(
   x = Cebuano_resid,
-  y = Ilocano_resid,
-  text = paste0(
-    "Cebuano resid: ", round(Cebuano_resid, 2), "\n",
-    "Ilocano resid: ", round(Ilocano_resid, 2)
-  )
+  y = Ilocano_resid
 )) +
-  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
-  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  geom_point(aes(
+    text = paste0(
+      "Cebuano resid: ", round(Cebuano_resid, 2), "\n",
+      "Ilocano resid: ", round(Ilocano_resid, 2)
+    )
+  ), color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00") +
   labs(
     title = "Partial Regression Plot for Cebuano Rate",
     x = "Cebuano Rate Residuals (controlling for Tagalog Rate)",
@@ -1096,25 +1094,20 @@ LM2 <- ggplotly(LM2, tooltip = "text")
 
 model3 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Mandarin per 100K`, data = Riding_Data)
 
-
-resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
 resid_x <- resid(lm(`Mandarin per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
-
-partial_df <- data.frame(
-  Ilocano_resid = resid_y,
-  Mandarin_resid = resid_x
-)
+partial_df <- data.frame(Ilocano_resid = resid_y, Mandarin_resid = resid_x)
 
 LM3 <- ggplot(partial_df, aes(
   x = Mandarin_resid,
-  y = Ilocano_resid,
-  text = paste0(
-    "Mandarin resid: ", round(Mandarin_resid, 2), "\n",
-    "Ilocano resid: ", round(Ilocano_resid, 2)
-  )
+  y = Ilocano_resid
 )) +
-  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
-  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  geom_point(aes(
+    text = paste0(
+      "Mandarin resid: ", round(Mandarin_resid, 2), "\n",
+      "Ilocano resid: ", round(Ilocano_resid, 2)
+    )
+  ), color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00") +
   labs(
     title = "Partial Regression Plot for Mandarin Rate",
     x = "Mandarin Rate Residuals (controlling for Tagalog Rate)",
@@ -1129,25 +1122,20 @@ LM3 <- ggplotly(LM3, tooltip = "text")
 
 model4 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Punjabi per 100K`, data = Riding_Data)
 
-
-resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
 resid_x <- resid(lm(`Punjabi per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
-
-partial_df <- data.frame(
-  Ilocano_resid = resid_y,
-  Punjabi_resid = resid_x
-)
+partial_df <- data.frame(Ilocano_resid = resid_y, Punjabi_resid = resid_x)
 
 LM4 <- ggplot(partial_df, aes(
   x = Punjabi_resid,
-  y = Ilocano_resid,
-  text = paste0(
-    "Punjabi resid: ", round(Punjabi_resid, 2), "\n",
-    "Ilocano resid: ", round(Ilocano_resid, 2)
-  )
+  y = Ilocano_resid
 )) +
-  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
-  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  geom_point(aes(
+    text = paste0(
+      "Punjabi resid: ", round(Punjabi_resid, 2), "\n",
+      "Ilocano resid: ", round(Ilocano_resid, 2)
+    )
+  ), color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00") +
   labs(
     title = "Partial Regression Plot for Punjabi Rate",
     x = "Punjabi Rate Residuals (controlling for Tagalog Rate)",
@@ -1161,25 +1149,20 @@ LM4 <- ggplotly(LM4, tooltip = "text")
 
 model5 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Cantonese per 100K`, data = Riding_Data)
 
-
-resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
 resid_x <- resid(lm(`Cantonese per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
-
-partial_df <- data.frame(
-  Ilocano_resid = resid_y,
-  Cantonese_resid = resid_x
-)
+partial_df <- data.frame(Ilocano_resid = resid_y, Cantonese_resid = resid_x)
 
 LM5 <- ggplot(partial_df, aes(
   x = Cantonese_resid,
-  y = Ilocano_resid,
-  text = paste0(
-    "Cantonese resid: ", round(Cantonese_resid, 2), "\n",
-    "Ilocano resid: ", round(Ilocano_resid, 2)
-  )
+  y = Ilocano_resid
 )) +
-  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
-  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  geom_point(aes(
+    text = paste0(
+      "Cantonese resid: ", round(Cantonese_resid, 2), "\n",
+      "Ilocano resid: ", round(Ilocano_resid, 2)
+    )
+  ), color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00") +
   labs(
     title = "Partial Regression Plot for Cantonese Rate",
     x = "Cantonese Rate Residuals (controlling for Tagalog Rate)",
@@ -1193,25 +1176,20 @@ LM5 <- ggplotly(LM5, tooltip = "text")
 
 model6 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Spanish per 100K`, data = Riding_Data)
 
-
-resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
 resid_x <- resid(lm(`Spanish per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
-
-partial_df <- data.frame(
-  Ilocano_resid = resid_y,
-  Spanish_resid = resid_x
-)
+partial_df <- data.frame(Ilocano_resid = resid_y, Spanish_resid = resid_x)
 
 LM6 <- ggplot(partial_df, aes(
   x = Spanish_resid,
-  y = Ilocano_resid,
-  text = paste0(
-    "Spanish resid: ", round(Spanish_resid, 2), "\n",
-    "Ilocano resid: ", round(Ilocano_resid, 2)
-  )
+  y = Ilocano_resid
 )) +
-  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
-  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  geom_point(aes(
+    text = paste0(
+      "Spanish resid: ", round(Spanish_resid, 2), "\n",
+      "Ilocano resid: ", round(Ilocano_resid, 2)
+    )
+  ), color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00") +
   labs(
     title = "Partial Regression Plot for Spanish Rate",
     x = "Spanish Rate Residuals (controlling for Tagalog Rate)",
@@ -1225,25 +1203,20 @@ LM6 <- ggplotly(LM6, tooltip = "text")
 
 model7 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Arabic per 100K`, data = Riding_Data)
 
-
-resid_y <- resid(lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
 resid_x <- resid(lm(`Arabic per 100K` ~ `Tagalog per 100K`, data = Riding_Data))
-
-partial_df <- data.frame(
-  Ilocano_resid = resid_y,
-  Arabic_resid = resid_x
-)
+partial_df <- data.frame(Ilocano_resid = resid_y, Arabic_resid = resid_x)
 
 LM7 <- ggplot(partial_df, aes(
   x = Arabic_resid,
-  y = Ilocano_resid,
-  text = paste0(
-    "Arabic resid: ", round(Arabic_resid, 2), "\n",
-    "Ilocano resid: ", round(Ilocano_resid, 2)
-  )
+  y = Ilocano_resid
 )) +
-  geom_point(color = "#0072B2", size = 2.5, alpha = 0.7) +
-  geom_smooth(method = "lm", se = TRUE, color = "#D55E00", linetype = "solid") +
+  geom_point(aes(
+    text = paste0(
+      "Arabic resid: ", round(Arabic_resid, 2), "\n",
+      "Ilocano resid: ", round(Ilocano_resid, 2)
+    )
+  ), color = "#0072B2", size = 2.5, alpha = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, color = "#D55E00") +
   labs(
     title = "Partial Regression Plot for Arabic Rate",
     x = "Arabic Rate Residuals (controlling for Tagalog Rate)",
@@ -1252,7 +1225,6 @@ LM7 <- ggplot(partial_df, aes(
   theme_minimal(base_size = 14)
 
 LM7 <- ggplotly(LM7, tooltip = "text")
-
 
 ############################################################################################################################
 ############################################################################################################################

@@ -165,6 +165,8 @@ Throughout the analysis, multiple assumptions were made to manage challenges wit
 
 * Boundary files for the updated ridings are currently not available as of June 2025, hence why choropleth maps were of provincial and territorial levels only.
 
+* The regression analyses only measured Ilocano against the top 5 non-official languages communities (i.e., neither English nor French) as well as Tagalog and Cenuano (the most and third-most spoken Philippine-based languages in Canada). This does not mean that there could be valuable insights to be gained from measuring it against other languages, even if their communities are low in numbers (e.g., other Austronesian languages, other Asian languages, other language communities who generally do not settle in francophone regions in large numbers).
+
 [<b>Back to Table of Contents</b>](#table-of-contents)
 
 ---

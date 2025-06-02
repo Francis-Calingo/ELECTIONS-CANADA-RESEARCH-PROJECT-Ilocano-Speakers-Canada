@@ -8,6 +8,7 @@ install.packages("sf")
 install.packages("tidyr")
 install.packages("ggpmisc")
 install.packages(c("shiny", "shinydashboard"))
+install.packages("rsconnect")
 
 
 library(DT)
@@ -20,6 +21,7 @@ library(tidyr)
 library(ggpmisc)
 library(shiny)
 library(shinydashboard)
+library(rsconnect)
 
 
 ############################################################################################################################

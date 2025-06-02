@@ -36,9 +36,6 @@ Growth_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada 2
 # Data by Census Metropolitan Areas (CMAs), 2021 Census
 CMA_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, CMAs.csv")
 
-# Data from Canada's 10 Largest Cities, 2021 Census
-City_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Cities.csv")
-
 # Data from Canada's 10 Provinces and 3 Territories, 2021 Census
 Province_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Provinces.csv")
 

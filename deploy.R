@@ -1,4 +1,9 @@
+##########################
+## INSTALL DEPENDENCIES ##
+##########################
 
+install.packages("rsconnect")
+library(rsconnect)
 
 #############################
 ## PUBLISH ON shinyapps.io ##

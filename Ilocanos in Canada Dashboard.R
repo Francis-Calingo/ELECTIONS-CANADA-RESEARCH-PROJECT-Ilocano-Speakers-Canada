@@ -1233,7 +1233,7 @@ LM7 <- ggplotly(LM7, tooltip = "text")
 ## SHINY DASHBOARD DEPLOYMENT ##
 #################################
 
-### PANEL 1 SET-UP (ILOCANOS PER-CAPITA) ###
+### PANEL SET-UP ###
 
 plot_list1 <- list("Top 10 Ridings" = Riding_100K, "Top 10 CMAs" = CMA_100K, "Choropleth Map-Ilocanos Per 100K" = Map1)
 plot_list2 <- list("Ilocano vs. Tagalog Distribution" = Donut_Plot , "Choropleth Map-Ilocano-Tagalog Ratio" = Map2, 
@@ -1259,51 +1259,55 @@ ui <- dashboardPage(
   dashboardHeader(title = "Ilocanos in Canada Dashboard"),
   dashboardSidebar(
     sidebarMenu(
-      menuItem("Panel 1", tabName = "PerCapita"),
-      menuItem("Panel 2", tabName = "IlocanoTagalog"),
-      menuItem("Panel 3", tabName = "Growth"),
-      menuItem("Panel 4", tabName = "Regression")
+      menuItem("Per-Capita Visualizations", tabName = "panel1"),
+      menuItem("Tagalog vs. Ilocano Comparisons", tabName = "panel2"),
+      menuItem("Growth Visualizations", tabName = "panel3"),
+      menuItem("Linear Regression Comparison", tabName = "panel4")
     )
   ),
   dashboardBody(
     tabItems(
-      tabItem(tabName = "PerCapita",
+      tabItem(tabName = "panel1",
               fluidRow(
                 box(
                   title = "Select a Plot",
                   width = 12,
+                  fill = TRUE,
                   selectInput("plot_choice1", "Choose Plot:", choices = names(plot_list1)),
-                  uiOutput("plot_ui1")
+                  uiOutput("panel1_plot_ui")
                 )
               )
       ),
-      tabItem(tabName = "IlocanoTagalog",
+      tabItem(tabName = "panel2",
               fluidRow(
                 box(
                   title = "Select a Plot",
                   width = 12,
+                  fill = TRUE,
                   selectInput("plot_choice2", "Choose Plot:", choices = names(plot_list2)),
-                  uiOutput("plot_ui2")
+                  uiOutput("panel2_plot_ui")
                 )
               )
       ),
-      tabItem(tabName = "Growth",
+      tabItem(tabName = "panel3",
               fluidRow(
                 box(
                   title = "Select a Plot",
                   width = 12,
+                  fill = TRUE,
                   selectInput("plot_choice3", "Choose Plot:", choices = names(plot_list3)),
-                  uiOutput("plot_ui3")
+                  uiOutput("panel3_plot_ui")
                 )
               )
       ),
-      tabItem(tabName = "Regression",
+      tabItem(tabName = "panel4",
               fluidRow(
                 box(
                   title = "Select a Plot",
                   width = 12,
+                  fill = TRUE,
                   selectInput("plot_choice4", "Choose Plot:", choices = names(plot_list4)),
-                  uiOutput("plot_ui4")
+                  uiOutput("panel4_plot_ui")
                 )
               )
       )
@@ -1311,68 +1315,74 @@ ui <- dashboardPage(
   )
 )
 
-#=== Server ===
+# === Server ===
 
 server <- function(input, output, session) {
+  
   # Panel 1
-  output$plot_ui1 <- renderUI({
-    selected_plot <- plot_list1[[input$plot_choice1]]
-    if (inherits(selected_plot, "ggplot")) plotOutput("chosen_plot1")
-    else plotlyOutput("chosen_plot1")
-  })
-  output$chosen_plot1 <- renderPlot({
+  observe({
     plot <- plot_list1[[input$plot_choice1]]
-    if (inherits(plot, "ggplot")) plot
-  })
-  output$chosen_plot1 <- renderPlotly({
-    plot <- plot_list1[[input$plot_choice1]]
-    if (inherits(plot, "plotly")) plot
+    if (inherits(plot, "ggplot")) {
+      output$panel1_plot_ui <- renderUI({
+        plotOutput("ggplot_output1", height = "600px", width = "100%")
+      })
+      output$ggplot_output1 <- renderPlot({ plot })
+    } else {
+      output$panel1_plot_ui <- renderUI({
+        plotlyOutput("plotly_output1", height = "600px", width = "100%")
+      })
+      output$plotly_output1 <- renderPlotly({ plot })
+    }
   })
   
   # Panel 2
-  output$plot_ui2 <- renderUI({
-    selected_plot <- plot_list2[[input$plot_choice2]]
-    if (inherits(selected_plot, "ggplot")) plotOutput("chosen_plot2")
-    else plotlyOutput("chosen_plot2")
-  })
-  output$chosen_plot2 <- renderPlot({
+  observe({
     plot <- plot_list2[[input$plot_choice2]]
-    if (inherits(plot, "ggplot")) plot
-  })
-  output$chosen_plot2 <- renderPlotly({
-    plot <- plot_list2[[input$plot_choice2]]
-    if (inherits(plot, "plotly")) plot
+    if (inherits(plot, "ggplot")) {
+      output$panel2_plot_ui <- renderUI({
+        plotOutput("ggplot_output2", height = "600px", width = "100%")
+      })
+      output$ggplot_output2 <- renderPlot({ plot })
+    } else {
+      output$panel2_plot_ui <- renderUI({
+        plotlyOutput("plotly_output2", height = "600px", width = "100%")
+      })
+      output$plotly_output2 <- renderPlotly({ plot })
+    }
   })
   
   # Panel 3
-  output$plot_ui3 <- renderUI({
-    selected_plot <- plot_list3[[input$plot_choice3]]
-    if (inherits(selected_plot, "ggplot")) plotOutput("chosen_plot3")
-    else plotlyOutput("chosen_plot3")
-  })
-  output$chosen_plot3 <- renderPlot({
+  observe({
     plot <- plot_list3[[input$plot_choice3]]
-    if (inherits(plot, "ggplot")) plot
-  })
-  output$chosen_plot3 <- renderPlotly({
-    plot <- plot_list3[[input$plot_choice3]]
-    if (inherits(plot, "plotly")) plot
+    if (inherits(plot, "ggplot")) {
+      output$panel3_plot_ui <- renderUI({
+        plotOutput("ggplot_output3", height = "600px", width = "100%")
+      })
+      output$ggplot_output3 <- renderPlot({ plot })
+    } else {
+      output$panel3_plot_ui <- renderUI({
+        plotlyOutput("plotly_output3", height = "600px", width = "100%")
+      })
+      output$plotly_output3 <- renderPlotly({ plot })
+    }
   })
   
   # Panel 4
-  output$plot_ui4 <- renderUI({
-    selected_plot <- plot_list4[[input$plot_choice4]]
-    if (inherits(selected_plot, "ggplot")) plotOutput("chosen_plot4")
-    else plotlyOutput("chosen_plot4")
-  })
-  output$chosen_plot4 <- renderPlot({
+  observe({
     plot <- plot_list4[[input$plot_choice4]]
-    if (inherits(plot, "ggplot")) plot
+    if (inherits(plot, "ggplot")) {
+      output$panel4_plot_ui <- renderUI({
+        plotOutput("ggplot_output4", height = "600px", width = "100%")
+      })
+      output$ggplot_output4 <- renderPlot({ plot })
+    } else {
+      output$panel4_plot_ui <- renderUI({
+        plotlyOutput("plotly_output4", height = "600px", width = "100%")
+      })
+      output$plotly_output4 <- renderPlotly({ plot })
+    }
   })
-  output$chosen_plot4 <- renderPlotly({
-    plot <- plot_list4[[input$plot_choice4]]
-    if (inherits(plot, "plotly")) plot
-  })
+  
 }
 
 shinyApp(ui = ui, server = server)

@@ -33,19 +33,19 @@ library(rsconnect)
 
 # Growth of Tagalog-speaking and Ilocano-speaking populations in Canada (2006, 2011, 2016, 2021 Census), 
 # nationally, provincially, territorially, and 10 most-populated cities in 2021.
-Growth_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada 2006-2021.csv") 
+Growth_Data <- readr::read_csv("Ilocanos in Canada 2006-2021.csv") 
 
 # Data by Census Metropolitan Areas (CMAs), 2021 Census
-CMA_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, CMAs.csv")
+CMA_Data <- readr::read_csv("Ilocanos in Canada, CMAs.csv")
 
 # Data from Canada's 10 Provinces and 3 Territories, 2021 Census
-Province_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Provinces.csv")
+Province_Data <- readr::read_csv("Ilocanos in Canada, Provinces.csv")
 
 # Data from Canada's 343 federal-level electoral boundaries (ridings, 2023 representation order), 2021 Census
-Riding_Data <- readr::read_csv("C:/Users/francali/Downloads/Ilocanos in Canada, Ridings.csv")
+Riding_Data <- readr::read_csv("Ilocanos in Canada, Ridings.csv")
 
 #Download shapefile of provincial and territorial boundaries from Statistics Canada
-my_sf <- read_sf("C:/Users/francali/Downloads/lpr_000b21a_e.shp")
+my_sf <- read_sf("lpr_000b21a_e.shp")
 head(my_sf)
 
 ############################################################################################################################

@@ -74,7 +74,7 @@ https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canad
 
 ### Overview of Findings
 
-An interesting finding was that Ilocanos were more concentrated in Montreal (specifically the Mount Royal riding) than they are in Winnipeg, the city with the highest per-capita Filipino population in Canada. It was also observed that the Ilocano-speaking communities in most major cities were growing at a much faster rate that the Tagalog-speaking communities (although it is unlikely that they will overtake Tagalog speaker in terms of raw numbers). Alberta, Saskatchewan, and the Northwest Territories have the potential to be an important hub for the Ilocano community in Canada (due to a high growth rate in Saskatchewan's case, and a high per-capita Ilocano population in Alberta and the Northwest Territories' case).
+An interesting finding was that Ilocano settlement in Montreal (specifically the Mount Royal riding) is more prominent than they in Winnipeg, the city with the highest per-capita Filipino population in Canada. It was also observed that the Ilocano-speaking communities in most major cities were growing at a much faster rate that the Tagalog-speaking communities (although it is unlikely that they will overtake Tagalog speaker in terms of raw numbers). Alberta, Saskatchewan, and the Northwest Territories have the potential to be an important hub for the Ilocano community in Canada (due to a high growth rate in Saskatchewan's case, and a high per-capita Ilocano population in Alberta and the Northwest Territories' case).
 
 [Visualization, including a graph of overall trends or snapshot of a dashboard]
 
@@ -141,15 +141,13 @@ An interesting finding was that Ilocanos were more concentrated in Montreal (spe
 
 Based on the insights and findings above, we would recommend the [stakeholder team] to consider the following: 
 
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
+* Mount Royal and Red Deer per-capita. **Monitor Recommendation or general guidance based on this observation.**
   
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
+* 3 Montreal ridings comparatively more Ilocano than Tagalog. 6 from Toronto, multiple CMAs. **Recommendation or general guidance based on this observation.**
   
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
+* Growing faster than Tagalog. **Partner with community orgs. Recommendation or general guidance based on this observation.**
   
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
-  
-* Specific observation that is related to a recommended action. **Recommendation or general guidance based on this observation.**
+* Residuals. **Recommendation or general guidance based on this observation.**
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 

@@ -8,8 +8,6 @@ install.packages("sf")
 install.packages("tidyr")
 install.packages("ggpmisc")
 install.packages(c("shiny", "shinydashboard"))
-install.packages("rsconnect")
-
 
 library(DT)
 library(dplyr)
@@ -21,8 +19,6 @@ library(tidyr)
 library(ggpmisc)
 library(shiny)
 library(shinydashboard)
-library(rsconnect)
-
 
 ############################################################################################################################
 ############################################################################################################################
@@ -1388,14 +1384,3 @@ server <- function(input, output, session) {
 }
 
 shinyApp(ui = ui, server = server)
-
-############################################################################################################################
-############################################################################################################################
-
-#############################
-## PUBLISH ON shinyapps.io ##
-#############################
-
-rsconnect::setAccountInfo(name='weerou-francis-calingo',
-                          token='DFC62FC2EABFB1340029C74C081ACDE4',
-                          secret='<SECRET>')

@@ -2,12 +2,12 @@
 ## INSTALL DEPENDENCIES ##
 ##########################
 
-install.packages(c("DT", "dplyr", "readr"))
-install.packages(c("ggplot2", "plotly"))
-install.packages("sf")
-install.packages("tidyr")
-install.packages("ggpmisc")
-install.packages(c("shiny", "shinydashboard"))
+#install.packages(c("DT", "dplyr", "readr"))
+#install.packages(c("ggplot2", "plotly"))
+#install.packages("sf")
+#install.packages("tidyr")
+#install.packages("ggpmisc")
+#install.packages(c("shiny", "shinydashboard"))
 
 
 library(DT)
@@ -31,19 +31,19 @@ library(shinydashboard)
 
 # Growth of Tagalog-speaking and Ilocano-speaking populations in Canada (2006, 2011, 2016, 2021 Census), 
 # nationally, provincially, territorially, and 10 most-populated cities in 2021.
-Growth_Data <- readr::read_csv("Ilocanos in Canada 2006-2021.csv") 
+Growth_Data <- readr::read_csv("data/Ilocanos_in_Canada_2006-2021.csv") 
 
 # Data by Census Metropolitan Areas (CMAs), 2021 Census
-CMA_Data <- readr::read_csv("Ilocanos in Canada, CMAs.csv")
+CMA_Data <- readr::read_csv("data/Ilocanos_in_Canada_CMAs.csv")
 
 # Data from Canada's 10 Provinces and 3 Territories, 2021 Census
-Province_Data <- readr::read_csv("Ilocanos in Canada, Provinces.csv")
+Province_Data <- readr::read_csv("data/Ilocanos_in_Canada_Provinces.csv")
 
 # Data from Canada's 343 federal-level electoral boundaries (ridings, 2023 representation order), 2021 Census
-Riding_Data <- readr::read_csv("Ilocanos in Canada, Ridings.csv")
+Riding_Data <- readr::read_csv("data/Ilocanos_in_Canada_Ridings.csv")
 
 #Download shapefile of provincial and territorial boundaries from Statistics Canada
-my_sf <- read_sf("lpr_000b21a_e.shp")
+my_sf <- read_sf("shapefile/lpr_000b21a_e.shp")
 head(my_sf)
 
 ############################################################################################################################
@@ -254,7 +254,7 @@ Donut_Plot <- subplot(outer_ring, inner_ring, nrows = 1) %>%
 Map2 <- ggplot(my_sf_merged) +
   geom_sf(
     aes(
-      fill = `Ratio, Ilocano-Tagalog`,
+      fill = `Ratio, Ilocano-Tagalog`
     ),
     color = "white"
   ) +
@@ -1382,7 +1382,6 @@ server <- function(input, output, session) {
       output$plotly_output4 <- renderPlotly({ plot })
     }
   })
-  
 }
 
 shinyApp(ui = ui, server = server)

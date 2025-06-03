@@ -1,4 +1,4 @@
-# ELECTIONS CANADA RESEARCH PROJECT: Ilocano Language Community in Canada
+# ELECTIONS CANADA RESEARCH PROJECT: Ilocano Language Community in Canada Dashboard
 
 # Table of Contents
 * [Project Background](#project-background)
@@ -65,6 +65,49 @@ https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canad
 | **TOTAL** | **8253**  | 405  | 67  | N/A  |
 
 [Entity Relationship Diagram here]
+
+```
+
+
+├── Figures
+│   ├── Panel 1: Extreme Poverty                   
+│       ├── poverty_data.csv
+│   ├── Panel 2: Wage Gap and Poverty Maps
+│       ├── 6. Poverty.csv
+│   ├── Panel 3: Economic Inequality                 
+│       ├── gdp_ihdi_gini.csv
+│   ├── Panel 4: Inflation                 
+│       ├── Aggregate_Inflation.csv
+│       ├── CCPI_Data_df.csv
+│       ├── ECPI_Data_df.csv
+│       ├── HCPI_Data_df.csv
+│       ├── PPI_Data_df.csv
+│
+│
+├── ilocano-dashboard
+│   ├── Panel 0: Migration Analysis        
+│       ├── total-number-of-emigrants.csv
+│   ├── Panel 1: Extreme Poverty          <- gif file used in the README.
+│       ├── share-of-population-in-extreme-poverty.csv
+│   ├── Panel 2: Wage Gap and Poverty Maps                <- heatmap image used in the README.
+│       ├── v1-2017-09-16-Martial-Law-in-Data-MartialLawMuseum.ph_.xlsx
+│       ├── phl_adminboundaries_tabulardata.xlsx
+│   ├── Panel 3: Economic Inequality
+│       ├── gdp-per-capita-worldbank.csv
+│       ├── gini-coefficient.csv
+│       ├── inequality-adjusted-human-development-index.csv
+│   ├── Panel 4: Inflation            <- list of all the dependencies with their versions(for conda environment).
+│       ├── Inflation-data.xlsx
+│
+│
+├── .gitattributes                     <- used to force GitHub to recognize certain languages (in this case, Markdown)
+│
+│
+├── LICENSE.txt    <- repo license.
+│
+│
+├── README.md      <- repo REAME.
+```
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 

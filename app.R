@@ -374,6 +374,19 @@ CMA_Ratio
 
 ### PANEL 3: GROWTH RATES, 2006-2021 ###
 
+#Step 1: Filter for rows where Language = Ilocano and Year=2006 and 2021
+num_cols <- sapply(Growth_Data, is.numeric)
+growth_row_num <- ((Growth_Data[1, num_cols] - Growth_Data[7, num_cols])/Growth_Data[7, num_cols])*100
+
+#Step 2: Create new row filled with N/A values
+growth_row <- Growth_Data[1, ]
+growth_row[] <- NA
+
+#Step 3: fill new row with num_cols values. num_cols is a logical variable which determines if a columns is numeric or not,
+# which will make growth rate calculations much easier.
+growth_row[num_cols] <- growth_row_num
+
+Growth_Data <- rbind(Growth_Data, growth_row)
 
 ## Plots 2-18: Dual Axis Plot for National, Provincial, and City-Level Growth
 

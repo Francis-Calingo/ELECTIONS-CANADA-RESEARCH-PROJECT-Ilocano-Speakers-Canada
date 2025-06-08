@@ -62,8 +62,7 @@ cd ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada
 
 # Data Structure and Initial Checks
 
-
-https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canada/main/CSVs%20for%20Time-Series%20Analysis/Non-Permanent%20Migration.csv
+The following is the data structure for the csv files used for this project:
 
 | Data Content  | Number of Entries (Records x Field) | Number of Records  | Number of Fields | Download File Link |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -73,40 +72,73 @@ https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canad
 | Riding Data (2023 Representation Order), Ilocano, Tagalog, Other Languages  | **7546**  | 343 | 22  | [Download]()  |
 | **TOTAL** | **8253**  | 405  | 67  | N/A  |
 
-[Entity Relationship Diagram here]
+The following is the repo structure:
 
 ```
 
-
-├── Figures
-│   ├── Panel 1: Extreme Poverty                   
-│       ├── poverty_data.csv
-│   ├── Panel 2: Wage Gap and Poverty Maps
-│       ├── 6. Poverty.csv
-│   ├── Panel 3: Economic Inequality                 
-│       ├── gdp_ihdi_gini.csv
-│   ├── Panel 4: Inflation                 
-│       ├── Aggregate_Inflation.csv
-│       ├── CCPI_Data_df.csv
-│       ├── ECPI_Data_df.csv
-│       ├── HCPI_Data_df.csv
-│       ├── PPI_Data_df.csv
+├── Figures          <- Figures used for the README, organized by sections
+│   ├── Data Structure                  
+│       ├── Figure0.2.png
+│   ├── Overview
+│       ├── Figure0.1.jpg
+│   ├── Panel 1 Pics                
+│       ├── Figure 3.1.1.png
+│       ├── Figure 3.1.2.png
+│       ├── Figure 3.1.3.png
+│   ├── Panel 2 Pics             
+│       ├── Figure 3.2.1.png
+│       ├── Figure 3.2.2.png
+│       ├── Figure 3.2.3.png
+│       ├── Figure 3.2.4.png
+│   ├── Panel 3 Pics    
+│       ├── Figure 3.3.1.png
+│       ├── Figure 3.3.2.png
+│       ├── Figure 3.3.3.png
+│       ├── Figure 3.3.4.png
+│       ├── Figure 3.3.5.png
+│       ├── Figure 3.3.6.png
+│       ├── Figure 3.3.7.png
+│       ├── Figure 3.3.8.png
+│       ├── Figure 3.3.9.png
+│       ├── Figure 3.3.10.png
+│       ├── Figure 3.3.11.png
+│       ├── Figure 3.3.12.png
+│       ├── Figure 3.3.13.png
+│       ├── Figure 3.3.14.png
+│       ├── Figure 3.3.15.png
+│       ├── Figure 3.3.16.png
+│       ├── Figure 3.3.17.png
+│       ├── Figure 3.3.18.png
+│   ├── Panel 4 Pics
+│       ├── Figure 3.4.1.png
+│       ├── Figure 3.4.2.png
+│       ├── Figure 3.4.3.png
+│       ├── Figure 3.4.4.png
+│       ├── Figure 3.4.5.png
+│       ├── Figure 3.4.6.png
+│       ├── Figure 3.4.7.png
 │
 │
-├── ilocano-dashboard
-│   ├── Panel 0: Migration Analysis        
-│       ├── total-number-of-emigrants.csv
-│   ├── Panel 1: Extreme Poverty          <- gif file used in the README.
-│       ├── share-of-population-in-extreme-poverty.csv
-│   ├── Panel 2: Wage Gap and Poverty Maps                <- heatmap image used in the README.
-│       ├── v1-2017-09-16-Martial-Law-in-Data-MartialLawMuseum.ph_.xlsx
-│       ├── phl_adminboundaries_tabulardata.xlsx
-│   ├── Panel 3: Economic Inequality
-│       ├── gdp-per-capita-worldbank.csv
-│       ├── gini-coefficient.csv
-│       ├── inequality-adjusted-human-development-index.csv
-│   ├── Panel 4: Inflation            <- list of all the dependencies with their versions(for conda environment).
-│       ├── Inflation-data.xlsx
+├── GIFs          <- Folder hosting 4 GIF files, each corresponding to each panel of the dashboard
+│   ├── Panel1.gif
+│   ├── Panel2.gif
+│   ├── Panel3.gif
+│   ├── Panel4.gif
+│
+│
+├── ilocano-dashboard          <- Folder meant to mimic the folder structure of files used to run the dashboard locally in a local machine (if you want to run as a browser app hosted on shinyapps.io, they should ALL be in the same folder)
+│   ├── data          <- CSV files needed    
+│       ├── Ilocanos_in_Canada_2006-2021.csv
+│       ├── Ilocanos_in_Canada_CMAs.csv
+│       ├── Ilocanos_in_Canada_Provinces.csv
+│       ├── Ilocanos_in_Canada_Ridings.csv
+│   ├── shapefile      <- all files extracted frown the zipfile downloaded from the 2021 Census Boundary file (province and territories). EXCEPTION: .shp file, as it is too big of a file to upload on GitHub (Do NOT download these files directly from here, there are here only to demonstrate the local machine file structure)
+│       ├── lpr_000b21a_e.dbf
+│       ├── lpr_000b21a_e.prj
+│       ├── lpr_000b21a_e.shx
+│       ├── lpr_000b21a_e.xml
+│   ├── app.R              <- main R script (It can be any name, but if you intend to run as a browswer app, and not just locally, it MUST be named app.R)
+│   ├── deploy.R            <- R script to deploy app as browser app (not needed if you're only running it locally). WARNING: Sometimes, app.R can run locally but may run into issues being deployed as a browser app if the app.R file is too big.
 │
 │
 ├── .gitattributes                     <- used to force GitHub to recognize certain languages (in this case, Markdown)
@@ -117,6 +149,8 @@ https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canad
 │
 ├── README.md      <- repo REAME.
 ```
+
+Note: This is what the file structure for the zipfile files should look like in the local machine, **with the .shp file.** Remember to **NOT download the files from this repo, but the zipfile should be downloaded from the 2021 Census Boundary webpage.**
 <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Data%20Structure/Figure0.2.png"/>
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
@@ -128,8 +162,6 @@ https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canad
 ### Overview of Findings
 
 An interesting finding was that Ilocano settlement in Montreal (specifically the Mount Royal riding) is more prominent than they in Winnipeg, the city with the highest per-capita Filipino population in Canada. It was also observed that the Ilocano-speaking communities in most major cities were growing at a much faster rate that the Tagalog-speaking communities (although it is unlikely that they will overtake Tagalog speaker in terms of raw numbers). Alberta, Saskatchewan, and the Northwest Territories have the potential to be an important hub for the Ilocano community in Canada (due to a high growth rate in Saskatchewan's case, and a high per-capita Ilocano population in Alberta and the Northwest Territories' case).
-
-[Visualization, including a graph of overall trends or snapshot of a dashboard]
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 

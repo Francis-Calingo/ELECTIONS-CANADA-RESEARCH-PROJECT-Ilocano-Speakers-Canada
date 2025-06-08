@@ -36,6 +36,8 @@ Insights and recommendations are provided on the following key areas:
 
 <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/GIFs/Panel4.gif"/>
 
+> GIFs made courtesy of ShareX app, version 17.1
+
 
 The CSV files used for this project can be found in the next section. The following links are Statistics Canada sources where the data from the CSV files were extracted from:
 * <a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E">Census Profile, 2021 Census of Population</a> 
@@ -342,3 +344,11 @@ Throughout the analysis, multiple assumptions were made to manage challenges wit
 ---
 
 # Credits and Acknowledgements
+
+Chang, Winston, et al. Shinydashboard: Create Dashboards with “Shiny.” 0.7.3, 21 Apr. 2025. R-Packages, https://cran.r-project.org/web/packages/shinydashboard/index.html.
+
+“Shiny - Welcome to Shiny.” Shiny, https://shiny.posit.co/r/getstarted/shiny-basics/lesson1/.
+
+Sievert, Carson, et al. Plotly: Create Interactive Web Graphics via “Plotly.Js.” 4.10.4, 13 Jan. 2024. R-Packages, https://cran.r-project.org/web/packages/plotly/index.html.
+
+[<b>Back to Table of Contents</b>](#table-of-contents)

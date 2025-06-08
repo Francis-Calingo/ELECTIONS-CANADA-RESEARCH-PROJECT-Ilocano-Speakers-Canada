@@ -28,6 +28,15 @@ Insights and recommendations are provided on the following key areas:
 
 **FINAL DELIVERABLE:** A dashboard visualization of the demographics of Ilocanos in Canada using R Shiny.
 
+<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/GIFs/Panel1.gif"/>
+
+<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/GIFs/Panel2.gif"/>
+
+<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/GIFs/Panel3.gif"/>
+
+<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/GIFs/Panel4.gif"/>
+
+
 The CSV files used for this project can be found in the next section. The following links are Statistics Canada sources where the data from the CSV files were extracted from:
 * <a href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E">Census Profile, 2021 Census of Population</a> 
 * <a href="https://www12.statcan.gc.ca/census-recensement/2016/dp-pd/prof/index.cfm?Lang=E">Census Profile, 2016 Census of Population</a>

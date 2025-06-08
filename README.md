@@ -117,7 +117,7 @@ https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canad
 │
 ├── README.md      <- repo REAME.
 ```
-<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Overview/Figure0.2.jpg"/>
+<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Data%20Structure/Figure0.2.png"/>
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 

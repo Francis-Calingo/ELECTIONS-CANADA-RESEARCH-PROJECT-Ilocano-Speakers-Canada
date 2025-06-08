@@ -15,7 +15,7 @@
 
 Ilocanos constitute the third-largest ethnolinguistic group in the Philippines (source: 2020 Census of Population and Housing, Philippines), but the second-largest Philippine-based language community in Canada (behind Tagalog). As per the 2021 Canadian Census, an estimated 33,520 people identified Ilocano as their mother tongue, while 461,150 people identified Tagalog as their mother tongue. Cebuano was the third-largest Philippine-based language community in Canada (18,945). From a [previous project](https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Filipino-Canadian-Demographic-Report/) that I did, also for Elections Canada, it was determined that Ilocano was the most-spoken secondary Philippine-based language (i.e., not Tagalog) in the majority of the then-338 federal ridings of Canada (since redistributed to 343 ridings in 2023):
 
-<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Figure0.1.jpg"/>
+<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Overview/Figure0.1.jpg"/>
 
 Ascertaining settlement patterns with regards to the Ilocano-speaking community will be very useful for Elections Canada in helping better understand the community itself and how their demographics play a role in their interactions with Canadian democracy. The fact that Ilocano is not a very commonly used language in digital environment, alongside the fact that Tagalog and English are the predominantly used languages int the Filipino Canadian community makes ascertaining settlement patterns and drawing actionable insights from that more difficult that the demographic research project executed for the general Filipino Canadian community. Therefore, unique methods will be employed to account for those considerations.
 
@@ -117,6 +117,7 @@ https://raw.githubusercontent.com/Francis-Calingo/Visualizing-Migration-in-Canad
 │
 ├── README.md      <- repo REAME.
 ```
+<img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Overview/Figure0.2.jpg"/>
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 

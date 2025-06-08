@@ -177,12 +177,15 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
 * **Alberta (174.540 per 100,000), the Northwest Territories (158.266 per 100,000), and British Columbia (126.478) lead the country in Ilocanos per-capita.** Manitoba ranked 5th (112.878 per 100,000) while Quebec ranked 9th (24.995 per 100,000) reflecting the fact that Ilocanos are comparatively less concentrated in Manitoba like its capital Winnipeg (but still at a high level due to the higher proportions of Filipinos settling in Winnipeg and Manitoba) while they are even less concentrated in Quebec (suggesting that Ilocanos in Quebec are only concentrated in a select few areas in the Montreal area).
 
 <details><summary><b>Table of Top 10 Ridings</b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%201%20Pics/Figure%203.1.1.png"/>
 </details>
 
 <details><summary><b>Table of Top 10 CMAs</b></summary> 
+    <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%201%20Pics/Figure%203.1.2.png"/>
 </details>
 
 <details><summary><b>Choropleth Map of Per-Capita Ilocano Population</b></summary> 
+    <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%201%20Pics/Figure%203.1.3.png"/>
 </details>
 
 [Visualization specific to category 1]
@@ -199,15 +202,19 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
 * **In terms of CMAs (minimum combined Tagalog and Ilocano population 1000), Montreal takes the top spot, while the rest of the top 10 is a mix of larger CMAs (e.g., Toronto, Calgary, Vancouver) and smaller CMAs (e.g., Barrie, London, Red Deer).** Just like with the ridings table, the absence of Winnipeg and presence of Montreal further corrobates the current conclusion that the Ilocano language has much more influence on the Filipino community in Montreal than in Winnipeg. Furthermore, the appearance of smaller CMAs suggests hidden language community patterns within the Filipino community amongst those CMAs.
 
 <details><summary><b>Donut Plot of Settlement Distribution</b></summary> 
+    <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%202%20Pics/Figure%203.2.1.png"/>
 </details>
 
 <details><summary><b>Choropleth Map of Ilocano-Tagalog Ratio</b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%202%20Pics/Figure%203.2.2.png"/>
 </details>
 
 <details><summary><b>Table of Top 10 Ridings</b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%202%20Pics/Figure%203.2.3.png"/>
 </details>
 
 <details><summary><b>Table of Top 10 CMAs</b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%202%20Pics/Figure%203.2.4.png"/>
 </details>
 
 
@@ -222,15 +229,47 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
 * **Saskatchewan, Nova Scotia, and the Northwest Territories  currently lead the country in terms of the Ilocano population growth rate (2006-2021).**
 
 <details><summary><b>Choropleth Map of Ilocano Growth Rate</b></summary> 
+    <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.1.png"/>
 </details>
 
 <details><summary><b>Ilocano vs. Tagalog Growth, Canada</b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.2.png"/>
 </details>
 
 <details><summary><b>Ilocano vs. Tagalog Growth, Provinces with > 1 Million People</b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.3.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.4.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.5.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.6.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.7.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.8.png"/>
 </details>
 
 <details><summary><b>Ilocano vs. Tagalog Growth, 10 Most Populous Cities</b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.9.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.10.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.11.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.12.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.13.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.14.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.15.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.16.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.17.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.18.png"/>
 </details>
 
 ### Linear Regression Modelling (Ilocano vs. Other Language Communities):
@@ -244,12 +283,23 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
 * **Other languages 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
 <details><summary><b>Regression vs. Tagalog</b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.1.png"/>
 </details>
 
 <details><summary><b>Partial Regression vs. Cebuano (Controlling for Tagalog)</b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.2.png"/>
 </details>
 
 <details><summary><b>Partial Regression vs. Top 5 Non-Official Languages (Controlling for Tagalog) </b></summary> 
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.3.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.4.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.5.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.6.png"/>
+
+  <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.7.png"/>
 </details>
 
 

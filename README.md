@@ -276,13 +276,11 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
 
 ### Linear Regression Modelling (Ilocano vs. Other Language Communities):
 
-* **Tagalog.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **There is a strong positive correlation between the density of Ilocano speakers and the density of Tagalog speakers.** In other words, Ilocano settlement generally do not deviate from the larger Tagalog settlement patterns, as seen by some outliers in the regression plot, as well as previous examples of certain ridings and CMAs.
   
-* **Cebuano.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Cebuano and Ilocano density, when not accounting for the presence of the Tagalog language, are positively correlated, but only modestly.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Other languages 1.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
-  
-* **Other languages 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **With the top 5 non-official languages (Mandarin, .** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
 <details><summary><b>Regression vs. Tagalog</b></summary> 
   <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.1.png"/>

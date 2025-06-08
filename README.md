@@ -175,7 +175,15 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
 * **Smaller Census Metropolitan Areas (CMAs) are better represented in the list of the 10 CMAs with the highest per-capita Ilocano population, with Red Deer taking the top spot at 352.029 per 100,000 people.** Other smaller CMAs on the list include Regina, Saskatoon, and Victoria. The fact that Montreal nor Winnipeg did not appear on the list suggests that the relatively high Ilocano concentration that we saw from the Mount Royal riding does not extend to the whole Montreal area, while the relatively low concentration of Ilocanos in the Winnipeg North riding in comparions to the general Filipino Canadian population appears to be a shared trait for the Winnipeg area.
   
 * **Alberta (174.540 per 100,000), the Northwest Territories (158.266 per 100,000), and British Columbia (126.478) lead the country in Ilocanos per-capita.** Manitoba ranked 5th (112.878 per 100,000) while Quebec ranked 9th (24.995 per 100,000) reflecting the fact that Ilocanos are comparatively less concentrated in Manitoba like its capital Winnipeg (but still at a high level due to the higher proportions of Filipinos settling in Winnipeg and Manitoba) while they are even less concentrated in Quebec (suggesting that Ilocanos in Quebec are only concentrated in a select few areas in the Montreal area).
-  
+
+<details><summary><b>Table of Top 10 Ridings</b></summary> 
+</details>
+
+<details><summary><b>Table of Top 10 CMAs</b></summary> 
+</details>
+
+<details><summary><b>Choropleth Map of Per-Capita Ilocano Population</b></summary> 
+</details>
 
 [Visualization specific to category 1]
 
@@ -190,7 +198,17 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
   
 * **In terms of CMAs (minimum combined Tagalog and Ilocano population 1000), Montreal takes the top spot, while the rest of the top 10 is a mix of larger CMAs (e.g., Toronto, Calgary, Vancouver) and smaller CMAs (e.g., Barrie, London, Red Deer).** Just like with the ridings table, the absence of Winnipeg and presence of Montreal further corrobates the current conclusion that the Ilocano language has much more influence on the Filipino community in Montreal than in Winnipeg. Furthermore, the appearance of smaller CMAs suggests hidden language community patterns within the Filipino community amongst those CMAs.
 
-[Visualization specific to category 2]
+<details><summary><b>Donut Plot of Settlement Distribution</b></summary> 
+</details>
+
+<details><summary><b>Choropleth Map of Ilocano-Tagalog Ratio</b></summary> 
+</details>
+
+<details><summary><b>Table of Top 10 Ridings</b></summary> 
+</details>
+
+<details><summary><b>Table of Top 10 CMAs</b></summary> 
+</details>
 
 
 ### Time-Series Growth Analysis:
@@ -201,10 +219,19 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
   
 * **Specific cities.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **Saskatchewan, Nova Scotia, and the Northwest Territories  currently lead the country in terms of the Ilocano population growth rate (2006-2021).** 
+* **Saskatchewan, Nova Scotia, and the Northwest Territories  currently lead the country in terms of the Ilocano population growth rate (2006-2021).**
 
-[Visualization specific to category 3]
+<details><summary><b>Choropleth Map of Ilocano Growth Rate</b></summary> 
+</details>
 
+<details><summary><b>Ilocano vs. Tagalog Growth, Canada</b></summary> 
+</details>
+
+<details><summary><b>Ilocano vs. Tagalog Growth, Provinces with > 1 Million People</b></summary> 
+</details>
+
+<details><summary><b>Ilocano vs. Tagalog Growth, 10 Most Populous Cities</b></summary> 
+</details>
 
 ### Linear Regression Modelling (Ilocano vs. Other Language Communities):
 
@@ -216,7 +243,15 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
   
 * **Other languages 2.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
-[Visualization specific to category 4]
+<details><summary><b>Regression vs. Tagalog</b></summary> 
+</details>
+
+<details><summary><b>Partial Regression vs. Cebuano (Controlling for Tagalog)</b></summary> 
+</details>
+
+<details><summary><b>Partial Regression vs. Top 5 Non-Official Languages (Controlling for Tagalog) </b></summary> 
+</details>
+
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 

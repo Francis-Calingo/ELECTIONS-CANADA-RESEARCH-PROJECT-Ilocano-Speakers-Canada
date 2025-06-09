@@ -11,7 +11,7 @@ library(rsconnect)
 
 rsconnect::setAccountInfo(name='weerou-francis-calingo',
                           token='DFC62FC2EABFB1340029C74C081ACDE4',
-                          secret='//Rd+mdB/VBzvJrmZ1uOdoYBAN3yz6pZ8ZvlOWl+')
+                          secret='[REDACTED]')
 
 rsconnect::deployApp('.')
 

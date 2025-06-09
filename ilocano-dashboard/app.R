@@ -2,12 +2,14 @@
 ## INSTALL DEPENDENCIES ##
 ##########################
 
-#install.packages(c("DT", "dplyr", "readr"))
-#install.packages(c("ggplot2", "plotly"))
-#install.packages("sf")
-#install.packages("tidyr")
-#install.packages("ggpmisc")
-#install.packages(c("shiny", "shinydashboard"))
+install.packages(c("DT", "dplyr", "readr"))
+install.packages(c("ggplot2", "plotly"))
+install.packages("sf")
+install.packages("tidyr")
+install.packages("ggpmisc")
+install.packages(c("shiny", "shinydashboard"))
+
+# After running the above, remove them from the script if you intend to run app.R as a browser app on shinyapps.io (not only locally)
 
 
 library(DT)
@@ -53,9 +55,9 @@ head(my_sf)
 ## SKELETON SET-UP OF DASHBOARD ##
 ##################################
 
-### PANEL 1: PER-CAPITA DATA ###
+###===PANEL 1: PER-CAPITA DATA===###
 
-## Plot 1: Ridings Table (Top 10)
+##==Plot 1: Ridings Table (Top 10)==##
 
 Riding_Table_100K <- Riding_Data[order(-Riding_Data$"Ilocano per 100K"), 
                                  c("Riding (2023 Representation Order)", "Ilocano per 100K")][1:10, ]
@@ -88,7 +90,7 @@ Riding_100K <- plot_ly(
 
 Riding_100K
 
-## Plot 2: CMA Table (Top 10)
+##==Plot 2: CMA Table (Top 10)==##
 
 CMA_Table_100K <- CMA_Data[order(-CMA_Data$"Ilocano per 100K"), 
                            c("CMA", "Ilocano per 100K")][1:10, ]
@@ -122,7 +124,7 @@ CMA_100K <- plot_ly(
 
 CMA_100K
 
-## Plot 3: Choropleth Map of Provinces and Territories (Ilocanos per 100K)
+##==Plot 3: Choropleth Map of Provinces and Territories (Ilocanos per 100K)==##
 
 #Step 1: Merge shapefile with provincial csv file, joined through the names of the provinces and territories
 my_sf_merged <- my_sf %>%
@@ -150,9 +152,9 @@ Map1 <- ggplot(my_sf_merged) +
 ############################################################################################################################
 
 
-### PANEL 2: TAGALOG AND ILOCANO COMPARISONS ###
+###===PANEL 2: TAGALOG AND ILOCANO COMPARISONS===###
 
-## Plot 1: Distribution by Province, Donut Chart
+##==Plot 1: Distribution by Province, Donut Chart==##
 
 Distribution_Data <- Province_Data[c("Province/Territory","Population", 
                                      "% Total Ilocano Pop","% Tagalog Pop")]
@@ -249,7 +251,7 @@ Donut_Plot <- subplot(outer_ring, inner_ring, nrows = 1) %>%
     showlegend = TRUE
   )
 
-## Plot 2: Choropleth Map, Tagalog-Ilocano Ratio
+##==Plot 2: Choropleth Map, Tagalog-Ilocano Ratio==##
 
 Map2 <- ggplot(my_sf_merged) +
   geom_sf(
@@ -321,7 +323,7 @@ Riding_Ratio <- plot_ly(
 Riding_Ratio
 
 
-## Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)
+##==Plot 4: CMA Table (Top 10, Minimum Tagalog & Ilocano Population >= 1000)==##
 
 #Similar process as bove. Fortunately, from the CMA csv, "Ratio, Ilocano-Tagalog" and "Sum (Tagalog + Ilocano)" are
 #already both of numeric type.
@@ -372,9 +374,9 @@ CMA_Ratio
 
 ############################################################################################################################
 
-### PANEL 3: GROWTH RATES, 2006-2021 ###
+###===PANEL 3: GROWTH RATES, 2006-2021===###
 
-## Plot 1: Choropleth Map by Province
+##==Plot 1: Choropleth Map by Province==##
 
 #Step 1: Filter for rows where Language = Ilocano and Year=2006 and 2021
 num_cols <- sapply(Growth_Data, is.numeric)
@@ -435,13 +437,13 @@ Map3 <- ggplot(my_sf_merged_2) +
 #########################################################
 
 
-## Plots 2-18: Dual Axis Plot for National, Provincial, and City-Level Growth
+##==Plots 2-18: Dual Axis Plot for National, Provincial, and City-Level Growth==##
 
 #Setup:
 #Line plots: Two lines representing raw number of Ilocano and Tagalog Speakers (2006, 2011, 2016, 2021 Censuses)
 #Bar plots: Two bars for 2011, 2016, and 2021, representing 5-year growth rate for the Ilocano and Tagalog population.
 
-# CANADA
+#=CANADA=#
 
 #Step 1: Adjust year column
 Growth_Data$Year <- c("2021", "2021",
@@ -485,7 +487,7 @@ Growth_Canada
 
 #Repeat for 6 most-populated provinces and 10 most-populated cities
 
-# ONTARIO
+#=ONTARIO=#
 
 
 #Pivot to wide format
@@ -519,7 +521,7 @@ Growth_ON <- plot_ly(wide_data_ON, x = ~Year) %>%
 
 Growth_ON
 
-# QUEBEC
+#=QUEBEC=#
 
 
 #Pivot to wide format
@@ -554,7 +556,7 @@ Growth_QC <- plot_ly(wide_data_QC, x = ~Year) %>%
 Growth_QC
 
 
-# BRITISH COLUMBIA
+#=BRITISH COLUMBIA=#
 
 #Pivot to wide format
 wide_data_BC <- Growth_Data_TimeSeries[, c(1, 2, 13)] %>%
@@ -587,7 +589,7 @@ Growth_BC <- plot_ly(wide_data_BC, x = ~Year) %>%
 
 Growth_BC
 
-# ALBERTA
+#=ALBERTA=#
 
 #Pivot to wide format
 wide_data_AB <- Growth_Data_TimeSeries[, c(1, 2, 12)] %>%
@@ -620,7 +622,7 @@ Growth_AB <- plot_ly(wide_data_AB, x = ~Year) %>%
 
 Growth_AB
 
-# MANITOBA
+#=MANITOBA=#
 
 #Pivot to wide format
 wide_data_MB <- Growth_Data_TimeSeries[, c(1, 2, 10)] %>%
@@ -653,7 +655,7 @@ Growth_MB <- plot_ly(wide_data_MB, x = ~Year) %>%
 
 Growth_MB
 
-# SASKATCHEWAN
+#=SASKATCHEWAN=#
 
 #Pivot to wide format
 wide_data_SK <- Growth_Data_TimeSeries[, c(1, 2, 11)] %>%
@@ -686,7 +688,7 @@ Growth_SK <- plot_ly(wide_data_SK, x = ~Year) %>%
 
 Growth_SK
 
-# TORONTO
+#=TORONTO=#
 
 #Pivot to wide format
 wide_data_Toronto <- Growth_Data_TimeSeries[, c(1, 2, 17)] %>%
@@ -719,7 +721,7 @@ Growth_Toronto <- plot_ly(wide_data_Toronto, x = ~Year) %>%
 
 Growth_Toronto
 
-# MONTREAL
+#=MONTREAL=#
 
 #Pivot to wide format
 wide_data_Montreal <- Growth_Data_TimeSeries[, c(1, 2, 18)] %>%
@@ -752,7 +754,7 @@ Growth_Montreal <- plot_ly(wide_data_Montreal, x = ~Year) %>%
 
 Growth_Montreal
 
-# CALGARY
+#=CALGARY=#
 
 #Pivot to wide format
 wide_data_Calgary <- Growth_Data_TimeSeries[, c(1, 2, 19)] %>%
@@ -785,7 +787,7 @@ Growth_Calgary <- plot_ly(wide_data_Calgary, x = ~Year) %>%
 
 Growth_Calgary
 
-# OTTAWA
+#=OTTAWA=#
 
 #Pivot to wide format
 wide_data_Ottawa <- Growth_Data_TimeSeries[, c(1, 2, 20)] %>%
@@ -818,7 +820,7 @@ Growth_Ottawa <- plot_ly(wide_data_Ottawa, x = ~Year) %>%
 
 Growth_Ottawa
 
-# EDMONTON
+#=EDMONTON=#
 
 #Pivot to wide format
 wide_data_Edmonton <- Growth_Data_TimeSeries[, c(1, 2, 21)] %>%
@@ -851,7 +853,7 @@ Growth_Edmonton <- plot_ly(wide_data_Edmonton, x = ~Year) %>%
 
 Growth_Edmonton
 
-# WINNIPEG
+#=WINNIPEG=#
 
 #Pivot to wide format
 wide_data_Winnipeg <- Growth_Data_TimeSeries[, c(1, 2, 22)] %>%
@@ -884,7 +886,7 @@ Growth_Winnipeg <- plot_ly(wide_data_Winnipeg, x = ~Year) %>%
 
 Growth_Winnipeg
 
-# MISSISSAUGA
+#=MISSISSAUGA=#
 
 #Pivot to wide format
 wide_data_Mississauga <- Growth_Data_TimeSeries[, c(1, 2, 23)] %>%
@@ -917,7 +919,7 @@ Growth_Mississauga <- plot_ly(wide_data_Mississauga, x = ~Year) %>%
 
 Growth_Mississauga
 
-# VANCOUVER
+#=VANCOUVER=#
 
 #Pivot to wide format
 wide_data_Vancouver <- Growth_Data_TimeSeries[, c(1, 2, 24)] %>%
@@ -950,7 +952,7 @@ Growth_Vancouver <- plot_ly(wide_data_Vancouver, x = ~Year) %>%
 
 Growth_Vancouver
 
-# BRAMPTON
+#=BRAMPTON=#
 
 #Pivot to wide format
 wide_data_Brampton <- Growth_Data_TimeSeries[, c(1, 2, 25)] %>%
@@ -983,7 +985,7 @@ Growth_Brampton <- plot_ly(wide_data_Brampton, x = ~Year) %>%
 
 Growth_Brampton
 
-# HAMILTON
+#=HAMILTON=#
 
 #Pivot to wide format
 wide_data_Hamilton <- Growth_Data_TimeSeries[, c(1, 2, 26)] %>%
@@ -1018,9 +1020,9 @@ Growth_Hamilton
 
 ############################################################################################################################
 
-### PANEL 4: RIDING-LEVEL REGRESSION ANALYSIS: ILOCANO VS. OTHER LANGUAGE COMMUNITIES
+###===PANEL 4: RIDING-LEVEL REGRESSION ANALYSIS: ILOCANO VS. OTHER LANGUAGE COMMUNITIES===#
 
-## Plot 1: Versus Tagalog
+##==Plot 1: Versus Tagalog==##
 
 # model1 is not necessary for the visualization, but is helpful for future statistical analyses.
 model1 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K`, data = Riding_Data)
@@ -1044,7 +1046,7 @@ LM1 <- ggplot(Riding_Data, aes(x = `Tagalog per 100K`, y = `Ilocano per 100K`)) 
 
 LM1 <- ggplotly(LM1, tooltip = "text")
 
-## Plot 2: Versus Cebuano
+##==Plot 2: Versus Cebuano==##
 
 #Cebuano is the third most-spoken Philippine-based language in Canada
 #This residual plot will visualize any potential interactions between ridings with higher
@@ -1082,7 +1084,7 @@ LM2 <- ggplot(partial_df, aes(
 LM2 <- ggplotly(LM2, tooltip = "text")
 
 
-## Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic
+##==Plots 3-7: Versus Mandarin, Punjabi, Cantonese, Spanish, Arabic==#
 
 # The 5 aforementioned languages are the most spoken non-official languages (i.e., not English nor French)
 #in Canada based on mother tongue.
@@ -1090,7 +1092,7 @@ LM2 <- ggplotly(LM2, tooltip = "text")
 #per-capita populations of Ilocano speakers and speakers of each of the 5 languages.
 #Just like with the previous plot, TagalogRate has been added to each model for the exact same reason.
 
-# Partial regression plot for Mandarin Rate, controlling for TagalogRate
+#=Partial regression plot for Mandarin Rate, controlling for TagalogRate=#
 
 model3 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Mandarin per 100K`, data = Riding_Data)
 
@@ -1118,7 +1120,7 @@ LM3 <- ggplot(partial_df, aes(
 LM3 <- ggplotly(LM3, tooltip = "text")
 
 
-# Partial regression plot for Punjabi Rate, controlling for TagalogRate
+#=Partial regression plot for Punjabi Rate, controlling for TagalogRate=#
 
 model4 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Punjabi per 100K`, data = Riding_Data)
 
@@ -1145,7 +1147,7 @@ LM4 <- ggplot(partial_df, aes(
 
 LM4 <- ggplotly(LM4, tooltip = "text")
 
-# Partial regression plot for Cantonese Rate, controlling for TagalogRate
+#=Partial regression plot for Cantonese Rate, controlling for TagalogRate=#
 
 model5 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Cantonese per 100K`, data = Riding_Data)
 
@@ -1172,7 +1174,7 @@ LM5 <- ggplot(partial_df, aes(
 
 LM5 <- ggplotly(LM5, tooltip = "text")
 
-# Partial regression plot for Spanish Rate, controlling for TagalogRate
+#=Partial regression plot for Spanish Rate, controlling for TagalogRate=#
 
 model6 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Spanish per 100K`, data = Riding_Data)
 
@@ -1199,7 +1201,7 @@ LM6 <- ggplot(partial_df, aes(
 
 LM6 <- ggplotly(LM6, tooltip = "text")
 
-# Partial regression plot for Arabic Rate, controlling for TagalogRate
+#=Partial regression plot for Arabic Rate, controlling for TagalogRate=#
 
 model7 <- lm(`Ilocano per 100K` ~ `Tagalog per 100K` + `Arabic per 100K`, data = Riding_Data)
 
@@ -1233,7 +1235,9 @@ LM7 <- ggplotly(LM7, tooltip = "text")
 ## SHINY DASHBOARD DEPLOYMENT ##
 #################################
 
-### PANEL SET-UP ###
+###===PANEL SET-UP===###
+
+# Create 4 lists, each list containing variables assigned plots
 
 plot_list1 <- list("Top 10 Ridings" = Riding_100K, "Top 10 CMAs" = CMA_100K, "Choropleth Map-Ilocanos Per 100K" = Map1)
 plot_list2 <- list("Ilocano vs. Tagalog Distribution" = Donut_Plot , "Choropleth Map-Ilocano-Tagalog Ratio" = Map2, 
@@ -1253,10 +1257,15 @@ plot_list4 <- list("Regression Model-Ilocano vs. Tagalog" = LM1, "Regression Mod
                    "Regression Model-Ilocano vs. Cantonese" = LM5, "Regression Model-Ilocano vs. Spanish" = LM6,
                    "Regression Model-Ilocano vs. Arabic" = LM7)
 
-#=== UI ===
+###===UI===###
+
+# Establish user interface (UI)
 
 ui <- dashboardPage(
+  # Dashboard title, as it would appear
   dashboardHeader(title = "Ilocanos in Canada Dashboard"),
+
+  # Sidebar where users can navigate through different panels
   dashboardSidebar(
     sidebarMenu(
       menuItem("Per-Capita Visualizations", tabName = "panel1"),
@@ -1265,6 +1274,8 @@ ui <- dashboardPage(
       menuItem("Linear Regression Comparison", tabName = "panel4")
     )
   ),
+
+  # Main body of the dashboard, each tabItem corresponding to each panel, and selectInput representing their dropdown menu to navigate through each plot
   dashboardBody(
     tabItems(
       tabItem(tabName = "panel1",
@@ -1315,13 +1326,18 @@ ui <- dashboardPage(
   )
 )
 
-# === Server ===
+###===Server===###
+
+# Server logic (i.e., commands for the app functionality)
 
 server <- function(input, output, session) {
   
   # Panel 1
   observe({
     plot <- plot_list1[[input$plot_choice1]]
+    
+    # If selected plot is of type ggplot, render it the first way,
+    # else render it the second way (height and width rendered so that plot does not appear too small
     if (inherits(plot, "ggplot")) {
       output$panel1_plot_ui <- renderUI({
         plotOutput("ggplot_output1", height = "600px", width = "100%")
@@ -1384,6 +1400,4 @@ server <- function(input, output, session) {
   })
 }
 
-shinyApp(ui = ui, server = server)
-
-
+shinyApp(ui = ui, server = server) #Run the app

@@ -219,13 +219,13 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
 
 ### Time-Series Growth Analysis:
 
-* **Saskatchewan, Nova Scotia, and the Northwest Territories currently lead the country in terms of the Ilocano population growth rate (2006-2021).**
+* **Saskatchewan, Nova Scotia, and the Northwest Territories currently lead the country in terms of the Ilocano population growth rate (2006-2021).** Saskatchewan and Nova Scotia's Ilocano population experienced an over 800% growth from 2006-2021, while Quebec had a comparatively low growth rate despite the fact that it had the highest Ilocano-Tagalog ratio in the country.
 
-* **In general, the Ilocano language community is outpacing the Tagalog language community in terms of census-by-census growth, although  in terms of raw numbers, they are not expected to overtake the Tagalog language community any time soon.** 
+* **In general, the Ilocano language community is outpacing the Tagalog language community in terms of census-by-census growth, although  in terms of raw numbers, they are not expected to overtake the Tagalog language community any time soon.** Nationwide, all but one of the 6 most populous provinces, and all but 2 of the 10 most populous cities, Ilocano growth outpaced Tagalog growth since 2016, to varying degrees.
   
-* **Specific cities.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Ilocano growth actually stagnated in Quebec, with the Ilocano language experiencing a decline in their census-to-census growth rate between 2016 and 2021, while, conversely, the Tagalog language growth rate for 2021 was actually triple that of the Ilocano growth rate.** Montreal similalrly defied general patterns seen else where, with the Ilocano population actually *declining* and the Tagalog population increasing slightly.
   
-* **Specific cities.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **While some cities experienced a positive growth, and other cities experienced a negative growth, in terms of their Tagalog population, almost every city experienced a growth in their Ilocano population in varying degrees.** The only exception, besides Montreal, is Vancouver, where *both* the Ilocano and Tagalog language experienced *negative growth* in 2021, although Tagalog had a much bigger drop than Ilocano.
   
 <details><summary><b>Choropleth Map of Ilocano Growth Rate</b></summary> 
     <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.1.png"/>
@@ -275,9 +275,9 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
 
 * **There is a strong positive correlation between the density of Ilocano speakers and the density of Tagalog speakers.** In other words, Ilocano settlement generally do not deviate from the larger Tagalog settlement patterns, as seen by some outliers in the regression plot, as well as previous examples of certain ridings and CMAs.
   
-* **Cebuano and Ilocano density, when not accounting for the presence of the Tagalog language, are positively correlated, but only modestly.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **Cebuano and Ilocano density, when not accounting for the presence of the Tagalog language, are positively correlated, but only modestly.** Therefore, we can conclude that in ridings where there are more Cebuano speakers than expected (accounting for Tagalog), we also tend to find more Ilocano speakers than expected (accounting for Tagalog), although the relationship is not as strong as when comparing Ilocano density with Tagalog density.
   
-* **With the top 5 non-official languages (Mandarin, Punjabi, Cantonese, Spanish, Arabic), there appears to be no correlation, with the regression line from each plot appearing nearly identical.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **With the top 5 non-official languages (Mandarin, Punjabi, Cantonese, Spanish, Arabic), there appears to be no correlation, with the regression line from each plot appearing nearly horizontal.** Therefore, regardless of whether the language community from either of the 5 aforementioned languages is larger than expected or not in certain ridings, there is no discernible relationship with the presence of the Ilocano-speaking community, even after accounting for Tagalog.
 
 <details><summary><b>Regression vs. Tagalog</b></summary> 
   <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.1.png"/>

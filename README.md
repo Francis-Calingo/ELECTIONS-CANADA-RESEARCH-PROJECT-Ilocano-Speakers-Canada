@@ -24,7 +24,7 @@ Insights and recommendations are provided on the following key areas:
 - **Per-Capita Analysis** 
 - **Categorical Data Analysis (Tagalog vs. Ilocano)** 
 - **Time-Series Growth Analysis** 
-- **Linear Regression Modelling (Ilocano vs. Other Language Communities)** 
+- **Riding-Level Linear Regression Modelling (Ilocano vs. Other Language Communities)** 
 
 **FINAL DELIVERABLE:** A dashboard visualization of the demographics of Ilocanos in Canada using R Shiny.
 
@@ -219,7 +219,7 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
 
 ### Time-Series Growth Analysis:
 
-* **Saskatchewan, Nova Scotia, and the Northwest Territories  currently lead the country in terms of the Ilocano population growth rate (2006-2021).**
+* **Saskatchewan, Nova Scotia, and the Northwest Territories currently lead the country in terms of the Ilocano population growth rate (2006-2021).**
 
 * **In general, the Ilocano language community is outpacing the Tagalog language community in terms of census-by-census growth, although  in terms of raw numbers, they are not expected to overtake the Tagalog language community any time soon.** 
   
@@ -271,13 +271,13 @@ An interesting finding was that Ilocano settlement in Montreal (specifically the
   <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%203%20Pics/Figure%203.3.18.png"/>
 </details>
 
-### Linear Regression Modelling (Ilocano vs. Other Language Communities):
+### Riding-Level inear Regression Modelling (Ilocano vs. Other Language Communities):
 
 * **There is a strong positive correlation between the density of Ilocano speakers and the density of Tagalog speakers.** In other words, Ilocano settlement generally do not deviate from the larger Tagalog settlement patterns, as seen by some outliers in the regression plot, as well as previous examples of certain ridings and CMAs.
   
 * **Cebuano and Ilocano density, when not accounting for the presence of the Tagalog language, are positively correlated, but only modestly.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
   
-* **With the top 5 non-official languages (Mandarin, .** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
+* **With the top 5 non-official languages (Mandarin, Punjabi, Cantonese, Spanish, Arabic), there appears to be no correlation, with the regression line from each plot appearing nearly identical.** More detail about the supporting analysis about this insight, including time frames, quantitative values, and observations about trends.
 
 <details><summary><b>Regression vs. Tagalog</b></summary> 
   <img src="https://github.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/blob/main/Figures/Panel%204%20Pics/Figure%203.4.1.png"/>
@@ -310,11 +310,11 @@ Based on the insights and findings above, we would recommend the [stakeholder te
 
 * Mount Royal (Quebec) is the federal riding with the second-highest Ilocano speakers-Tagalog speakers ratio, while Red Deer (Alberta) is the CMA with the highest per-capita Ilocano population. **With Elections Canada expanding its monitoring capabilities with other languages, as well as increasing its collaboration with provincial & territorial-level, and municipal-level electoral management bodies, this presents an opportunity for the agency to collaborate with said bodies in studying minority languages from specific areas, and utilize findings in helping them understand those language communities' sentiments regarding elections and democracy (e.g., work with Élections Québec on monitoring Ilocano coverage about the elections from the Mount Royal area for the upcoming 2026 Québec General Elections, or with Elections Red Deer for the upcoming municipal elections this fall).**
   
-* From the Top 10 Ridings with the highest Ilocano-Tagalog ratio, 3 Montreal ridings made the list, 6 are from Toronto, and 1 is from Greater Vancouver. **Recommendation or general guidance based on this observation.**
+* From the Top 10 Ridings with the highest Ilocano-Tagalog ratio, 3 Montreal ridings made the list, 6 are from Toronto, and 1 is from Greater Vancouver. **Based on that, and the donut plot-which shows that the distribution of Tagalog and Ilocano speakers are inversely related when it comes to Quebec and Manitoba, the agency should consider concentrating their limited Ilocano-related efforts (e.g. publishing election material in Ilocano, Ilocano media monitoring, providing Ilocano language support on polling day if necessary) to those three cities, despite the fact that Winnipeg has the highest per-capita Filipino population.**
   
-* Generally speaking, the Ilocano language community is growing at a faster rate than the Tagalog community (with some variabilities across some cities and provinces), although based on raw numbers, they continue to lag behind Tagalog significantly. **Related to the previous point,**
+* Generally speaking, the Ilocano language community is growing at a faster rate than the Tagalog community (with some variabilities across some cities and provinces), although based on raw numbers, they continue to lag behind Tagalog significantly. **Related to the previous point, despite the fact that the agency currently has a limited capability with regards to supporting the Ilocano language community, the relatively high growth rates is an indication that the agency must be prepared to raise their capacity, with projects such as this one seeking to help the agency increase their capacity.**
   
-* Based on the residual plots, there is a very strong positive correlation between the density of Ilocano speakers and the density of Tagalog speakers, a modest correlation between the density of Ilocano speakers and the density of Cebuano speakers, and almost no correlation between the density of Ilocano speakers and the density of speakers from the 5 largest non-official language communities. **This demonstrates that.**
+* Based on the residual plots, there is a very strong positive correlation between the density of Ilocano speakers and the density of Tagalog speakers, a modest correlation between the density of Ilocano speakers and the density of Cebuano speakers, and almost no correlation between the density of Ilocano speakers and the density of speakers from the 5 largest non-official language communities. **This demonstrates that Ilocano settlement patterns and concentrations are largely tied with the wider Filipino community (and not so much the other language communities), and therefore, one should take caution when drawing conclusions about sentiment from the Ilocano language community and not mistake wider patterns in the Filipino community as isolated phenomenon unique to the Ilocano language community.**
 
 [<b>Back to Table of Contents</b>](#table-of-contents)
 

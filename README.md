@@ -68,10 +68,10 @@ The following is the data structure for the csv files used for this project:
 
 | Data Content  | Number of Entries (Records x Field) | Number of Records  | Number of Fields | Download File Link |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
-| Ilocano Speakers in Canada, 13 Provinces and Territories, 10 Largest Cities (2006-2021 Censuses)  | **208**  | 8  | 26 | [Download]()  |
-| Ilocano and Tagalog Speakers, Census Metropolitan Areas (CMAs), 2021  | **369**  | 41  | 9  | [Download]() |
-| Ilocano and Tagalog Speakers, 13 Provinces and Territories, 2021  | **130**  | 13 | 10  | [Download]() |
-| Riding Data (2023 Representation Order), Ilocano, Tagalog, Other Languages  | **7546**  | 343 | 22  | [Download]()  |
+| Ilocano Speakers in Canada, 13 Provinces and Territories, 10 Largest Cities (2006-2021 Censuses)  | **208**  | 8  | 26 | [Download](https://raw.githubusercontent.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/refs/heads/main/ilocano-dashboard/data/Ilocanos_in_Canada_2006-2021.csv)  |
+| Ilocano and Tagalog Speakers, Census Metropolitan Areas (CMAs), 2021  | **369**  | 41  | 9  | [Download](https://raw.githubusercontent.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/refs/heads/main/ilocano-dashboard/data/Ilocanos_in_Canada_CMAs.csv) |
+| Ilocano and Tagalog Speakers, 13 Provinces and Territories, 2021  | **130**  | 13 | 10  | [Download](https://raw.githubusercontent.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/refs/heads/main/ilocano-dashboard/data/Ilocanos_in_Canada_Provinces.csv) |
+| Riding Data (2023 Representation Order), Ilocano, Tagalog, Other Languages  | **7546**  | 343 | 22  | [Download](https://raw.githubusercontent.com/Francis-Calingo/ELECTIONS-CANADA-RESEARCH-PROJECT-Ilocano-Speakers-Canada/refs/heads/main/ilocano-dashboard/data/Ilocanos_in_Canada_Ridings.csv)  |
 | **TOTAL** | **8253**  | 405  | 67  | N/A  |
 
 The following is the repo structure:
